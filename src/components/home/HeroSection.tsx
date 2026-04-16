@@ -49,7 +49,7 @@ export function HeroSection() {
   const img = polaroidImages[current]
 
   return (
-    <section className="bg-brand-parchment py-16 md:py-24 overflow-hidden">
+    <section className="bg-brand-parchment py-16 md:py-24 overflow-hidden border-t border-white/5">
       <PageWrapper>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -118,12 +118,12 @@ export function HeroSection() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-wine">
               Keke Writes Thrillers
             </p>
-            <h2 className="font-serif text-display-md md:text-display-lg font-semibold text-brand-charcoal leading-tight text-balance">
+            <h2 className="font-serif text-display-md md:text-display-lg font-semibold text-brand-cream leading-tight text-balance">
               Dark stories for women who read{" "}
-              <em className="italic text-brand-wine not-italic" style={{ fontStyle: "italic" }}>past midnight.</em>
+              <em className="text-brand-wine not-italic" style={{ fontStyle: "italic" }}>past midnight.</em>
             </h2>
             <div className="w-12 h-px bg-brand-gold/60" />
-            <p className="text-brand-charcoal/65 text-lg leading-relaxed max-w-md">
+            <p className="text-brand-stone text-lg leading-relaxed max-w-md">
               Domestic psychological thrillers that unravel you from the inside — and the tools to write your own.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
@@ -140,7 +140,7 @@ export function HeroSection() {
                 </Link>
               </Button>
             </div>
-            <p className="text-xs text-brand-charcoal/35 uppercase tracking-widest pt-1">
+            <p className="text-xs text-brand-cream/60 uppercase tracking-widest pt-1">
               Read by 12,000+ thriller lovers
             </p>
           </div>

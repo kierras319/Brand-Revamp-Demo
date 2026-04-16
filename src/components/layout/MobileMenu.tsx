@@ -32,7 +32,7 @@ export function MobileMenu() {
       <SheetContent side="right" className="w-[300px] bg-[#1C1C1C] border-l border-brand-gold/15">
         <SheetHeader className="mb-2">
           <SheetTitle className="font-serif text-xl text-brand-gold tracking-wider text-left">
-            Keke Writes Thrillers
+            Keke Sharice
           </SheetTitle>
           <p className="text-[10px] uppercase tracking-[0.25em] text-brand-stone/70 text-left -mt-1">
             Domestic Psychological Thriller Author
@@ -60,12 +60,13 @@ export function MobileMenu() {
 
         <div className="mt-8">
           <Button variant="olive" className="w-full text-xs tracking-wider uppercase" asChild>
-            <Link href="/shop">Shop Now</Link>
+            <Link href="/free-chapter">Read Free Chapter</Link>
           </Button>
         </div>
 
-        <div className="mt-8 text-[10px] text-brand-stone/30 uppercase tracking-widest">
-          @keke_writesthrillers
+        <div className="mt-8 flex flex-col gap-1 text-[10px] text-brand-stone/40 uppercase tracking-widest">
+          <a href="https://tiktok.com/@kekesharice" target="_blank" rel="noopener noreferrer" className="hover:text-brand-stone transition-colors">TikTok: @kekesharice</a>
+          <a href="https://instagram.com/kekesharice" target="_blank" rel="noopener noreferrer" className="hover:text-brand-stone transition-colors">Instagram: @kekesharice</a>
         </div>
       </SheetContent>
     </Sheet>

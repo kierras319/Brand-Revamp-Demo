@@ -12,7 +12,7 @@ export function SectionHeading({
   title,
   subtitle,
   align = "center",
-  theme = "light",
+  theme = "dark",
   className,
 }: SectionHeadingProps) {
   return (
@@ -26,7 +26,7 @@ export function SectionHeading({
       <h2
         className={cn(
           "font-serif text-display-sm md:text-display-md font-semibold leading-tight",
-          theme === "dark" ? "text-brand-cream" : "text-brand-charcoal"
+          theme === "light" ? "text-brand-cream" : "text-brand-cream"
         )}
       >
         {title}
@@ -45,9 +45,7 @@ export function SectionHeading({
           className={cn(
             "mt-5 text-base leading-relaxed max-w-2xl",
             align === "center" && "mx-auto",
-            theme === "dark"
-              ? "text-brand-greige/80"
-              : "text-brand-charcoal/60"
+            "text-brand-stone"
           )}
         >
           {subtitle}

@@ -10,30 +10,33 @@ import { cn } from "@/lib/utils"
 const slides = [
   {
     image: "/images/hero-bg.png",
-    eyebrow: "Keke Writes Thrillers",
-    headline: "Dark Stories for Women\nWho Read Past Midnight.",
-    subtext: "Domestic psychological thrillers that unravel you from the inside.",
-    cta: { label: "Download Free Story", href: "/free-library" },
-    ctaSecondary: { label: "Browse Books", href: "/books" },
-    overlayStrength: "bg-brand-charcoal/55",
+    eyebrow: "Keke Sharice",
+    headline: "The secrets hiding in your home\nare the most dangerous of all.",
+    authorHook: "Keke Sharice writes psychological thrillers about the lies we tell the people closest to us.",
+    quote: { text: "Dark. Addictive. You won't see the ending coming.", attribution: "@TiffanyReads_ · Goodreads" },
+    cta: { label: "Read First Chapter Free", href: "/free-chapter" },
+    ctaSecondary: { label: "Buy Now on Amazon", href: "https://amazon.com" },
+    overlayStrength: "bg-brand-ink/60",
   },
   {
     image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1400&h=900&fit=crop&q=85",
     eyebrow: "Now Available",
     headline: "The Silent Hour",
-    subtext: "Some silences are deadlier than words. The debut psychological thriller is here.",
-    cta: { label: "Get the Book", href: "/books/the-silent-hour" },
-    ctaSecondary: { label: "Read a Free Chapter", href: "/free-library" },
-    overlayStrength: "bg-brand-charcoal/60",
+    authorHook: "Some silences are deadlier than words.",
+    quote: { text: "I read it in one sitting. The ending destroyed me in the best possible way.", attribution: "Sarah M. · Amazon Verified Purchase" },
+    cta: { label: "Read First Chapter Free", href: "/free-chapter" },
+    ctaSecondary: { label: "Buy Now on Amazon", href: "https://amazon.com" },
+    overlayStrength: "bg-brand-ink/65",
   },
   {
     image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1400&h=900&fit=crop&q=85",
     eyebrow: "Free Library",
     headline: "Your Next Obsession\nIs Already Waiting.",
-    subtext: "Free short stories, first chapters, writing prompts, and reading trackers. No catch.",
+    authorHook: "Free short stories, first chapters, and reader resources. No catch.",
+    quote: { text: "The free library alone is worth signing up for. Hooked from the first story.", attribution: "@darkfictionlover · Newsletter Subscriber" },
     cta: { label: "Explore Free Library", href: "/free-library" },
     ctaSecondary: { label: "Browse the Shop", href: "/shop" },
-    overlayStrength: "bg-brand-charcoal/55",
+    overlayStrength: "bg-brand-ink/60",
   },
 ]
 
@@ -85,9 +88,7 @@ export function HeroSlideshow() {
             priority={i === 0}
             sizes="100vw"
           />
-          {/* Dark overlay */}
           <div className={cn("absolute inset-0", slide.overlayStrength)} />
-          {/* Subtle noise */}
           <div
             className="absolute inset-0 opacity-[0.03] pointer-events-none"
             style={{
@@ -114,13 +115,19 @@ export function HeroSlideshow() {
                   <p className="text-brand-gold text-xs font-semibold uppercase tracking-[0.3em] mb-6">
                     {slide.eyebrow}
                   </p>
-                  <h1 className="font-serif text-display-md md:text-display-xl font-semibold text-brand-cream leading-tight mb-6 whitespace-pre-line">
+                  <h1 className="font-serif text-display-md md:text-display-xl font-semibold text-brand-cream leading-tight mb-4 whitespace-pre-line">
                     {slide.headline}
                   </h1>
-                  <div className="w-12 h-px bg-brand-gold/60 mx-auto mb-6" />
-                  <p className="text-brand-stone/90 text-lg leading-relaxed max-w-lg mx-auto mb-8">
-                    {slide.subtext}
+                  <p className="text-brand-stone text-base leading-relaxed max-w-xl mx-auto mb-6">
+                    {slide.authorHook}
                   </p>
+                  {/* Reader quote inline in hero */}
+                  <div className="inline-block border-l-2 border-brand-wine/60 pl-4 mb-8 text-left">
+                    <p className="font-serif italic text-brand-cream/75 text-sm leading-relaxed">
+                      &ldquo;{slide.quote.text}&rdquo;
+                    </p>
+                    <p className="text-brand-stone/60 text-xs mt-1">{slide.quote.attribution}</p>
+                  </div>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <Button variant="mauve" size="xl" asChild>
                       <Link href={slide.cta.href}>{slide.cta.label}</Link>
@@ -140,7 +147,7 @@ export function HeroSlideshow() {
       <button
         type="button"
         onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-brand-charcoal/40 hover:bg-brand-charcoal/70 flex items-center justify-center text-brand-cream transition-colors duration-200 backdrop-blur-sm"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-brand-ink/50 hover:bg-brand-ink/80 flex items-center justify-center text-brand-cream transition-colors duration-200 backdrop-blur-sm border border-white/10"
         aria-label="Previous slide"
       >
         <ChevronLeft className="h-5 w-5" />
@@ -148,7 +155,7 @@ export function HeroSlideshow() {
       <button
         type="button"
         onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-brand-charcoal/40 hover:bg-brand-charcoal/70 flex items-center justify-center text-brand-cream transition-colors duration-200 backdrop-blur-sm"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-brand-ink/50 hover:bg-brand-ink/80 flex items-center justify-center text-brand-cream transition-colors duration-200 backdrop-blur-sm border border-white/10"
         aria-label="Next slide"
       >
         <ChevronRight className="h-5 w-5" />
@@ -165,18 +172,18 @@ export function HeroSlideshow() {
               "rounded-full transition-all duration-300",
               i === current
                 ? "bg-brand-gold w-6 h-2"
-                : "bg-brand-cream/40 hover:bg-brand-cream/70 w-2 h-2"
+                : "bg-brand-cream/30 hover:bg-brand-cream/60 w-2 h-2"
             )}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
 
-      {/* Progress bar */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 h-0.5 bg-brand-cream/10">
+      {/* Crimson progress bar */}
+      <div className="absolute bottom-0 left-0 right-0 z-30 h-0.5 bg-white/10">
         <div
           key={current}
-          className="h-full bg-brand-gold/60 origin-left"
+          className="h-full bg-brand-wine/70 origin-left"
           style={{ animation: paused ? "none" : "slideProgress 5s linear forwards" }}
         />
       </div>

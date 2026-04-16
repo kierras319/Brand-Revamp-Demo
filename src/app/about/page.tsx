@@ -28,14 +28,14 @@ export default function AboutPage() {
                 The writer
               </p>
               <h1 className="font-serif text-display-md md:text-display-lg font-semibold text-brand-cream leading-tight">
-                Hi, I&rsquo;m Keke.
+                Keke Sharice
               </h1>
               <div className="w-16 h-px bg-brand-gold/60 my-6" />
-              <p className="font-serif text-xl italic text-brand-greige/80 leading-relaxed mb-6">
-                &ldquo;I write domestic psychological thrillers about women who are quietly unraveling — and the ordinary lives that hold the darkest secrets.&rdquo;
+              <p className="font-serif text-xl italic text-brand-cream/85 leading-relaxed mb-6">
+                &ldquo;I&rsquo;ve always been more interested in the monsters hiding inside our homes than the ones outside them.&rdquo;
               </p>
-              <p className="text-brand-greige/70 leading-relaxed">
-                I&rsquo;ve always believed that the most terrifying stories happen inside four walls — behind closed doors, in whispered conversations, in the silence between people who once knew each other.
+              <p className="text-brand-stone leading-relaxed">
+                Keke Sharice is the pen name of a domestic psychological thriller author who believes the most terrifying stories happen inside four walls — behind closed doors, in whispered conversations, in the silence between people who once knew each other.
               </p>
             </div>
 
@@ -64,7 +64,7 @@ export default function AboutPage() {
         <PageWrapper className="max-w-4xl">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main bio */}
-            <div className="lg:col-span-2 space-y-6 text-brand-charcoal/80 leading-loose text-base">
+            <div className="lg:col-span-2 space-y-6 text-brand-stone leading-loose text-base">
               <p>
                 My thrillers are domestic and psychological — set in the kind of houses where everything looks fine from the outside. They center women: complex, fractured, sometimes unreliable, always fully human. The secrets they keep aren&rsquo;t dramatic. They&rsquo;re the kind you bury so deep you almost forget they&rsquo;re there. Almost.
               </p>
@@ -74,24 +74,54 @@ export default function AboutPage() {
               <p>
                 Beyond the fiction, I create resources for writers who want to go to the dark places — because I know how hard it is to find craft advice that doesn&rsquo;t ask you to make your work safer, softer, more palatable.
               </p>
-              <p>
+              <p className="text-brand-cream/80">
                 This brand exists for the readers and writers who believe that dark fiction, done with intention, is some of the most honest literature there is.
               </p>
             </div>
 
             {/* Sidebar */}
             <div className="space-y-8">
-              <div className="bg-brand-greige/30 rounded-card p-6 border border-brand-greige/50">
-                <h3 className="font-serif text-lg font-semibold text-brand-charcoal mb-4">Currently</h3>
-                <ul className="space-y-3 text-sm text-brand-charcoal/70">
-                  <li>📖 Writing: <em>Paper Bones</em></li>
+              <div className="bg-brand-greige rounded-card p-6 border border-white/5">
+                <h3 className="font-serif text-lg font-semibold text-brand-cream mb-4">Currently</h3>
+                <ul className="space-y-3 text-sm text-brand-stone">
+                  <li>📖 Writing: <em className="text-brand-cream/80">Paper Bones</em></li>
                   <li>📚 Reading: The latest domestic thrillers</li>
                   <li>🎧 Listening: Dark, cinematic playlists</li>
                 </ul>
               </div>
 
-              <div className="bg-brand-greige/30 rounded-card p-6 border border-brand-greige/50">
-                <h3 className="font-serif text-lg font-semibold text-brand-charcoal mb-4">Quick links</h3>
+              <div className="bg-brand-greige rounded-card p-6 border border-white/5">
+                <h3 className="font-serif text-lg font-semibold text-brand-cream mb-4">Find me</h3>
+                <div className="space-y-2">
+                  <a
+                    href="https://tiktok.com/@kekesharice"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-brand-stone hover:text-brand-cream transition-colors"
+                  >
+                    <span className="text-base">🎵</span> TikTok — @kekesharice
+                  </a>
+                  <a
+                    href="https://instagram.com/kekesharice"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-brand-stone hover:text-brand-cream transition-colors"
+                  >
+                    <span className="text-base">📸</span> Instagram — @kekesharice
+                  </a>
+                  <a
+                    href="https://goodreads.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-brand-stone hover:text-brand-cream transition-colors"
+                  >
+                    <span className="text-base">📚</span> Goodreads
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-brand-greige rounded-card p-6 border border-white/5">
+                <h3 className="font-serif text-lg font-semibold text-brand-cream mb-4">Quick links</h3>
                 <div className="space-y-2">
                   <Button variant="olive-outline" size="sm" className="w-full" asChild>
                     <Link href="/books">Browse Books</Link>
@@ -110,7 +140,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-brand-greige/30 py-section">
+      <section className="bg-brand-charcoal py-section">
         <PageWrapper className="max-w-4xl">
           <SectionHeading title="The Journey" align="left" />
           <AuthorTimeline />
@@ -118,7 +148,7 @@ export default function AboutPage() {
       </section>
 
       {/* Press quotes */}
-      <section className="bg-brand-parchment py-section">
+      <section className="bg-brand-parchment py-section border-t border-white/5">
         <PageWrapper>
           <SectionHeading
             title="What Readers Say"

@@ -9,7 +9,7 @@ export function FeaturedBookCard() {
   if (!book) return null
 
   return (
-    <section className="bg-brand-parchment py-section-sm">
+    <section className="bg-brand-charcoal py-section-sm">
       <PageWrapper>
         <div className="bg-brand-charcoal rounded-2xl overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center">

@@ -75,11 +75,12 @@ const config: Config = {
         sm:   "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        card:         "0 2px 16px 0 rgba(28, 25, 23, 0.08)",
-        "card-hover": "0 8px 32px 0 rgba(28, 25, 23, 0.18)",
-        luxury:       "0 4px 40px 0 rgba(28, 25, 23, 0.20)",
-        gold:         "0 0 30px 0 rgba(201, 169, 110, 0.15)",
-        "btn-glow":   "0 0 0 2px rgba(201, 169, 110, 0.85), 0 0 14px 4px rgba(201, 169, 110, 0.35)",
+        card:           "0 2px 16px 0 rgba(0, 0, 0, 0.50)",
+        "card-hover":   "0 8px 32px 0 rgba(0, 0, 0, 0.70)",
+        luxury:         "0 4px 40px 0 rgba(0, 0, 0, 0.60)",
+        gold:           "0 0 30px 0 rgba(212, 175, 55, 0.20)",
+        "btn-glow":     "0 0 0 2px rgba(212, 175, 55, 0.85), 0 0 14px 4px rgba(212, 175, 55, 0.35)",
+        "crimson-glow": "0 0 0 2px rgba(139, 0, 0, 0.70), 0 0 20px 4px rgba(139, 0, 0, 0.30)",
       },
       keyframes: {
         "fade-up": {

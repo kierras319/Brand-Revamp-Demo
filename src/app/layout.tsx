@@ -8,24 +8,24 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: "Keke Writes Thrillers — Domestic Psychological Thrillers",
-    template: "%s | Keke Writes Thrillers",
+    default: "Keke Sharice — Domestic Psychological Thrillers",
+    template: "%s | Keke Sharice",
   },
   description:
-    "Domestic psychological thrillers that center complex women navigating grief, secrets, trauma, and legacy. For readers who want to feel something real.",
+    "Keke Sharice writes domestic psychological thrillers that will keep you up all night. Download a free chapter and start your next obsession.",
   keywords: [
     "psychological thriller",
     "domestic thriller",
     "dark fiction",
+    "Keke Sharice",
     "thriller author",
-    "Keke writes thrillers",
     "women's fiction",
-    "complex women",
+    "unreliable narrator",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Keke Writes Thrillers",
+    siteName: "Keke Sharice",
   },
 }
 

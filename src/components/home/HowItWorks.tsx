@@ -22,16 +22,16 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="bg-brand-parchment py-section border-t border-brand-greige/50">
+    <section className="bg-brand-parchment py-section border-t border-white/5">
       <PageWrapper>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
           {/* LEFT */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-charcoal/40 mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-gold/70 mb-4">
               How It Works
             </p>
-            <h2 className="font-serif text-display-sm md:text-display-md font-semibold text-brand-charcoal leading-tight text-balance">
+            <h2 className="font-serif text-display-sm md:text-display-md font-semibold text-brand-cream leading-tight text-balance">
               Every book is dark, immersive, and{" "}
               <span className="text-brand-wine italic">impossible to put down.</span>
             </h2>
@@ -44,16 +44,16 @@ export function HowItWorks() {
           <div className="space-y-0">
             {steps.map((step, i) => (
               <div key={step.number}>
-                {i > 0 && <div className="h-px bg-brand-greige/60 my-6" />}
+                {i > 0 && <div className="h-px bg-white/8 my-6" />}
                 <div className="flex gap-6 items-start">
                   <span className="font-serif text-3xl font-bold text-brand-gold leading-none shrink-0 w-10">
                     {step.number}
                   </span>
                   <div>
-                    <h3 className="font-serif text-xl font-semibold text-brand-charcoal mb-2">
+                    <h3 className="font-serif text-xl font-semibold text-brand-cream mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-brand-charcoal/60 leading-relaxed text-sm">
+                    <p className="text-brand-stone leading-relaxed text-sm">
                       {step.description}
                     </p>
                   </div>

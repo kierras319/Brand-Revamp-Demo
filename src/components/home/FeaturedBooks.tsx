@@ -9,13 +9,13 @@ export function FeaturedBooks() {
   const books = getFeaturedBooks().slice(0, 3)
 
   return (
-    <section className="bg-brand-parchment py-section">
+    <section className="bg-brand-charcoal py-section">
       <PageWrapper>
         <SectionHeading
           title="The Latest Reads"
           subtitle="Psychological thrillers crafted for women who love to feel the tension on every page."
           align="center"
-          theme="light"
+          theme="dark"
         />
 
         <BookGrid books={books} columns={3} />
@@ -23,7 +23,7 @@ export function FeaturedBooks() {
         <div className="mt-12 text-center">
           <Link
             href="/books"
-            className="inline-flex items-center gap-2 text-sm font-medium text-brand-gold hover:text-brand-wine transition-colors underline underline-offset-4"
+            className="inline-flex items-center gap-2 text-sm font-medium text-brand-gold hover:text-brand-cream transition-colors underline underline-offset-4"
           >
             View All Books
             <ArrowRight className="h-4 w-4" />

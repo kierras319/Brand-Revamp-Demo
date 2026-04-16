@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export function SplitPanels() {
   return (
-    <section className="bg-brand-parchment py-section-sm">
+    <section className="bg-brand-charcoal py-section-sm">
       <PageWrapper>
         <div className="flex flex-col gap-4">
 

@@ -13,9 +13,9 @@ import { EmailSignupBanner } from "@/components/home/EmailSignupBanner"
 import { TestimonialStrip } from "@/components/home/TestimonialStrip"
 
 export const metadata: Metadata = {
-  title: "Keke Writes Thrillers — Domestic Psychological Thrillers",
+  title: "Keke Sharice — Domestic Psychological Thrillers",
   description:
-    "Dark stories for women who read past midnight. Domestic psychological thrillers that unravel you — and the tools to write your own.",
+    "Keke Sharice writes psychological thrillers about the lies we tell the people closest to us. Download a free chapter and start your next obsession.",
 }
 
 export default function HomePage() {

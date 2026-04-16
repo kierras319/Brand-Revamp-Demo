@@ -14,16 +14,16 @@ const shopLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-brand-charcoal text-brand-cream">
+    <footer className="bg-brand-ink text-brand-cream border-t border-brand-wine/20">
       <PageWrapper>
         <div className="py-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="font-serif text-2xl font-bold tracking-wide hover:text-brand-greige transition-colors">
-              Keke Writes Thrillers
+            <Link href="/" className="font-serif text-2xl font-bold tracking-wide hover:text-brand-stone transition-colors">
+              Keke Sharice
             </Link>
-            <p className="mt-4 text-sm text-brand-greige/80 leading-relaxed max-w-xs">
-              Domestic psychological thrillers that unravel you — and the tools to write your own.
+            <p className="mt-4 text-sm text-brand-stone leading-relaxed max-w-xs">
+              Domestic secrets that unravel into madness.
             </p>
             <div className="flex gap-4 mt-6">
               <a
@@ -56,15 +56,15 @@ export function Footer() {
 
           {/* Explore column */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-greige/60 mb-5">
-              Explore
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-stone/60 mb-5">
+              Quick Links
             </h3>
             <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-brand-greige/80 hover:text-brand-cream transition-colors"
+                    className="text-sm text-brand-stone hover:text-brand-cream transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -75,7 +75,7 @@ export function Footer() {
 
           {/* Shop column */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-greige/60 mb-5">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-stone/60 mb-5">
               The Shop
             </h3>
             <ul className="space-y-3">
@@ -83,7 +83,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-brand-greige/80 hover:text-brand-cream transition-colors"
+                    className="text-sm text-brand-stone hover:text-brand-cream transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -94,10 +94,10 @@ export function Footer() {
 
           {/* Newsletter column */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-greige/60 mb-5">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-stone/60 mb-5">
               Join the Darkness
             </h3>
-            <p className="text-sm text-brand-greige/80 leading-relaxed mb-4">
+            <p className="text-sm text-brand-stone leading-relaxed mb-4">
               Free stories, writing prompts, and new release news — direct to your inbox.
             </p>
             <EmailSignupForm variant="inline" theme="dark" />
@@ -106,12 +106,12 @@ export function Footer() {
 
         <Separator className="bg-brand-greige/20" />
 
-        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-greige/50">
-          <p>© {new Date().getFullYear()} Keke Writes Thrillers. All rights reserved.</p>
+        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-stone/60">
+          <p>© {new Date().getFullYear()} Keke Sharice. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/contact" className="hover:text-brand-greige transition-colors">Contact</Link>
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
+            <Link href="/contact" className="hover:text-brand-cream transition-colors">Contact</Link>
+            <Link href="/privacy-policy" className="hover:text-brand-cream transition-colors">Privacy Policy</Link>
+            <span className="text-brand-stone/40">Terms of Service</span>
           </div>
         </div>
       </PageWrapper>

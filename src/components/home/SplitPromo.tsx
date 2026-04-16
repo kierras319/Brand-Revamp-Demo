@@ -5,7 +5,7 @@ import { PageWrapper } from "@/components/layout/PageWrapper"
 
 export function SplitPromo() {
   return (
-    <section className="bg-brand-parchment py-section">
+    <section className="bg-brand-charcoal py-section">
       <PageWrapper>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -13,20 +13,21 @@ export function SplitPromo() {
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-luxury">
             <Image
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&h=530&fit=crop&q=80"
-              alt="Free stories from Keke Writes Thrillers"
+              alt="Free stories from Keke Sharice"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 90vw, 45vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/50 to-transparent" />
           </div>
 
           {/* Right: text */}
           <div className="space-y-5">
-            <h2 className="font-serif text-display-sm md:text-display-md font-semibold text-brand-charcoal leading-tight text-balance">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-gold">Free Library</p>
+            <h2 className="font-serif text-display-sm md:text-display-md font-semibold text-brand-cream leading-tight text-balance">
               Your next obsession is waiting — and it&rsquo;s free.
             </h2>
-            <p className="text-brand-charcoal/65 leading-relaxed text-base max-w-md">
+            <p className="text-brand-stone leading-relaxed text-base max-w-md">
               Short stories, first chapters, writing prompts, and printable reading trackers. Explore the free library — no credit card, no catch.
             </p>
             <Button variant="olive" size="lg" asChild>

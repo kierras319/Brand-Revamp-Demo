@@ -3,10 +3,9 @@ import type { NavLink, ShopCategory } from "./types";
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Books", href: "/books" },
-  { label: "Shop", href: "/shop" },
-  { label: "Free Library", href: "/free-library" },
-  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
+  { label: "Reader Reviews", href: "/reader-reviews" },
+  { label: "Newsletter", href: "/newsletter" },
   { label: "Contact", href: "/contact" },
 ];
 

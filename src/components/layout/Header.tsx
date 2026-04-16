@@ -32,7 +32,7 @@ export function Header() {
             />
             <div className="flex flex-col">
               <span className="font-serif text-lg font-semibold text-brand-gold tracking-wider leading-tight group-hover:text-brand-gold/80 transition-colors duration-200">
-                Keke Writes Thrillers
+                Keke Sharice
               </span>
               <span className="text-[10px] uppercase tracking-[0.2em] text-brand-stone/80 leading-tight">
                 Domestic Psychological Thriller Author
@@ -70,7 +70,7 @@ export function Header() {
           {/* CTA + Mobile Menu */}
           <div className="flex items-center gap-3">
             <Button variant="olive" size="sm" className="hidden lg:inline-flex text-xs tracking-wider uppercase" asChild>
-              <Link href="/shop">Shop Now</Link>
+              <Link href="/free-chapter">Read Free</Link>
             </Button>
             <MobileMenu />
           </div>

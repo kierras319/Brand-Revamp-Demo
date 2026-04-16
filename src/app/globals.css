@@ -4,37 +4,37 @@
 
 @layer base {
   :root {
-    /* ── Keke Writes Thrillers Brand Palette ────────────────────────── */
+    /* ── Keke Sharice — Dark Thriller Palette ───────────────────────── */
     /* HSL channel values only (used with hsl(var(...)))                */
-    --brand-charcoal:  24 10% 10%;   /* #1C1917 — warm dark base       */
-    --brand-gold:      39 46% 61%;   /* #C9A96E — antique gold accent  */
-    --brand-parchment: 38 30% 92%;   /* #F0EBE3 — aged parchment bg    */
-    --brand-greige:    34 23% 86%;   /* #E4DDD4 — soft greige secondary */
-    --brand-wine:      352 51% 36%;  /* #8B2D3A — deep wine CTA        */
-    --brand-stone:     34 6% 62%;    /* #A39E98 — warm stone body text */
-    --brand-ink:       24 10% 8%;
-    --brand-cream:     38 40% 97%;
+    --brand-charcoal:  0 0% 5%;    /* #0D0D0D — near-black base        */
+    --brand-gold:      43 65% 52%; /* #D4AF37 — pale gold accent        */
+    --brand-parchment: 0 0% 7%;    /* #111111 — dark section bg         */
+    --brand-greige:    0 0% 11%;   /* #1C1C1C — card / raised surface   */
+    --brand-wine:      0 100% 27%; /* #8B0000 — deep crimson CTA        */
+    --brand-stone:     0 0% 63%;   /* #A0A0A0 — muted grey body text    */
+    --brand-ink:       0 0% 3%;    /* #080808 — richest black           */
+    --brand-cream:     0 0% 94%;   /* #F0F0F0 — off-white primary text  */
 
     /* ── shadcn semantic tokens → brand ────────────────────────────── */
-    --background:            38 30% 92%;   /* parchment */
-    --foreground:            24 10% 8%;
-    --card:                  38 25% 96%;
-    --card-foreground:       24 10% 8%;
-    --popover:               38 25% 96%;
-    --popover-foreground:    24 10% 8%;
-    --primary:               24 10% 10%;   /* charcoal */
-    --primary-foreground:    38 40% 97%;
-    --secondary:             34 23% 86%;   /* greige */
-    --secondary-foreground:  24 10% 8%;
-    --muted:                 34 18% 88%;
-    --muted-foreground:      34 6% 50%;
-    --accent:                39 46% 61%;   /* gold */
-    --accent-foreground:     24 10% 10%;
+    --background:            0 0% 5%;    /* near-black page bg */
+    --foreground:            0 0% 94%;   /* off-white text */
+    --card:                  0 0% 11%;   /* dark card */
+    --card-foreground:       0 0% 94%;
+    --popover:               0 0% 11%;
+    --popover-foreground:    0 0% 94%;
+    --primary:               0 100% 27%; /* crimson */
+    --primary-foreground:    0 0% 94%;
+    --secondary:             0 0% 11%;   /* dark card */
+    --secondary-foreground:  0 0% 94%;
+    --muted:                 0 0% 15%;
+    --muted-foreground:      0 0% 63%;   /* stone */
+    --accent:                43 65% 52%; /* gold */
+    --accent-foreground:     0 0% 5%;
     --destructive:           0 72% 51%;
     --destructive-foreground:0 0% 100%;
-    --border:                34 18% 82%;
-    --input:                 34 18% 82%;
-    --ring:                  39 46% 61%;   /* gold focus ring */
+    --border:                0 0% 18%;
+    --input:                 0 0% 15%;
+    --ring:                  43 65% 52%; /* gold focus ring */
     --radius:                0.75rem;
   }
 }
@@ -45,9 +45,11 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.7;
   }
   h1, h2, h3, h4, h5 {
     @apply font-serif;
+    line-height: 1.1;
   }
 }
 
