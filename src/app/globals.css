@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Keke Writes Thrillers Brand Palette ────────────────────────── */
+    /* HSL channel values only (used with hsl(var(...)))                */
+    --brand-charcoal:  24 10% 10%;   /* #1C1917 — warm dark base       */
+    --brand-gold:      39 46% 61%;   /* #C9A96E — antique gold accent  */
+    --brand-parchment: 38 30% 92%;   /* #F0EBE3 — aged parchment bg    */
+    --brand-greige:    34 23% 86%;   /* #E4DDD4 — soft greige secondary */
+    --brand-wine:      352 51% 36%;  /* #8B2D3A — deep wine CTA        */
+    --brand-stone:     34 6% 62%;    /* #A39E98 — warm stone body text */
+    --brand-ink:       24 10% 8%;
+    --brand-cream:     38 40% 97%;
+
+    /* ── shadcn semantic tokens → brand ────────────────────────────── */
+    --background:            38 30% 92%;   /* parchment */
+    --foreground:            24 10% 8%;
+    --card:                  38 25% 96%;
+    --card-foreground:       24 10% 8%;
+    --popover:               38 25% 96%;
+    --popover-foreground:    24 10% 8%;
+    --primary:               24 10% 10%;   /* charcoal */
+    --primary-foreground:    38 40% 97%;
+    --secondary:             34 23% 86%;   /* greige */
+    --secondary-foreground:  24 10% 8%;
+    --muted:                 34 18% 88%;
+    --muted-foreground:      34 6% 50%;
+    --accent:                39 46% 61%;   /* gold */
+    --accent-foreground:     24 10% 10%;
+    --destructive:           0 72% 51%;
+    --destructive-foreground:0 0% 100%;
+    --border:                34 18% 82%;
+    --input:                 34 18% 82%;
+    --ring:                  39 46% 61%;   /* gold focus ring */
+    --radius:                0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-padding {
+    @apply py-section px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding-sm {
+    @apply py-section-sm px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-brand {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Film-grain texture overlay for hero sections */
+  .grain-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 2;
+    mix-blend-mode: overlay;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
