@@ -21,14 +21,14 @@ export function SplitPanels() {
               />
             </div>
             <div className="bg-brand-wine flex flex-col justify-center px-10 py-12 md:px-14">
-              <p className="text-brand-cream/60 text-xs font-semibold uppercase tracking-widest mb-4">
+              <p className="text-brand-cream/90 text-xs font-semibold uppercase tracking-widest mb-4">
                 New Releases
               </p>
               <h3 className="font-serif text-3xl md:text-4xl font-semibold text-brand-cream leading-tight text-balance">
                 New thrillers written{" "}
                 <strong className="font-bold">just for you.</strong>
               </h3>
-              <p className="text-brand-cream/70 text-sm leading-relaxed mt-4 mb-6 max-w-xs">
+              <p className="text-brand-cream/90 text-sm leading-relaxed mt-4 mb-6 max-w-xs">
                 Domestic psychological fiction that centers complex women doing complicated things. Dark, intimate, and completely un-put-downable.
               </p>
               <Button
@@ -53,7 +53,7 @@ export function SplitPanels() {
                 <strong className="text-brand-gold font-bold">haunt</strong>{" "}
                 your readers.
               </h3>
-              <p className="text-brand-greige/60 text-sm leading-relaxed mt-4 mb-6 max-w-xs">
+              <p className="text-brand-stone text-sm leading-relaxed mt-4 mb-6 max-w-xs">
                 Workbooks, prompt packs, and story bibles for thriller writers who refuse to sand their work down into something safer.
               </p>
               <Button

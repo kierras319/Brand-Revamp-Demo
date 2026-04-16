@@ -41,7 +41,7 @@ export default function BookTokPage() {
             </Link>
             <div className="flex gap-3 text-xs text-brand-stone">
               <a href="https://tiktok.com/@kekesharice" target="_blank" rel="noopener noreferrer" className="hover:text-brand-cream transition-colors">TikTok</a>
-              <span className="text-brand-stone/30">·</span>
+              <span className="text-brand-stone/70">·</span>
               <a href="https://instagram.com/kekesharice" target="_blank" rel="noopener noreferrer" className="hover:text-brand-cream transition-colors">Instagram</a>
             </div>
           </div>
@@ -71,15 +71,15 @@ export default function BookTokPage() {
                   placeholder="Your email address"
                   buttonText="Send Me the Free Chapters"
                 />
-                <p className="mt-3 text-xs text-brand-stone/60 text-center">
+                <p className="mt-3 text-xs text-brand-stone text-center">
                   No spam. Unsubscribe anytime. Your secrets are safe.
                 </p>
               </div>
 
               <Button variant="cream-outline" size="lg" className="w-full sm:w-auto" asChild>
-                <a href="https://amazon.com" target="_blank" rel="noopener noreferrer">
-                  Buy Now on Amazon
-                </a>
+                <Link href="/shop">
+                  Shop Now
+                </Link>
               </Button>
             </div>
 
@@ -111,7 +111,7 @@ export default function BookTokPage() {
                         <span key={j} className="text-brand-gold text-xs">★</span>
                       ))}
                     </div>
-                    <p className="font-serif italic text-brand-cream/80 text-sm leading-relaxed">
+                    <p className="font-serif italic text-brand-cream/90 text-sm leading-relaxed">
                       &ldquo;{r.quote}&rdquo;
                     </p>
                     <footer className="mt-2 text-xs text-brand-stone">{r.author}</footer>
@@ -127,8 +127,8 @@ export default function BookTokPage() {
       {/* Footer: social handles only */}
       <footer className="border-t border-white/5 py-8">
         <PageWrapper>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-brand-stone/60">
-            <p className="font-serif text-brand-cream/50">Keke Sharice</p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-brand-stone">
+            <p className="font-serif text-brand-stone">Keke Sharice</p>
             <div className="flex gap-6">
               <a href="https://tiktok.com/@kekesharice" target="_blank" rel="noopener noreferrer" className="hover:text-brand-cream transition-colors">
                 @kekesharice on TikTok

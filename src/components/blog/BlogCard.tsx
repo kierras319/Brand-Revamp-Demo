@@ -45,7 +45,7 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
 
       {/* Content */}
       <div className={cn("flex flex-col flex-1 p-6", featured && "lg:p-10 lg:justify-center")}>
-        <div className="flex items-center gap-4 text-xs text-brand-charcoal/50 mb-3">
+        <div className="flex items-center gap-4 text-xs text-brand-stone mb-3">
           <span className="inline-flex items-center gap-1.5">
             <Calendar className="h-3.5 w-3.5" />
             {formatDate(post.publishedAt)}
@@ -58,14 +58,14 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
 
         <h3
           className={cn(
-            "font-serif font-semibold text-brand-charcoal leading-tight group-hover:text-brand-gold transition-colors",
+            "font-serif font-semibold text-brand-cream leading-tight group-hover:text-brand-gold transition-colors",
             featured ? "text-2xl md:text-3xl" : "text-xl"
           )}
         >
           {post.title}
         </h3>
 
-        <p className={cn("mt-3 text-brand-charcoal/60 leading-relaxed", featured ? "text-base line-clamp-3 mt-4" : "text-sm line-clamp-2")}>
+        <p className={cn("mt-3 text-brand-stone leading-relaxed", featured ? "text-base line-clamp-3 mt-4" : "text-sm line-clamp-2")}>
           {post.excerpt}
         </p>
 

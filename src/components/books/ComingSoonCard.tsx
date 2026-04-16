@@ -30,9 +30,9 @@ export function ComingSoonCard({ book, className }: ComingSoonCardProps) {
           {book.title}
         </h3>
         <div className="w-8 h-px bg-brand-gold/50 my-4" />
-        <p className="text-brand-greige/70 font-serif italic text-sm">{book.genre}</p>
+        <p className="text-brand-stone font-serif italic text-sm">{book.genre}</p>
         {book.publishDate && (
-          <p className="mt-4 text-xs text-brand-greige/50 uppercase tracking-widest">
+          <p className="mt-4 text-xs text-brand-stone/80 uppercase tracking-widest">
             {new Date(book.publishDate).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
           </p>
         )}
@@ -40,7 +40,7 @@ export function ComingSoonCard({ book, className }: ComingSoonCardProps) {
 
       {/* Footer */}
       <div className="p-5">
-        <p className="text-sm text-brand-charcoal/60 italic font-serif mb-4 line-clamp-2">
+        <p className="text-sm text-brand-stone italic font-serif mb-4 line-clamp-2">
           {book.tagline}
         </p>
         <Button variant="olive-outline" size="sm" className="w-full">

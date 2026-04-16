@@ -46,12 +46,12 @@ export default function FreeChapterPage() {
             <div className="space-y-5 w-full max-w-sm">
               {reviews.map((r, i) => (
                 <blockquote key={i} className="border-l-2 border-brand-wine/50 pl-4">
-                  <p className="font-serif italic text-brand-cream/80 text-sm leading-relaxed">
+                  <p className="font-serif italic text-brand-cream/90 text-sm leading-relaxed">
                     &ldquo;{r.quote}&rdquo;
                   </p>
                   <footer className="mt-1">
                     <span className="text-brand-gold text-xs font-medium">{r.author}</span>
-                    <span className="text-brand-stone/60 text-xs"> · {r.source}</span>
+                    <span className="text-brand-stone text-xs"> · {r.source}</span>
                   </footer>
                 </blockquote>
               ))}
@@ -78,7 +78,7 @@ export default function FreeChapterPage() {
                 placeholder="Your email address"
                 buttonText="Send Me the Free Chapters"
               />
-              <p className="mt-4 text-xs text-brand-stone/60 text-center">
+              <p className="mt-4 text-xs text-brand-stone text-center">
                 No spam. Unsubscribe anytime. Your secrets are safe.
               </p>
             </div>

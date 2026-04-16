@@ -76,7 +76,7 @@ export default function NewsletterPage() {
               </div>
 
               <blockquote className="mt-10 border-l-2 border-brand-wine/50 pl-5">
-                <p className="font-serif italic text-brand-cream/80 text-base leading-relaxed">
+                <p className="font-serif italic text-brand-cream/90 text-base leading-relaxed">
                   &ldquo;The newsletter is the best part. Every email feels like getting a letter from the villain in your favorite book.&rdquo;
                 </p>
                 <footer className="mt-2 text-xs text-brand-stone">
@@ -99,11 +99,11 @@ export default function NewsletterPage() {
                 placeholder="Your email address"
                 buttonText="Send Me the Free Chapters"
               />
-              <p className="mt-4 text-xs text-brand-stone/60 text-center">
+              <p className="mt-4 text-xs text-brand-stone text-center">
                 No spam. Unsubscribe anytime. Your secrets are safe.
               </p>
               <div className="mt-6 pt-6 border-t border-white/5 text-center">
-                <p className="text-xs text-brand-stone/50 uppercase tracking-widest">
+                <p className="text-xs text-brand-stone/80 uppercase tracking-widest">
                   Joined by 12,000+ readers
                 </p>
               </div>

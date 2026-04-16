@@ -48,9 +48,7 @@ export function PageHero({
         <h1
           className={cn(
             "font-serif text-display-md md:text-display-lg font-semibold leading-tight",
-            backgroundVariant === "parchment"
-              ? "text-brand-charcoal"
-              : "text-brand-cream"
+            "text-brand-cream"
           )}
         >
           {title}
@@ -69,9 +67,7 @@ export function PageHero({
           <p
             className={cn(
               "mt-6 text-lg leading-relaxed max-w-2xl mx-auto",
-              backgroundVariant === "parchment"
-                ? "text-brand-charcoal/60"
-                : "text-brand-greige/80"
+              "text-brand-stone"
             )}
           >
             {subtitle}

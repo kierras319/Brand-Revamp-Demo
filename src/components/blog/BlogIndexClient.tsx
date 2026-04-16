@@ -29,7 +29,7 @@ export function BlogIndexClient() {
       </div>
 
       {posts.length === 0 && (
-        <p className="text-center text-brand-charcoal/50 py-16 font-serif italic">
+        <p className="text-center text-brand-stone py-16 font-serif italic">
           No posts in this category yet. Check back soon.
         </p>
       )}

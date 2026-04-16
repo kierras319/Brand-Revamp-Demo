@@ -39,15 +39,15 @@ export function NewsletterModal() {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-brand-greige border-white/10">
         <DialogHeader>
           <div className="mx-auto w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center mb-4">
             <Gift className="h-6 w-6 text-brand-gold" />
           </div>
-          <DialogTitle className="text-center text-2xl">
+          <DialogTitle className="text-center text-2xl text-brand-cream">
             Before You Go
           </DialogTitle>
-          <DialogDescription className="text-center text-brand-charcoal/60 mt-2">
+          <DialogDescription className="text-center text-brand-stone mt-2">
             Get a free psychological thriller story — delivered instantly when you join the reader list.
           </DialogDescription>
         </DialogHeader>
@@ -55,12 +55,12 @@ export function NewsletterModal() {
         <div className="mt-4 space-y-4">
           <EmailSignupForm
             variant="stacked"
-            theme="light"
+            theme="dark"
             placeholder="Your email address"
             buttonText="Send Me the Free Story"
             onSuccess={handleSuccess}
           />
-          <p className="text-xs text-brand-charcoal/40 text-center">
+          <p className="text-xs text-brand-stone text-center">
             No spam. Unsubscribe anytime.
           </p>
         </div>

@@ -73,7 +73,7 @@ export function EmailSignupForm({
         <div>
           <Label
             htmlFor="email-stacked"
-            className={cn("text-sm mb-1.5", theme === "dark" ? "text-brand-greige" : "text-brand-charcoal/70")}
+            className={cn("text-sm mb-1.5", theme === "dark" ? "text-brand-cream" : "text-brand-charcoal/70")}
           >
             Email address
           </Label>
@@ -82,7 +82,7 @@ export function EmailSignupForm({
             type="email"
             placeholder={placeholder}
             className={cn(
-              theme === "dark" && "bg-white/10 border-white/20 text-brand-cream placeholder:text-brand-greige/60 focus-visible:ring-brand-gold"
+              theme === "dark" && "bg-white/10 border-white/20 text-brand-cream placeholder:text-brand-stone focus-visible:ring-brand-gold"
             )}
             {...register("email")}
           />
@@ -114,7 +114,7 @@ export function EmailSignupForm({
           className={cn(
             "h-11",
             theme === "dark" &&
-              "bg-white/10 border-white/20 text-brand-cream placeholder:text-brand-greige/60 focus-visible:ring-brand-gold"
+              "bg-white/10 border-white/20 text-brand-cream placeholder:text-brand-stone focus-visible:ring-brand-gold"
           )}
           aria-label="Email address"
           {...register("email")}

@@ -30,7 +30,7 @@ export default function ContactPage() {
 
             {/* Form */}
             <div className="lg:col-span-3">
-              <h2 className="font-serif text-2xl font-semibold text-brand-charcoal mb-8">
+              <h2 className="font-serif text-2xl font-semibold text-brand-cream mb-8">
                 Send a Message
               </h2>
               <ContactForm />

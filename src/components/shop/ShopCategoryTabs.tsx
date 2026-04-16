@@ -16,7 +16,7 @@ export function ShopCategoryTabs() {
               <TabsTrigger
                 key={cat.id}
                 value={cat.id}
-                className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-brand-charcoal data-[state=active]:border-b-2 data-[state=active]:border-brand-gold rounded-none px-5 py-4 text-sm font-medium text-brand-charcoal/60 hover:text-brand-charcoal transition-colors border-b-2 border-transparent whitespace-nowrap"
+                className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-brand-cream data-[state=active]:border-b-2 data-[state=active]:border-brand-gold rounded-none px-5 py-4 text-sm font-medium text-brand-stone hover:text-brand-cream transition-colors border-b-2 border-transparent whitespace-nowrap"
               >
                 {cat.label}
               </TabsTrigger>

@@ -39,10 +39,10 @@ export function AuthorTimeline() {
               <span className="font-serif text-2xl font-bold text-brand-gold/70">
                 {milestone.year}
               </span>
-              <h3 className="font-serif text-xl font-semibold text-brand-charcoal mt-1 mb-2">
+              <h3 className="font-serif text-xl font-semibold text-brand-cream mt-1 mb-2">
                 {milestone.title}
               </h3>
-              <p className="text-brand-charcoal/60 text-sm leading-relaxed max-w-lg">
+              <p className="text-brand-stone text-sm leading-relaxed max-w-lg">
                 {milestone.description}
               </p>
             </div>

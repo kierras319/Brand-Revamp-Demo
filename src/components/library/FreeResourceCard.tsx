@@ -48,10 +48,10 @@ export function FreeResourceCard({ resource, onDownload, unlocked, className }: 
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-5">
-        <h3 className="font-serif text-lg font-semibold text-brand-charcoal mb-2 group-hover:text-brand-gold transition-colors">
+        <h3 className="font-serif text-lg font-semibold text-brand-cream mb-2 group-hover:text-brand-gold transition-colors">
           {resource.title}
         </h3>
-        <p className="text-sm text-brand-charcoal/60 leading-relaxed flex-1 mb-4">
+        <p className="text-sm text-brand-stone leading-relaxed flex-1 mb-4">
           {resource.description}
         </p>
         <Button

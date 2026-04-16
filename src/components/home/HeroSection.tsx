@@ -89,7 +89,7 @@ export function HeroSection() {
                     />
                   </div>
                   {/* Polaroid caption area */}
-                  <p className="text-center text-[11px] text-brand-charcoal/40 font-serif italic mt-3 mb-1 tracking-wide">
+                  <p className="text-center text-[11px] text-brand-stone font-serif italic mt-3 mb-1 tracking-wide">
                     keke writes thrillers
                   </p>
                 </div>
@@ -140,7 +140,7 @@ export function HeroSection() {
                 </Link>
               </Button>
             </div>
-            <p className="text-xs text-brand-cream/60 uppercase tracking-widest pt-1">
+            <p className="text-xs text-brand-stone uppercase tracking-widest pt-1">
               Read by 12,000+ thriller lovers
             </p>
           </div>

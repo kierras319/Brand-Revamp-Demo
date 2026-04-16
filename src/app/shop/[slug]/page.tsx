@@ -50,12 +50,12 @@ export default async function ProductPage({
       {/* Breadcrumb */}
       <div className="bg-brand-charcoal/95 border-b border-brand-gold/10">
         <PageWrapper>
-          <nav className="py-3 flex items-center gap-2 text-xs text-brand-stone/50 uppercase tracking-widest">
+          <nav className="py-3 flex items-center gap-2 text-xs text-brand-stone uppercase tracking-widest">
             <Link href="/" className="hover:text-brand-gold transition-colors">Home</Link>
             <span>/</span>
             <Link href="/shop" className="hover:text-brand-gold transition-colors">Shop</Link>
             <span>/</span>
-            <span className="text-brand-stone/80">{product.title}</span>
+            <span className="text-brand-cream">{product.title}</span>
           </nav>
         </PageWrapper>
       </div>
@@ -170,7 +170,7 @@ export default async function ProductPage({
       {(product.overview || product.authorNote) && (
         <section className="bg-brand-parchment py-section">
           <PageWrapper className="max-w-5xl">
-            <h2 className="font-serif text-2xl italic text-brand-charcoal mb-6">Overview</h2>
+            <h2 className="font-serif text-2xl italic text-brand-cream mb-6">Overview</h2>
 
             {/* "From the Author" callout box — mirrors B&N's "Notes From Your Bookseller" */}
             {product.authorNote && (
@@ -186,7 +186,7 @@ export default async function ProductPage({
 
             {/* Two-column overview text */}
             {product.overview && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-brand-charcoal/75 leading-relaxed text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-brand-stone leading-relaxed text-sm">
                 <p>{product.description}</p>
                 <p>{product.overview}</p>
               </div>

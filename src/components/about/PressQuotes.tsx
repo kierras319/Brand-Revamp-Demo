@@ -19,9 +19,9 @@ export function PressQuotes() {
       {quotes.map((q, i) => (
         <blockquote
           key={i}
-          className="flex flex-col bg-brand-greige/20 rounded-card p-8 border-l-2 border-brand-gold/50"
+          className="flex flex-col bg-brand-greige rounded-card p-8 border-l-2 border-brand-gold/50"
         >
-          <p className="font-serif italic text-brand-charcoal/80 leading-relaxed flex-1">
+          <p className="font-serif italic text-brand-cream/90 leading-relaxed flex-1">
             &ldquo;{q.text}&rdquo;
           </p>
           <footer className="mt-6 text-xs font-semibold uppercase tracking-widest text-brand-gold/70">

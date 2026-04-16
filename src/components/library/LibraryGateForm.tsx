@@ -78,15 +78,15 @@ export function LibraryGateForm({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-brand-greige border-white/10">
         <DialogHeader>
           <div className="mx-auto w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center mb-4">
             <Gift className="h-6 w-6 text-brand-gold" />
           </div>
-          <DialogTitle className="text-center">
+          <DialogTitle className="text-center text-brand-cream">
             Unlock the Free Library
           </DialogTitle>
-          <DialogDescription className="text-center text-sm text-brand-charcoal/60 mt-2">
+          <DialogDescription className="text-center text-sm text-brand-stone mt-2">
             {resourceTitle
               ? `Enter your email to access "${resourceTitle}" — plus everything else in the free library.`
               : "Enter your email to unlock all free stories, chapters, prompts, and printables."}
@@ -95,7 +95,7 @@ export function LibraryGateForm({
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-2">
           <div>
-            <Label htmlFor="library-email" className="text-sm mb-1.5 block">
+            <Label htmlFor="library-email" className="text-sm mb-1.5 block text-brand-cream">
               Email address
             </Label>
             <Input
@@ -115,7 +115,7 @@ export function LibraryGateForm({
               "Unlock Free Access"
             )}
           </Button>
-          <p className="text-xs text-brand-charcoal/40 text-center">
+          <p className="text-xs text-brand-stone text-center">
             No spam. Unsubscribe anytime.
           </p>
         </form>

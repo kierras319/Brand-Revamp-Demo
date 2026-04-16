@@ -23,7 +23,7 @@ export function FeaturedProducts() {
         <div className="mt-12 text-center">
           <Link
             href="/shop"
-            className="inline-flex items-center gap-2 text-sm font-medium text-brand-gold hover:text-brand-greige transition-colors underline underline-offset-4"
+            className="inline-flex items-center gap-2 text-sm font-medium text-brand-gold hover:text-brand-cream transition-colors underline underline-offset-4"
           >
             View All Products
             <ArrowRight className="h-4 w-4" />

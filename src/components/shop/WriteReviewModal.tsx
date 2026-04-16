@@ -59,7 +59,6 @@ export function WriteReviewModal({ productSlug, productTitle }: WriteReviewModal
   function handleOpenChange(val: boolean) {
     setOpen(val)
     if (!val) {
-      // reset on close
       setRating(0)
       setHoveredStar(0)
       setName("")
@@ -75,25 +74,25 @@ export function WriteReviewModal({ productSlug, productTitle }: WriteReviewModal
       <DialogTrigger asChild>
         <button
           type="button"
-          className="text-sm text-brand-wine hover:underline underline-offset-2"
+          className="text-sm text-brand-gold hover:text-brand-cream underline underline-offset-2 transition-colors"
         >
           Write A Review
         </button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-lg bg-brand-parchment border-brand-greige">
+      <DialogContent className="sm:max-w-lg bg-brand-greige border-white/10">
         <DialogHeader>
-          <DialogTitle className="font-serif text-xl text-brand-charcoal">
+          <DialogTitle className="font-serif text-xl text-brand-cream">
             Write a Review
           </DialogTitle>
-          <p className="text-xs text-brand-charcoal/50 mt-1">{productTitle}</p>
+          <p className="text-xs text-brand-stone mt-1">{productTitle}</p>
         </DialogHeader>
 
         {submitted ? (
           <div className="py-8 text-center space-y-3">
-            <div className="text-3xl">✓</div>
-            <p className="font-serif text-lg text-brand-charcoal">Thank you for your review!</p>
-            <p className="text-sm text-brand-charcoal/60 max-w-xs mx-auto">
+            <div className="text-3xl text-brand-gold">✓</div>
+            <p className="font-serif text-lg text-brand-cream">Thank you for your review!</p>
+            <p className="text-sm text-brand-stone max-w-xs mx-auto">
               Your review has been submitted and will appear once approved. We appreciate you taking the time to share your thoughts.
             </p>
             <Button variant="olive" size="sm" onClick={() => handleOpenChange(false)} className="mt-2">
@@ -103,15 +102,11 @@ export function WriteReviewModal({ productSlug, productTitle }: WriteReviewModal
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5 mt-2">
 
-            {/* Star rating picker */}
             <div>
-              <Label className="text-sm font-semibold text-brand-charcoal mb-2 block">
+              <Label className="text-sm font-semibold text-brand-cream mb-2 block">
                 Overall Rating <span className="text-brand-wine">*</span>
               </Label>
-              <div
-                className="flex gap-1"
-                onMouseLeave={() => setHoveredStar(0)}
-              >
+              <div className="flex gap-1" onMouseLeave={() => setHoveredStar(0)}>
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
                     key={star}
@@ -123,23 +118,22 @@ export function WriteReviewModal({ productSlug, productTitle }: WriteReviewModal
                   >
                     <Star
                       className="w-8 h-8 transition-colors duration-100"
-                      fill={star <= activeStar ? "#C9A96E" : "none"}
-                      stroke={star <= activeStar ? "#C9A96E" : "#D4C9B8"}
+                      fill={star <= activeStar ? "#D4AF37" : "none"}
+                      stroke={star <= activeStar ? "#D4AF37" : "#A0A0A0"}
                       strokeWidth={1.5}
                     />
                   </button>
                 ))}
               </div>
               {rating > 0 && (
-                <p className="text-xs text-brand-charcoal/50 mt-1">
+                <p className="text-xs text-brand-stone mt-1">
                   {["", "Poor", "Fair", "Good", "Very Good", "Excellent"][rating]}
                 </p>
               )}
             </div>
 
-            {/* Name */}
             <div>
-              <Label htmlFor="review-name" className="text-sm font-semibold text-brand-charcoal mb-1.5 block">
+              <Label htmlFor="review-name" className="text-sm font-semibold text-brand-cream mb-1.5 block">
                 Your Name <span className="text-brand-wine">*</span>
               </Label>
               <Input
@@ -147,13 +141,12 @@ export function WriteReviewModal({ productSlug, productTitle }: WriteReviewModal
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="First name or nickname"
-                className="bg-white border-brand-greige focus-visible:ring-brand-gold"
+                className="bg-brand-parchment border-white/15 text-brand-cream placeholder:text-brand-stone focus-visible:ring-brand-gold"
               />
             </div>
 
-            {/* Review text */}
             <div>
-              <Label htmlFor="review-text" className="text-sm font-semibold text-brand-charcoal mb-1.5 block">
+              <Label htmlFor="review-text" className="text-sm font-semibold text-brand-cream mb-1.5 block">
                 Your Review <span className="text-brand-wine">*</span>
               </Label>
               <Textarea
@@ -162,12 +155,11 @@ export function WriteReviewModal({ productSlug, productTitle }: WriteReviewModal
                 onChange={(e) => setText(e.target.value)}
                 placeholder="What did you love about it? Would you recommend it?"
                 rows={4}
-                className="bg-white border-brand-greige focus-visible:ring-brand-gold resize-none"
+                className="bg-brand-parchment border-white/15 text-brand-cream placeholder:text-brand-stone focus-visible:ring-brand-gold resize-none"
               />
-              <p className="text-xs text-brand-charcoal/40 mt-1">{text.length} characters (minimum 20)</p>
+              <p className="text-xs text-brand-stone mt-1">{text.length} characters (minimum 20)</p>
             </div>
 
-            {/* Recommend checkbox */}
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -176,13 +168,13 @@ export function WriteReviewModal({ productSlug, productTitle }: WriteReviewModal
                 onChange={(e) => setRecommended(e.target.checked)}
                 className="w-4 h-4 accent-brand-wine"
               />
-              <Label htmlFor="review-recommend" className="text-sm text-brand-charcoal/70 cursor-pointer">
+              <Label htmlFor="review-recommend" className="text-sm text-brand-stone cursor-pointer">
                 I recommend this product
               </Label>
             </div>
 
             {error && (
-              <p className="text-sm text-red-600">{error}</p>
+              <p className="text-sm text-red-400">{error}</p>
             )}
 
             <div className="flex justify-end gap-3 pt-1">
@@ -190,7 +182,7 @@ export function WriteReviewModal({ productSlug, productTitle }: WriteReviewModal
                 type="button"
                 variant="ghost"
                 onClick={() => handleOpenChange(false)}
-                className="text-brand-charcoal/60"
+                className="text-brand-stone hover:text-brand-cream"
               >
                 Cancel
               </Button>

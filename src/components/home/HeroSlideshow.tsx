@@ -15,7 +15,7 @@ const slides = [
     authorHook: "Keke Sharice writes psychological thrillers about the lies we tell the people closest to us.",
     quote: { text: "Dark. Addictive. You won't see the ending coming.", attribution: "@TiffanyReads_ · Goodreads" },
     cta: { label: "Read First Chapter Free", href: "/free-chapter" },
-    ctaSecondary: { label: "Buy Now on Amazon", href: "https://amazon.com" },
+    ctaSecondary: { label: "Shop Now", href: "/shop" },
     overlayStrength: "bg-brand-ink/60",
   },
   {
@@ -25,7 +25,7 @@ const slides = [
     authorHook: "Some silences are deadlier than words.",
     quote: { text: "I read it in one sitting. The ending destroyed me in the best possible way.", attribution: "Sarah M. · Amazon Verified Purchase" },
     cta: { label: "Read First Chapter Free", href: "/free-chapter" },
-    ctaSecondary: { label: "Buy Now on Amazon", href: "https://amazon.com" },
+    ctaSecondary: { label: "Shop Now", href: "/shop" },
     overlayStrength: "bg-brand-ink/65",
   },
   {
@@ -123,10 +123,10 @@ export function HeroSlideshow() {
                   </p>
                   {/* Reader quote inline in hero */}
                   <div className="inline-block border-l-2 border-brand-wine/60 pl-4 mb-8 text-left">
-                    <p className="font-serif italic text-brand-cream/75 text-sm leading-relaxed">
+                    <p className="font-serif italic text-brand-cream/90 text-sm leading-relaxed">
                       &ldquo;{slide.quote.text}&rdquo;
                     </p>
-                    <p className="text-brand-stone/60 text-xs mt-1">{slide.quote.attribution}</p>
+                    <p className="text-brand-stone text-xs mt-1">{slide.quote.attribution}</p>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <Button variant="mauve" size="xl" asChild>

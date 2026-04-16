@@ -51,7 +51,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <PageWrapper className="pb-12">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-sm text-brand-greige/70 hover:text-brand-greige transition-colors mb-6"
+              className="inline-flex items-center gap-1.5 text-sm text-brand-stone hover:text-brand-greige transition-colors mb-6"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to Blog
@@ -64,7 +64,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <h1 className="font-serif text-display-sm md:text-display-md font-semibold text-brand-cream leading-tight max-w-3xl text-balance">
               {post.title}
             </h1>
-            <div className="flex items-center gap-5 mt-5 text-sm text-brand-greige/70">
+            <div className="flex items-center gap-5 mt-5 text-sm text-brand-stone">
               <span className="inline-flex items-center gap-1.5">
                 <Calendar className="h-4 w-4" />
                 {formatDate(post.publishedAt)}

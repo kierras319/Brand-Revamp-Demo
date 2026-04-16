@@ -74,16 +74,16 @@ export function ProductCard({ product, size = "default", className }: ProductCar
         <p className="text-xs font-semibold uppercase tracking-widest text-brand-gold/70 mb-1">
           {product.variant === "writer" ? "For Writers" : "For Readers"}
         </p>
-        <h3 className={cn("font-serif font-semibold text-brand-charcoal leading-tight group-hover:text-brand-gold transition-colors duration-200 flex-1", size === "compact" ? "text-base" : "text-lg")}>
+        <h3 className={cn("font-serif font-semibold text-brand-cream leading-tight group-hover:text-brand-gold transition-colors duration-200 flex-1", size === "compact" ? "text-base" : "text-lg")}>
           {product.title}
         </h3>
         {size !== "compact" && (
-          <p className="text-sm text-brand-charcoal/60 mt-2 line-clamp-2 leading-relaxed">
+          <p className="text-sm text-brand-stone mt-2 line-clamp-2 leading-relaxed">
             {product.description}
           </p>
         )}
         <div className="mt-3 flex items-center justify-between">
-          <span className="font-semibold text-brand-charcoal">{formatPrice(product.price)}</span>
+          <span className="font-semibold text-brand-cream">{formatPrice(product.price)}</span>
           <Link
             href={`/shop/${product.slug}`}
             className="text-xs font-medium text-brand-gold hover:text-brand-wine transition-colors underline underline-offset-4"

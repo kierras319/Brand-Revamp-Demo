@@ -34,10 +34,10 @@ export function FeaturedBookCard() {
               <h2 className="font-serif text-display-sm md:text-display-md font-semibold text-brand-cream leading-tight mb-4">
                 {book.title}
               </h2>
-              <p className="font-serif italic text-brand-greige/70 text-lg mb-6">
+              <p className="font-serif italic text-brand-stone text-lg mb-6">
                 &ldquo;{book.tagline}&rdquo;
               </p>
-              <p className="text-brand-greige/60 text-sm leading-relaxed mb-8 max-w-sm mx-auto md:mx-0">
+              <p className="text-brand-stone text-sm leading-relaxed mb-8 max-w-sm mx-auto md:mx-0">
                 {book.synopsis.slice(0, 140)}…
               </p>
               <Button

@@ -18,8 +18,8 @@ export function BlogCategoryFilter({ activeCategory, onChange }: BlogCategoryFil
           className={cn(
             "px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200",
             activeCategory === cat.id
-              ? "bg-brand-charcoal text-brand-cream border-brand-charcoal"
-              : "bg-transparent text-brand-charcoal/70 border-brand-greige hover:border-brand-charcoal/50 hover:text-brand-charcoal"
+              ? "bg-brand-gold text-brand-charcoal border-brand-gold"
+              : "bg-transparent text-brand-stone border-white/20 hover:border-white/40 hover:text-brand-cream"
           )}
         >
           {cat.label}

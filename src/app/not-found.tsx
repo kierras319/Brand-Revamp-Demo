@@ -13,7 +13,7 @@ export default function NotFound() {
           Page Not Found
         </h1>
         <div className="w-16 h-px bg-brand-gold/50 mx-auto my-6" />
-        <p className="text-brand-greige/70 text-lg max-w-md mx-auto leading-relaxed">
+        <p className="text-brand-stone text-lg max-w-md mx-auto leading-relaxed">
           The page you&apos;re looking for has vanished — like a thriller protagonist who knows too much.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">

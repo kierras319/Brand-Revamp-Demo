@@ -31,7 +31,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-brand-greige/60 hover:text-brand-cream transition-colors"
+                className="text-brand-stone hover:text-brand-cream transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </a>
@@ -40,14 +40,14 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TikTok"
-                className="text-brand-greige/60 hover:text-brand-cream transition-colors"
+                className="text-brand-stone hover:text-brand-cream transition-colors"
               >
                 <Music2 className="h-5 w-5" />
               </a>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 aria-label="Email"
-                className="text-brand-greige/60 hover:text-brand-cream transition-colors"
+                className="text-brand-stone hover:text-brand-cream transition-colors"
               >
                 <Mail className="h-5 w-5" />
               </a>
@@ -56,7 +56,7 @@ export function Footer() {
 
           {/* Explore column */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-stone/60 mb-5">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-stone mb-5">
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -75,7 +75,7 @@ export function Footer() {
 
           {/* Shop column */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-stone/60 mb-5">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-stone mb-5">
               The Shop
             </h3>
             <ul className="space-y-3">
@@ -94,7 +94,7 @@ export function Footer() {
 
           {/* Newsletter column */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-stone/60 mb-5">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-stone mb-5">
               Join the Darkness
             </h3>
             <p className="text-sm text-brand-stone leading-relaxed mb-4">
@@ -106,12 +106,12 @@ export function Footer() {
 
         <Separator className="bg-brand-greige/20" />
 
-        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-stone/60">
+        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-stone">
           <p>© {new Date().getFullYear()} Keke Sharice. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/contact" className="hover:text-brand-cream transition-colors">Contact</Link>
             <Link href="/privacy-policy" className="hover:text-brand-cream transition-colors">Privacy Policy</Link>
-            <span className="text-brand-stone/40">Terms of Service</span>
+            <span className="text-brand-stone">Terms of Service</span>
           </div>
         </div>
       </PageWrapper>

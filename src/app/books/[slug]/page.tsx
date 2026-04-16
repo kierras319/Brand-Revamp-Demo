@@ -44,12 +44,12 @@ export default async function BookDetailPage({ params }: PageProps) {
       {/* Breadcrumb */}
       <div className="bg-[#1C1C1C] border-b border-brand-gold/10">
         <PageWrapper>
-          <nav className="py-3 flex items-center gap-2 text-xs text-brand-stone/50 uppercase tracking-widest">
+          <nav className="py-3 flex items-center gap-2 text-xs text-brand-stone uppercase tracking-widest">
             <Link href="/" className="hover:text-brand-gold transition-colors">Home</Link>
             <span>/</span>
             <Link href="/books" className="hover:text-brand-gold transition-colors">Books</Link>
             <span>/</span>
-            <span className="text-brand-stone/80">{book.title}</span>
+            <span className="text-brand-cream">{book.title}</span>
           </nav>
         </PageWrapper>
       </div>
@@ -190,21 +190,21 @@ export default async function BookDetailPage({ params }: PageProps) {
       {(book.overview || book.authorNote) && (
         <section className="bg-brand-parchment py-section">
           <PageWrapper className="max-w-5xl">
-            <h2 className="font-serif text-2xl italic text-brand-charcoal mb-6">Overview</h2>
+            <h2 className="font-serif text-2xl italic text-brand-cream mb-6">Overview</h2>
 
             {book.authorNote && (
-              <div className="border border-brand-greige rounded p-5 mb-8 bg-white relative">
-                <span className="absolute -top-3 left-4 bg-white px-2 font-serif text-sm italic text-brand-charcoal/60">
+              <div className="border border-white/10 rounded p-5 mb-8 bg-brand-greige relative">
+                <span className="absolute -top-3 left-4 bg-brand-greige px-2 font-serif text-sm italic text-brand-stone">
                   Notes From the Author
                 </span>
-                <p className="text-brand-charcoal/80 leading-relaxed text-sm">
+                <p className="text-brand-stone leading-relaxed text-sm">
                   {book.authorNote}
                 </p>
               </div>
             )}
 
             {book.overview && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-brand-charcoal/75 leading-relaxed text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-brand-stone leading-relaxed text-sm">
                 <p>{book.synopsis}</p>
                 <p>{book.overview}</p>
               </div>

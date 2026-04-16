@@ -27,7 +27,7 @@ export function EmailSignupBanner() {
               placeholder="Your email address"
               buttonText="Send Me the Free Chapters"
             />
-            <p className="mt-3 text-xs text-brand-stone/60 text-center lg:text-left">
+            <p className="mt-3 text-xs text-brand-stone text-center lg:text-left">
               No spam. Unsubscribe anytime. Your secrets are safe.
             </p>
           </div>
