@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:Georgia,serif;background:#0d0d1a;color:#ecdece;min-height:100vh;font-size:16px}
+.root{max-width:860px;margin:0 auto;padding:16px 14px 60px}
+.header{background:#13131f;border:1px solid rgba(201,168,76,0.22);border-radius:8px;padding:24px 20px 18px;margin-bottom:16px;position:relative;overflow:hidden}
+.header-top{position:absolute;top:0;left:0;right:0;height:2px;background:#c9a84c}
+.crest{color:#c9a84c;font-size:14px;letter-spacing:0.25em;display:block;margin-bottom:8px}
+.title{font-size:clamp(20px,5vw,28px);font-weight:600;color:#ecdece;letter-spacing:0.04em;margin-bottom:5px;line-height:1.2}
+.subtitle{font-size:clamp(12px,3vw,14px);color:#a09080;font-style:italic;line-height:1.5}
+.tabs{display:flex;gap:0;margin-bottom:16px;border-bottom:1px solid rgba(201,168,76,0.2);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:10px 16px;background:transparent;border:1px solid transparent;border-bottom:1px solid transparent;border-radius:4px 4px 0 0;color:#5c5040;font-family:Georgia,serif;font-size:13px;letter-spacing:0.06em;cursor:pointer;margin-bottom:-1px;transition:color 0.2s;white-space:nowrap;flex-shrink:0;min-height:44px;display:flex;align-items:center}
+.tab.active{background:#13131f;border-color:rgba(201,168,76,0.22);border-bottom-color:#13131f;color:#c9a84c}
+.tab:hover:not(.active){color:#a09080}
+.card{background:#13131f;border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:18px 16px;margin-bottom:12px}
+.sec-title{font-size:clamp(16px,4vw,18px);font-weight:600;color:#ecdece;margin-bottom:5px}
+.sec-sub{font-size:clamp(13px,3vw,14px);color:#a09080;font-style:italic;margin-bottom:14px;line-height:1.55}
+.label{display:block;font-size:11px;color:#5c5040;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;font-family:Georgia,serif}
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:16px}
+@media(min-width:500px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:700px){.cat-grid{grid-template-columns:repeat(4,1fr)}}
+.cat-card{background:#1a1a2c;border:1px solid rgba(201,168,76,0.18);border-radius:6px;padding:11px 12px;cursor:pointer;transition:background 0.2s,border-color 0.2s;min-height:44px}
+.cat-card.sel{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.55)}
+.cat-card:active{background:rgba(201,168,76,0.08)}
+.cat-icon{font-size:14px;color:#c9a84c;display:block;margin-bottom:4px}
+.cat-name{font-size:13px;color:#ecdece;font-weight:500;margin-bottom:2px;line-height:1.3}
+.cat-desc{font-size:11px;color:#5c5040;font-style:italic;line-height:1.3}
+textarea,input,select{width:100%;background:#1a1a2c;border:1px solid rgba(201,168,76,0.2);border-radius:6px;color:#ecdece;font-family:Georgia,serif;font-size:16px;padding:10px 12px;outline:none;resize:vertical;line-height:1.65;-webkit-appearance:none;appearance:none}
+input{height:44px;resize:none;padding:0 12px}
+select{height:44px;cursor:pointer}
+textarea:focus,input:focus,select:focus{border-color:rgba(201,168,76,0.5)}
+.btn-gold{padding:13px 24px;background:transparent;border:1px solid #c9a84c;color:#c9a84c;font-family:Georgia,serif;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:background 0.22s,color 0.22s;min-height:48px;touch-action:manipulation}
+.btn-gold:hover,.btn-gold:active{background:#c9a84c;color:#0d0d1a}
+.btn-gold:disabled{opacity:0.5;cursor:not-allowed}
+.btn-dim{padding:10px 16px;background:transparent;border:1px solid rgba(201,168,76,0.22);color:#a09080;font-family:Georgia,serif;font-size:13px;cursor:pointer;border-radius:3px;transition:border-color 0.2s,color 0.2s;min-height:44px;touch-action:manipulation}
+.btn-dim:hover,.btn-dim:active{border-color:rgba(201,168,76,0.5);color:#ecdece}
+.result-box{background:#1a1a2c;border:1px solid rgba(201,168,76,0.2);border-left:3px solid #c9a84c;border-radius:0 6px 6px 0;padding:16px 18px;margin-top:16px}
+.result-text{color:#ecdece;font-size:clamp(14px,3.5vw,15px);line-height:1.85;white-space:pre-wrap;font-style:italic}
+.rule{border:none;border-top:1px solid rgba(201,168,76,0.12);margin:14px 0}
+.prompt-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.prompt-item{padding:12px 14px;background:#1a1a2c;border:1px solid rgba(201,168,76,0.18);border-radius:6px;display:flex;align-items:flex-start;gap:10px;cursor:pointer;transition:border-color 0.2s,background 0.2s;min-height:44px;touch-action:manipulation}
+.prompt-item:active{background:rgba(201,168,76,0.06)}
+.prompt-item.saved{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.5)}
+.prompt-dot{width:5px;height:5px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:8px}
+.prompt-text{color:#ecdece;font-size:clamp(13px,3.5vw,14px);line-height:1.6;font-style:italic;flex:1}
+.saved-tag{font-size:11px;color:#c9a84c;letter-spacing:0.08em;text-transform:uppercase;flex-shrink:0;margin-top:3px}
+.combo-badge{display:inline-block;padding:3px 10px;border-radius:20px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);color:#c9a84c;font-size:11px;margin-right:5px;margin-bottom:4px}
+.combo-text{color:#a09080;font-size:clamp(13px,3.5vw,14px);font-style:italic;line-height:1.65;margin-top:4px}
+.field-row{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
+th{padding:9px 10px;background:#1a1a2c;border:1px solid rgba(201,168,76,0.2);color:#c9a84c;font-weight:500;text-align:left;font-size:11px;letter-spacing:0.08em;font-family:Georgia,serif;white-space:nowrap}
+td{padding:5px 6px;border:1px solid rgba(201,168,76,0.1);vertical-align:top}
+td input{height:38px;font-size:13px;padding:0 8px;border-radius:4px}
+.warn-box{background:rgba(122,21,21,0.12);border:1px solid rgba(201,168,76,0.2);border-left:3px solid #7a1515;border-radius:0 6px 6px 0;padding:12px 14px;margin-top:8px}
+.warn-text{color:#a09080;font-size:13px;font-style:italic;line-height:1.6}
+.cat-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.cat-pill{padding:8px 14px;background:transparent;border:1px solid rgba(201,168,76,0.2);color:#5c5040;font-family:Georgia,serif;font-size:12px;cursor:pointer;border-radius:20px;transition:all 0.2s;min-height:36px;touch-action:manipulation}
+.cat-pill.active{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.5);color:#c9a84c}
+.cat-pill:active{background:rgba(201,168,76,0.08)}
+.save-banner{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.copy-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#c9a84c;color:#0d0d1a;padding:9px 20px;border-radius:4px;font-size:13px;font-family:Georgia,serif;animation:fadeInOut 2.5s ease forwards;z-index:999;white-space:nowrap}
+@keyframes fadeInOut{0%{opacity:0;transform:translateX(-50%) translateY(8px)}15%{opacity:1;transform:translateX(-50%) translateY(0)}80%{opacity:1}100%{opacity:0}}
+.copybtn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.loader{display:inline-block;width:15px;height:15px;border:2px solid rgba(201,168,76,0.3);border-top-color:#c9a84c;border-radius:50%;animation:spin 0.8s linear infinite;margin-right:7px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.opening-line{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid rgba(201,168,76,0.08)}
+.opening-line:last-child{border-bottom:none}
+.line-num{color:#c9a84c;font-size:13px;flex-shrink:0;margin-top:2px}
+.line-text{color:#a09080;font-size:clamp(13px,3.5vw,14px);font-style:italic;line-height:1.6}
+.combine-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:12px}
+@media(min-width:480px){.combine-grid{grid-template-columns:1fr 1fr}}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.hint{font-size:12px;color:#5c5040;font-style:italic;margin-bottom:16px;line-height:1.5}
+
+/* API Key Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:#13131f;border:1px solid rgba(201,168,76,0.35);border-radius:10px;padding:28px 24px;max-width:460px;width:100%}
+.modal-title{font-size:18px;color:#ecdece;font-weight:600;margin-bottom:8px}
+.modal-sub{font-size:13px;color:#a09080;font-style:italic;line-height:1.6;margin-bottom:18px}
+.modal input{margin-bottom:10px;font-family:monospace;font-size:14px;letter-spacing:0.03em}
+.modal-note{font-size:11px;color:#5c5040;font-style:italic;line-height:1.55;margin-bottom:16px}
+.modal-btns{display:flex;gap:8px;flex-wrap:wrap}
+
+/* API key status bar */
+.key-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:6px;margin-bottom:14px}
+.key-status{font-size:12px;color:#5c5040;font-style:italic}
+.key-status.ok{color:#7ab87a}
+</style>
+</head>
+<body>
+
+<!-- API Key Modal -->
+<div class="modal-overlay" id="key-modal">
+  <div class="modal">
+    <p class="modal-title">&#9672; API Key Required</p>
+    <p class="modal-sub">The AI generation features (Generate &amp; Combine tabs) use the Claude API. Paste your Anthropic API key below to activate them. The key is saved only in your browser &mdash; never sent anywhere except Anthropic.</p>
+    <label class="label" style="margin-bottom:6px">Anthropic API Key</label>
+    <input type="password" id="key-input" placeholder="sk-ant-..." autocomplete="off" autocorrect="off" spellcheck="false">
+    <p class="modal-note">Get a key at console.anthropic.com &rarr; API Keys. The Browse, Combine (static), and Plan tabs work without a key.</p>
+    <div class="modal-btns">
+      <button class="btn-gold" onclick="saveKey()">Save &amp; Continue</button>
+      <button class="btn-dim" onclick="skipKey()">Skip (static features only)</button>
+    </div>
+  </div>
+</div>
+
+<div class="root">
+<h2 style="position:absolute;left:-9999px">Plot Twist Generator &mdash; Interactive Writing Tool for Psychological Thriller Authors</h2>
+
+<div class="header">
+  <div class="header-top"></div>
+  <span class="crest">&#10022; &nbsp; &#10022; &nbsp; &#10022;</span>
+  <p class="title">Plot Twist Generator</p>
+  <p class="subtitle">Psychological Thriller Edition &nbsp;&middot;&nbsp; AI-Powered &nbsp;&middot;&nbsp; Domestic suspense, gaslighting &amp; unforgettable reveals</p>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('generate',this)">Generate</button>
+  <button class="tab" onclick="switchTab('browse',this)">Explore</button>
+  <button class="tab" onclick="switchTab('combine',this)">Combine</button>
+  <button class="tab" onclick="switchTab('plan',this)">Plan</button>
+</div>
+
+<!-- Generate Tab -->
+<div id="tab-generate">
+  <div class="card">
+    <p class="sec-title">AI Twist Generator</p>
+    <p class="sec-sub">Pick a category, describe your story, and get three psychologically complex twists crafted for your narrative.</p>
+    <div class="key-bar" id="key-bar">
+      <span class="key-status" id="key-status-text">No API key &mdash; AI generation disabled</span>
+      <button class="btn-dim" style="padding:6px 12px;min-height:32px;font-size:12px" onclick="showKeyModal()">Set Key</button>
+    </div>
+    <label class="label">1. Choose a twist category</label>
+    <div class="cat-grid" id="cat-grid"></div>
+    <label class="label">2. Describe your story (optional)</label>
+    <textarea id="story-input" rows="3" placeholder="e.g. A woman suspects her husband is gaslighting her, but proving it means exposing her own secret..." style="margin-bottom:6px"></textarea>
+    <p class="hint">More context = more specific twists. Leave blank for universal suggestions.</p>
+    <div class="btn-row">
+      <button class="btn-gold" id="gen-btn" onclick="generateTwists()">Generate Twists</button>
+      <span id="sel-cat-label" style="font-size:13px;color:#5c5040;font-style:italic"></span>
+    </div>
+    <p id="gen-error" style="color:#e06060;font-size:13px;margin-top:8px;font-style:italic;display:none"></p>
+    <div id="gen-result" style="display:none" class="result-box">
+      <p style="font-size:11px;color:#5c5040;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px" id="result-cat-label">Generated twists</p>
+      <p class="result-text" id="result-text"></p>
+      <div class="copybtn-row">
+        <button class="btn-dim" onclick="generateTwists()">Regenerate</button>
+        <button class="btn-dim" onclick="copyText('result-text')">Copy</button>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <p class="sec-sub" style="margin-bottom:10px">Opening lines that hook readers &mdash; use as spark or inspiration:</p>
+    <div id="opening-lines"></div>
+  </div>
+</div>
+
+<!-- Browse Tab -->
+<div id="tab-browse" style="display:none">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div style="flex:1;min-width:160px">
+        <p class="sec-title">Surprise Me</p>
+        <p class="sec-sub" style="margin-bottom:0">A random prompt from all eight categories.</p>
+      </div>
+      <button class="btn-gold" onclick="randomize()" style="flex-shrink:0">Randomize</button>
+    </div>
+    <div id="random-result" style="display:none" class="result-box">
+      <p class="result-text" id="random-text"></p>
+      <button class="btn-dim" style="margin-top:10px" onclick="toggleSaveRandom()" id="random-save-btn">&#9734; Save this</button>
+    </div>
+  </div>
+  <div class="card">
+    <div id="save-banner" style="display:none" class="save-banner">
+      <span id="save-count" style="font-size:18px;color:#c9a84c;font-weight:500">0</span>
+      <span style="font-size:13px;color:#5c5040;font-style:italic">prompts saved &mdash; tap any to toggle</span>
+    </div>
+    <label class="label">Browse by category</label>
+    <div class="cat-filter" id="cat-filter"></div>
+    <p class="sec-title" id="browse-cat-title" style="font-size:16px"></p>
+    <p class="sec-sub" id="browse-cat-desc"></p>
+    <ul class="prompt-list" id="prompt-list"></ul>
+  </div>
+  <div id="saved-card" style="display:none" class="card">
+    <p class="sec-title">Your saved prompts</p>
+    <ul class="prompt-list" id="saved-list"></ul>
+    <button class="btn-dim" style="margin-top:12px" onclick="copySaved()">Copy all saved</button>
+  </div>
+</div>
+
+<!-- Combine Tab -->
+<div id="tab-combine" style="display:none">
+  <div class="card">
+    <p class="sec-title">Layered Twist Combinations</p>
+    <p class="sec-sub">The most devastating thrillers layer two twist types together.</p>
+    <div id="combinations"></div>
+  </div>
+  <div class="card">
+    <p class="sec-title">Build Your Own</p>
+    <p class="sec-sub">Pick two categories and generate one merged, devastating twist.</p>
+    <div class="key-bar" id="key-bar-combo">
+      <span class="key-status" id="key-status-combo">No API key &mdash; AI generation disabled</span>
+      <button class="btn-dim" style="padding:6px 12px;min-height:32px;font-size:12px" onclick="showKeyModal()">Set Key</button>
+    </div>
+    <div class="combine-grid">
+      <div><label class="label">First category</label><select id="combo-a"><option value="">&#8212; select &#8212;</option></select></div>
+      <div><label class="label">Second category</label><select id="combo-b"><option value="">&#8212; select &#8212;</option></select></div>
+    </div>
+    <label class="label">Story context (optional)</label>
+    <textarea id="combo-story" rows="2" placeholder="Brief description..." style="margin-bottom:12px"></textarea>
+    <button class="btn-gold" id="combo-btn" onclick="generateCombo()">Generate Combination</button>
+    <div id="combo-result" style="display:none" class="result-box">
+      <p class="result-text" id="combo-text"></p>
+    </div>
+  </div>
+</div>
+
+<!-- Plan Tab -->
+<div id="tab-plan" style="display:none">
+  <div class="card">
+    <p class="sec-title">Character Secrets</p>
+    <p class="sec-sub">Twists come from secrets. Map your character&rsquo;s hidden interior before writing the reveal.</p>
+    <div id="char-fields"></div>
+  </div>
+  <div class="card">
+    <p class="sec-title">Lie / Truth Planner</p>
+    <p class="sec-sub">Map what the reader believes, what&rsquo;s actually true, and when to reveal it.</p>
+    <div class="table-wrap">
+      <table><thead><tr><th>#</th><th>What reader believes</th><th>What is actually true</th><th>When to reveal</th></tr></thead>
+      <tbody id="truth-table"></tbody></table>
+    </div>
+  </div>
+  <div class="card">
+    <p class="sec-title">Red Herring Builder</p>
+    <p class="sec-sub">A red herring should misdirect &mdash; not cheat.</p>
+    <div id="herring-fields"></div>
+    <div class="warn-box"><p class="warn-text">&#9888; If you can&rsquo;t write the &ldquo;how did I miss it?&rdquo; re-read scene, the herring isn&rsquo;t ready.</p></div>
+  </div>
+  <div class="card">
+    <p class="sec-title">Master Worksheet</p>
+    <p class="sec-sub">Your complete twist in one place.</p>
+    <div id="master-fields"></div>
+    <hr class="rule">
+    <button class="btn-gold" onclick="copyMaster()">Copy worksheet</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+const CATS=[{id:"identity",name:"Hidden Identity",icon:"&#9672;",desc:"False names, secret pasts",prompts:["The person she married is not who he claimed to be.","The woman next door has been watching her for a specific, personal reason.","The detective leading the investigation has a direct connection to the crime.","Someone in the house has been using a false name for years.","Her new best friend appeared the week after the old one disappeared.","The therapist who knows all her secrets has never been licensed.","The child she is raising is not biologically hers. She chose not to know why."]},{id:"manipulation",name:"Manipulation",icon:"&#9680;",desc:"Gaslighting, engineered dependency",prompts:["She thinks she is losing time, but someone is engineering it.","The evidence against her was planted slowly, over many months.","Her routines have been studied and used against her.","The person comforting her is quietly shaping her version of events.","Her own diary has been rewritten while she slept.","The medication she takes was chosen for her, not by her doctor.","Every breakdown she has had has been witnessed by exactly the right person."]},{id:"memory",name:"False Memory",icon:"&#9681;",desc:"Rewritten pasts, mind-bending",prompts:["Her clearest memory is the one thing that never happened.","A childhood event was rewritten for her protection. No one asked if she wanted protecting.","She remembers being abandoned, but she was hidden.","The diary tells a completely different version of that night.","The one person who confirmed her memory had strong reason to lie.","She can describe her attacker in perfect detail. The face belongs to someone who was not there.","She has given the same testimony four times. Each time it changes slightly."]},{id:"betrayal",name:"Trusted Betrayal",icon:"&#9682;",desc:"Emotional devastation, not just shock",prompts:["Her therapist has been reporting back to someone.","Her sister knew the truth and stayed silent for seven years.","Her closest friend introduced her to danger deliberately.","The person she ran to for safety led the threat straight to her.","The help she received was designed to keep her dependent, not free her.","The one person who believed her was the one who needed her to keep talking.","Her mother knew what was happening. She sent her back anyway."]},{id:"victim",name:"Victim Complexity",icon:"&#9683;",desc:"Moral ambiguity, layered sympathy",prompts:["She is terrified for a reason, but she is also hiding what she did.","The missing wife left because of abuse, but not only because of abuse.","The grieving mother is protecting her child from a truth she caused.","The woman everyone pities has been controlling the narrative from the start.","She left one person behind when she escaped. She never told anyone.","She reported the crime. She also committed one. Both things are true.","The person the reader has been rooting for has been lying since chapter two."]},{id:"family",name:"Family Secret",icon:"&#8853;",desc:"Gothic domestic, inheritance",prompts:["The house was left to her for a reason nobody explained.","The women in this family have been disappearing in the same pattern for three generations.","Her inheritance contains evidence, not wealth.","A hidden room reveals the truth about the family she thought she knew.","The name no one speaks is the one that explains everything.","The family portrait has been altered. Recently. Carefully.","The will names someone who was supposed to be dead."]},{id:"staged",name:"Staged Reality",icon:"&#8855;",desc:"Paranoia, manufactured crisis",prompts:["The break-ins were staged to drive her into dependence.","The affair was fake, designed to provoke a precise reaction.","The accident scene was arranged before she arrived.","The people around her are performing normalcy with practiced ease.","The friend who died never existed outside this house.","The threatening notes were in her own handwriting. She didn't write them.","The neighbourhood watch was watching her, not for her."]},{id:"reversal",name:"Final Reversal",icon:"&#8856;",desc:"Last-page recontextualisation",prompts:["She escapes into the arms of the person who designed everything.","The person presumed dead is alive and has been watching.","She won. But only because she became what she feared.","The villain was stopped. The system that protected him continues.","The rescue was the trap.","She was not the detective in this story. She was the evidence.","The narrator has been writing from a room that explains everything. We see it on the last page."]}];
+
+const COMBOS=[["False Memory","Family Secret","She remembers leaving. The family says she never arrived."],["Manipulation","Staged Reality","The crisis that broke her was built specifically for her."],["Hidden Identity","Trusted Betrayal","The friend who saved her was who she was hiding from."],["Victim Complexity","Final Reversal","She was the unreliable narrator. We realise on the last page."],["Trusted Betrayal","False Memory","Her therapist didn't uncover the memory. She installed it."],["Family Secret","Staged Reality","The inheritance wasn't wealth. It was a prepared performance."]];
+
+const OPENINGS=["By the time I realised my husband had rehearsed this conversation, it was already too late.","The message came from my dead sister's phone at 2:14 AM.","Everyone in the room looked at me as if I had already confessed.","She said she had never met my mother. But in the photograph, they were holding hands.","I checked into the hotel under my real name. He had already checked in under mine."];
+
+const CHAR_FIELDS=[{k:"believes",l:"What does this character want people to believe?"},{k:"ashamed",l:"What are they ashamed of?"},{k:"hiding",l:"What are they actively hiding?"},{k:"destroy",l:"What single truth would destroy their image?"},{k:"lie",l:"What lie are they currently living inside?"},{k:"secret",l:"The best secret for a twist:"}];
+const MASTER_FIELDS=[{k:"mc",l:"Main character"},{k:"problem",l:"Story problem"},{k:"truth",l:"Hidden truth"},{k:"type",l:"Twist type"},{k:"keeper",l:"Person keeping the secret"},{k:"clues",l:"Clues to plant (early / middle / emotional)"},{k:"herring",l:"Red herring"},{k:"reveal",l:"Reveal moment"},{k:"ending",l:"Ending consequence"}];
+const HERRING_FIELDS=[{k:"rh_false",l:"What false conclusion should the reader reach?"},{k:"rh_clue",l:"What clue supports that false conclusion?"},{k:"rh_true",l:"What true clue is hidden beneath it?"},{k:"rh_reveal",l:"How will the real meaning look different in retrospect?"}];
+
+let selectedCat=null,savedPrompts=new Set(),currentBrowse=CATS[0].id,currentRandom=null;
+
+// --- API Key management ---
+function getKey(){return localStorage.getItem('ptg_api_key')||''}
+
+function saveKey(){
+  const v=document.getElementById('key-input').value.trim();
+  if(!v){alert('Please paste your API key.');return}
+  localStorage.setItem('ptg_api_key',v);
+  hideKeyModal();
+  updateKeyStatus();
+}
+
+function skipKey(){hideKeyModal()}
+
+function showKeyModal(){
+  document.getElementById('key-modal').style.display='flex';
+  const k=getKey();
+  if(k)document.getElementById('key-input').value=k;
+}
+
+function hideKeyModal(){document.getElementById('key-modal').style.display='none'}
+
+function updateKeyStatus(){
+  const hasKey=!!getKey();
+  const okStyle='color:#7ab87a';
+  const noStyle='color:#5c5040';
+  document.getElementById('key-status-text').textContent=hasKey?'\u2713 API key saved \u2014 AI generation active':'No API key \u2014 AI generation disabled';
+  document.getElementById('key-status-text').style.cssText=hasKey?okStyle:noStyle;
+  document.getElementById('key-status-combo').textContent=hasKey?'\u2713 API key saved \u2014 AI generation active':'No API key \u2014 AI generation disabled';
+  document.getElementById('key-status-combo').style.cssText=hasKey?okStyle:noStyle;
+}
+
+// Show modal on first load if no key stored
+window.addEventListener('DOMContentLoaded',()=>{
+  if(!getKey()){showKeyModal()}else{hideKeyModal()}
+  updateKeyStatus();
+});
+
+// --- Tab switching ---
+function switchTab(id,el){
+  ['generate','browse','combine','plan'].forEach(t=>{document.getElementById('tab-'+t).style.display=t===id?'':'none'});
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function buildCatGrid(){
+  const g=document.getElementById('cat-grid');
+  CATS.forEach(cat=>{
+    const d=document.createElement('div');
+    d.className='cat-card';d.id='cc-'+cat.id;
+    d.innerHTML=`<span class="cat-icon">${cat.icon}</span><p class="cat-name">${cat.name}</p><p class="cat-desc">${cat.desc}</p>`;
+    d.onclick=()=>selectCat(cat.id);
+    g.appendChild(d);
+  });
+}
+
+function selectCat(id){
+  selectedCat=id;
+  document.querySelectorAll('.cat-card').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('cc-'+id)?.classList.add('sel');
+  const cat=CATS.find(c=>c.id===id);
+  document.getElementById('sel-cat-label').textContent='Category: '+cat.name;
+  document.getElementById('gen-error').style.display='none';
+}
+
+function buildOpenings(){
+  const c=document.getElementById('opening-lines');
+  OPENINGS.forEach((l,i)=>{
+    c.innerHTML+=`<div class="opening-line"><span class="line-num">${i+1}.</span><p class="line-text">${l}</p></div>`;
+  });
+}
+
+async function callClaude(messages,maxTokens){
+  const key=getKey();
+  if(!key)throw new Error('NO_KEY');
+  const res=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'x-api-key':key,
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    },
+    body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:maxTokens,messages})
+  });
+  if(!res.ok){
+    const err=await res.json().catch(()=>({}));
+    if(res.status===401)throw new Error('INVALID_KEY');
+    throw new Error(err?.error?.message||'API error '+res.status);
+  }
+  const data=await res.json();
+  return data?.content?.[0]?.text||'';
+}
+
+async function generateTwists(){
+  if(!selectedCat){
+    const e=document.getElementById('gen-error');
+    e.textContent='Please select a twist category first.';
+    e.style.display='';
+    return;
+  }
+  const key=getKey();
+  if(!key){showKeyModal();return}
+  const btn=document.getElementById('gen-btn');
+  btn.disabled=true;btn.innerHTML='<span class="loader"></span>Generating...';
+  document.getElementById('gen-result').style.display='none';
+  document.getElementById('gen-error').style.display='none';
+  const cat=CATS.find(c=>c.id===selectedCat);
+  const story=document.getElementById('story-input').value.trim();
+  const context=story?`The writer's story is about: ${story}`:'No story context provided.';
+  try{
+    const text=await callClaude([{role:'user',content:`You are an expert psychological thriller writing coach specialising in domestic suspense and female-led stories.\n\nGenerate exactly 3 distinct plot twist ideas using the "${cat.name}" category.\n${context}\n\nRequirements:\n- Each twist 2-3 sentences, specific and psychologically complex\n- Emotionally earned, not random\n- Focus on devastation and character motivation\n\nFormat:\n**[Short title]**\n[The twist in 2-3 sentences]\n\nNo preamble. Just the 3 twists.`}],1000);
+    document.getElementById('result-cat-label').textContent='Generated twists \u2014 '+cat.name;
+    document.getElementById('result-text').textContent=text;
+    document.getElementById('gen-result').style.display='';
+  }catch(e){
+    if(e.message==='NO_KEY'||e.message==='INVALID_KEY'){
+      showError(e.message==='INVALID_KEY'?'Invalid API key. Please check and update it.':'API key required. Please set your key.');
+      showKeyModal();
+    }else{
+      showError('Could not connect: '+e.message);
+    }
+  }
+  btn.disabled=false;btn.textContent='Generate Twists';
+}
+
+function showError(msg){const e=document.getElementById('gen-error');e.textContent=msg;e.style.display=''}
+
+function buildBrowse(){
+  const f=document.getElementById('cat-filter');
+  CATS.forEach(cat=>{
+    const b=document.createElement('button');
+    b.className='cat-pill'+(cat.id===currentBrowse?' active':'');
+    b.innerHTML=cat.icon+' '+cat.name;
+    b.onclick=()=>{currentBrowse=cat.id;renderBrowse();document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));b.classList.add('active')};
+    f.appendChild(b);
+  });
+  renderBrowse();
+}
+
+function renderBrowse(){
+  const cat=CATS.find(c=>c.id===currentBrowse);
+  document.getElementById('browse-cat-title').innerHTML=cat.icon+' '+cat.name;
+  document.getElementById('browse-cat-desc').textContent=cat.desc;
+  const list=document.getElementById('prompt-list');list.innerHTML='';
+  cat.prompts.forEach(p=>{
+    const li=document.createElement('li');
+    li.className='prompt-item'+(savedPrompts.has(p)?' saved':'');
+    li.innerHTML=`<span class="prompt-dot"></span><span class="prompt-text">${p}</span>${savedPrompts.has(p)?'<span class="saved-tag">&#9733; saved</span>':''}`;
+    li.onclick=()=>{toggleSave(p);renderBrowse();updateSavedUI()};
+    list.appendChild(li);
+  });
+}
+
+function toggleSave(p){savedPrompts.has(p)?savedPrompts.delete(p):savedPrompts.add(p)}
+
+function updateSavedUI(){
+  const banner=document.getElementById('save-banner');const card=document.getElementById('saved-card');
+  if(savedPrompts.size>0){
+    banner.style.display='';document.getElementById('save-count').textContent=savedPrompts.size;card.style.display='';
+    const list=document.getElementById('saved-list');list.innerHTML='';
+    [...savedPrompts].forEach(p=>{
+      const li=document.createElement('li');li.className='prompt-item saved';
+      li.innerHTML=`<span class="prompt-dot"></span><span class="prompt-text">${p}</span><span class="saved-tag" style="color:#5c5040">&#215; remove</span>`;
+      li.onclick=()=>{toggleSave(p);renderBrowse();updateSavedUI()};
+      list.appendChild(li);
+    });
+  }else{banner.style.display='none';card.style.display='none'}
+}
+
+function copySaved(){navigator.clipboard?.writeText([...savedPrompts].join('\n\n'));showToast('Saved prompts copied')}
+
+function randomize(){
+  const all=CATS.flatMap(c=>c.prompts);
+  currentRandom=all[Math.floor(Math.random()*all.length)];
+  document.getElementById('random-text').textContent=currentRandom;
+  document.getElementById('random-result').style.display='';
+  document.getElementById('random-save-btn').innerHTML=savedPrompts.has(currentRandom)?'&#9733; Saved':'&#9734; Save this';
+}
+
+function toggleSaveRandom(){
+  if(!currentRandom)return;
+  toggleSave(currentRandom);
+  document.getElementById('random-save-btn').innerHTML=savedPrompts.has(currentRandom)?'&#9733; Saved':'&#9734; Save this';
+  updateSavedUI();
+}
+
+function buildCombos(){
+  const c=document.getElementById('combinations');
+  COMBOS.forEach(([a,b,txt],i)=>{
+    c.innerHTML+=`<div style="margin-bottom:16px"><div style="margin-bottom:6px"><span class="combo-badge">${a}</span><span style="color:#5c5040;font-size:13px;margin:0 4px">+</span><span class="combo-badge">${b}</span></div><p class="combo-text">${txt}</p>${i<COMBOS.length-1?'<hr class="rule" style="margin-top:16px">':''}</div>`;
+  });
+  const selA=document.getElementById('combo-a');const selB=document.getElementById('combo-b');
+  CATS.forEach(cat=>{
+    selA.innerHTML+=`<option value="${cat.id}">${cat.name}</option>`;
+    selB.innerHTML+=`<option value="${cat.id}">${cat.name}</option>`;
+  });
+}
+
+async function generateCombo(){
+  const a=document.getElementById('combo-a').value;const b=document.getElementById('combo-b').value;
+  if(!a||!b)return;
+  const key=getKey();if(!key){showKeyModal();return}
+  const btn=document.getElementById('combo-btn');
+  btn.disabled=true;btn.innerHTML='<span class="loader"></span>Generating...';
+  document.getElementById('combo-result').style.display='none';
+  const catA=CATS.find(c=>c.id===a)?.name;const catB=CATS.find(c=>c.id===b)?.name;
+  const story=document.getElementById('combo-story').value.trim();
+  try{
+    const text=await callClaude([{role:'user',content:`You are a psychological thriller writing coach. Generate ONE layered plot twist combining "${catA}" with "${catB}".${story?' Story: '+story:''}\nMust be 3-4 sentences, emotionally devastating, psychologically complex.\nFormat: **[Title]**\n[The twist]\nNo preamble.`}],600);
+    document.getElementById('combo-text').textContent=text;
+    document.getElementById('combo-result').style.display='';
+  }catch(e){
+    document.getElementById('combo-text').textContent=e.message==='INVALID_KEY'?'Invalid API key. Please update it.':'Could not connect: '+e.message;
+    document.getElementById('combo-result').style.display='';
+    if(e.message==='NO_KEY'||e.message==='INVALID_KEY')showKeyModal();
+  }
+  btn.disabled=false;btn.textContent='Generate Combination';
+}
+
+function buildPlan(){
+  const cf=document.getElementById('char-fields');
+  CHAR_FIELDS.forEach(({k,l})=>{cf.innerHTML+=`<div class="field-row"><label class="label">${l}</label><textarea rows="2" id="cf-${k}" style="min-height:52px"></textarea></div>`});
+  const tb=document.getElementById('truth-table');
+  for(let i=0;i<5;i++){tb.innerHTML+=`<tr><td style="color:#5c5040;width:22px;text-align:center;padding:5px;font-size:12px">${i+1}</td><td style="padding:5px"><input type="text" placeholder="Reader believes..." style="width:100%"></td><td style="padding:5px"><input type="text" placeholder="Actually true..." style="width:100%"></td><td style="padding:5px"><input type="text" placeholder="When..." style="width:100%"></td></tr>`}
+  const hf=document.getElementById('herring-fields');
+  HERRING_FIELDS.forEach(({k,l})=>{hf.innerHTML+=`<div class="field-row"><label class="label">${l}</label><textarea rows="2" id="hf-${k}" style="min-height:52px"></textarea></div>`});
+  const mf=document.getElementById('master-fields');
+  MASTER_FIELDS.forEach(({k,l})=>{mf.innerHTML+=`<div class="field-row"><label class="label">${l}</label><textarea rows="${k==='clues'?3:2}" id="mf-${k}" style="min-height:${k==='clues'?70:52}px"></textarea></div>`});
+}
+
+function copyMaster(){
+  const lines=MASTER_FIELDS.map(({k,l})=>`${l}\n${document.getElementById('mf-'+k)?.value||'(not filled)'}`).join('\n\n');
+  navigator.clipboard?.writeText(lines);showToast('Worksheet copied');
+}
+
+function copyText(id){const text=document.getElementById(id)?.textContent;if(text){navigator.clipboard?.writeText(text);showToast('Copied!')}}
+
+function showToast(msg){const t=document.createElement('div');t.className='copy-toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2600)}
+
+buildCatGrid();buildOpenings();buildBrowse();buildCombos();buildPlan();
+</script>
+</body>
+</html>

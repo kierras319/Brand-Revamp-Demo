@@ -56,19 +56,6 @@ export function ProductCard({ product, size = "default", className }: ProductCar
           )}
         </div>
 
-        {/* Hover overlay */}
-        <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-400 bg-brand-charcoal/90 p-4 flex flex-col items-center gap-2">
-          <span className="text-brand-cream font-serif font-semibold text-lg">
-            {formatPrice(product.price)}
-          </span>
-          <AddToCartButton product={product} size="sm" className="w-full" />
-          <Link
-            href={`/shop/${product.slug}`}
-            className="text-xs text-brand-cream/60 hover:text-brand-cream transition-colors underline underline-offset-4"
-          >
-            View details
-          </Link>
-        </div>
       </div>
 
       {/* Content */}
@@ -84,14 +71,17 @@ export function ProductCard({ product, size = "default", className }: ProductCar
             {product.description}
           </p>
         )}
-        <div className="mt-3 flex items-center justify-between">
+        <div className="mt-3 flex items-center justify-between gap-2">
           <span className="font-semibold text-brand-cream">{formatPrice(product.price)}</span>
           <Link
             href={`/shop/${product.slug}`}
-            className="text-xs font-medium text-brand-gold hover:text-brand-wine transition-colors underline underline-offset-4"
+            className="text-xs font-medium text-brand-gold hover:text-brand-wine transition-colors underline underline-offset-4 shrink-0"
           >
             Details
           </Link>
+        </div>
+        <div className="mt-2">
+          <AddToCartButton product={product} size="sm" className="w-full" />
         </div>
       </div>
     </div>
