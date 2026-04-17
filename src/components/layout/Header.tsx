@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { ShoppingCart } from "lucide-react"
+import { ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { MobileMenu } from "./MobileMenu"
 import { NAV_LINKS } from "@/lib/constants"
@@ -76,19 +76,19 @@ export function Header() {
               <Link href="/free-chapter">Read Free</Link>
             </Button>
 
-            {/* Cart icon — only shown when cart has items */}
-            {totalItems > 0 && (
-              <Link
-                href="/checkout"
-                aria-label={`Cart — ${totalItems} item${totalItems !== 1 ? "s" : ""}`}
-                className="relative flex items-center justify-center w-9 h-9 rounded-md border border-brand-gold/60 text-brand-gold hover:bg-brand-gold/10 transition-colors duration-200"
-              >
-                <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-brand-gold text-[#1C1C1C] text-[10px] font-bold leading-none px-1">
+            {/* Shopping bag — always visible, badge appears when cart has items */}
+            <Link
+              href="/checkout"
+              aria-label={totalItems > 0 ? `Cart — ${totalItems} item${totalItems !== 1 ? "s" : ""}` : "Shopping bag"}
+              className="relative flex items-center justify-center w-9 h-9 rounded-md border border-brand-gold/40 text-brand-cream hover:text-brand-gold hover:border-brand-gold hover:bg-brand-gold/10 transition-all duration-200"
+            >
+              <ShoppingBag className="h-5 w-5" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-brand-gold text-[#1C1C1C] text-[10px] font-bold leading-none px-1">
                   {totalItems > 99 ? "99+" : totalItems}
                 </span>
-              </Link>
-            )}
+              )}
+            </Link>
 
             <MobileMenu />
           </div>
