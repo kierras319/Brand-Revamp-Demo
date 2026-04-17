@@ -1,7 +1,8 @@
 "use client"
 
+import Link from "next/link"
 import Image from "next/image"
-import { Download, BookOpen, PenLine, Printer } from "lucide-react"
+import { BookOpen, PenLine, Printer, Lock, Download } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -9,7 +10,6 @@ import type { FreeResource, ResourceType } from "@/lib/types"
 
 interface FreeResourceCardProps {
   resource: FreeResource
-  onDownload: (resource: FreeResource) => void
   unlocked: boolean
   className?: string
 }
@@ -21,12 +21,15 @@ const typeConfig: Record<ResourceType, { icon: React.ElementType; badgeVariant: 
   printable: { icon: Printer, badgeVariant: "taupe" },
 }
 
-export function FreeResourceCard({ resource, onDownload, unlocked, className }: FreeResourceCardProps) {
+export function FreeResourceCard({ resource, unlocked, className }: FreeResourceCardProps) {
   const config = typeConfig[resource.type]
   const Icon = config.icon
 
   return (
-    <div className={cn("group flex flex-col bg-card rounded-card overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-400", className)}>
+    <Link
+      href={`/free-library/${resource.slug}`}
+      className={cn("group flex flex-col bg-card rounded-card overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-400", className)}
+    >
       {/* Thumbnail */}
       <div className="relative aspect-[4/3] overflow-hidden bg-brand-greige/20">
         <Image
@@ -57,13 +60,16 @@ export function FreeResourceCard({ resource, onDownload, unlocked, className }: 
         <Button
           variant={unlocked ? "olive" : "olive-outline"}
           size="sm"
-          className="w-full"
-          onClick={() => onDownload(resource)}
+          className="w-full pointer-events-none"
+          tabIndex={-1}
         >
-          <Download className="h-4 w-4" />
-          {unlocked ? "Download Free" : "Unlock for Free"}
+          {unlocked ? (
+            <><Download className="h-4 w-4" />Download Free</>
+          ) : (
+            <><Lock className="h-4 w-4" />Unlock Free</>
+          )}
         </Button>
       </div>
-    </div>
+    </Link>
   )
 }
