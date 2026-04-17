@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useRef } from "react"
+import { useState, useCallback, useRef, useEffect } from "react"
 import Link from "next/link"
 import { SCENES, CHAPTER_NAMES, type GameScene, type EndingScene } from "@/lib/manor-scenes"
 import { useManorAudio } from "@/hooks/useManorAudio"
@@ -33,7 +33,7 @@ const SCENE_IMAGES: Record<string, string> = {
   trapped_ending:       `${BASE}/photo-1476275466078-4007374efbbe?w=1200&h=800&fit=crop&q=80`,
   confrontation_ending: `${BASE}/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop&q=80`,
   morning_ending:       `${BASE}/photo-1494790108755-2616b612b1e0?w=1200&h=800&fit=crop&q=80`,
-  splash:               `${BASE}/photo-1519682337058-a94d519337bc?w=1200&h=800&fit=crop&q=80`,
+  splash:               `${BASE}/photo-bXY92nF9Ptk?w=1200&h=800&fit=crop&q=80`,
 }
 
 const HOPEFUL_ENDINGS = new Set(["escape_ending", "evidence_ending", "truth_ending", "morning_ending"])
@@ -60,8 +60,27 @@ export function ManorGame({ token, invalidReason }: ManorGameProps) {
     SCENE_IMAGES["splash"], "",
   ])
 
-  const { playDoorCreak, playPageTurn, playChoiceClick, playEndingSting, muted, toggleMute } = useManorAudio()
+  const { playDoorCreak, playPageTurn, playChoiceClick, playEndingSting, startAmbientHum, stopAmbientHum, muted, toggleMute } = useManorAudio()
   const shareEndingIdRef = useRef<string>("")
+  const ambientStartedRef = useRef(false)
+
+  // Start ambient hum on first user interaction during splash
+  useEffect(() => {
+    if (phase !== "splash") return
+    function onInteract() {
+      if (ambientStartedRef.current) return
+      ambientStartedRef.current = true
+      startAmbientHum()
+    }
+    window.addEventListener("mousemove", onInteract, { once: true })
+    window.addEventListener("touchstart", onInteract, { once: true })
+    window.addEventListener("keydown", onInteract, { once: true })
+    return () => {
+      window.removeEventListener("mousemove", onInteract)
+      window.removeEventListener("touchstart", onInteract)
+      window.removeEventListener("keydown", onInteract)
+    }
+  }, [phase, startAmbientHum])
 
   function changeBg(sceneId: string) {
     const url = SCENE_IMAGES[sceneId] ?? SCENE_IMAGES["splash"]
@@ -101,6 +120,7 @@ export function ManorGame({ token, invalidReason }: ManorGameProps) {
   const handleEnter = useCallback(async () => {
     if (!token || isConsuming) return
     setIsConsuming(true)
+    stopAmbientHum()
     playDoorCreak()
 
     try {
@@ -124,7 +144,7 @@ export function ManorGame({ token, invalidReason }: ManorGameProps) {
       setIsConsuming(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token, isConsuming, playDoorCreak, bgSlot, bgUrls])
+  }, [token, isConsuming, playDoorCreak, stopAmbientHum, bgSlot, bgUrls])
 
   const handleChoice = useCallback((choiceIndex: number, nextId: string) => {
     if (isTransitioning) return
@@ -173,7 +193,7 @@ export function ManorGame({ token, invalidReason }: ManorGameProps) {
   const chapterLabel = CHAPTER_NAMES[Math.min(sceneCount - 1, CHAPTER_NAMES.length - 1)] || "Arrival"
 
   return (
-    <div className="manor-root">
+    <div className={`manor-root phase-${phase}`}>
 
       {/* Atmospheric background image — two-slot crossfade */}
       <div

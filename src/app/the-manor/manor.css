@@ -80,6 +80,11 @@
   pointer-events: none;
 }
 
+/* Splash phase — brighter so the gothic mansion is visible through the semi-transparent overlay */
+.manor-root.phase-splash .scene-bg {
+  filter: brightness(0.38) saturate(0.65) sepia(0.35);
+}
+
 /* Scene image strip — inline banner inside the game card */
 .manor-root .scene-strip {
   width: 100%;
@@ -177,15 +182,15 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* SPLASH SCREEN */
+/* SPLASH SCREEN — semi-transparent so gothic mansion scene-bg shows through */
 .manor-root .manor-splash {
   flex-direction: column;
   text-align: center;
   padding: 60px 24px;
   background:
     radial-gradient(ellipse 60% 50% at 30% 70%, var(--crimson-glow) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 70% 30%, rgba(201,168,76,0.05) 0%, transparent 55%),
-    linear-gradient(180deg, #070710 0%, #09091a 60%, #07070f 100%);
+    radial-gradient(ellipse 50% 40% at 70% 30%, rgba(201,168,76,0.06) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(7,7,16,0.72) 0%, rgba(9,9,26,0.68) 60%, rgba(7,7,15,0.75) 100%);
 }
 
 /* Candles */

@@ -6,6 +6,7 @@ export function useManorAudio() {
   const ctxRef = useRef<AudioContext | null>(null)
   const [muted, setMuted] = useState(false)
   const mutedRef = useRef(false)
+  const ambientNodesRef = useRef<{ bass: OscillatorNode; mid: OscillatorNode; gain: GainNode } | null>(null)
 
   function getCtx(): AudioContext | null {
     if (typeof window === "undefined") return null
@@ -160,10 +161,88 @@ export function useManorAudio() {
     } catch {}
   }, [])
 
+  // Deep ominous bass drone for the splash screen
+  const startAmbientHum = useCallback(() => {
+    if (mutedRef.current) return
+    if (ambientNodesRef.current) return // already running
+    const ctx = getCtx()
+    if (!ctx) return
+    try {
+      const now = ctx.currentTime
+
+      const masterGain = ctx.createGain()
+      masterGain.gain.setValueAtTime(0, now)
+      masterGain.gain.linearRampToValueAtTime(0.12, now + 3.5)
+      masterGain.connect(ctx.destination)
+
+      // Sub-bass drone
+      const bass = ctx.createOscillator()
+      bass.type = "sine"
+      bass.frequency.value = 36
+      bass.connect(masterGain)
+      bass.start(now)
+
+      // Mid drone — slightly detuned for beating effect
+      const mid = ctx.createOscillator()
+      mid.type = "sine"
+      mid.frequency.value = 54.3
+      const midG = ctx.createGain()
+      midG.gain.value = 0.55
+      mid.connect(midG); midG.connect(masterGain)
+      mid.start(now)
+
+      // Slow LFO tremolo for unease
+      const lfo = ctx.createOscillator()
+      lfo.type = "sine"
+      lfo.frequency.value = 0.18
+      const lfoGain = ctx.createGain()
+      lfoGain.gain.value = 0.04
+      lfo.connect(lfoGain); lfoGain.connect(masterGain.gain)
+      lfo.start(now)
+
+      ambientNodesRef.current = { bass, mid: lfo, gain: masterGain }
+    } catch {}
+  }, [])
+
+  const stopAmbientHum = useCallback(() => {
+    if (!ambientNodesRef.current) return
+    const ctx = getCtx()
+    if (!ctx) return
+    try {
+      const now = ctx.currentTime
+      const { gain } = ambientNodesRef.current
+      gain.gain.setValueAtTime(gain.gain.value, now)
+      gain.gain.linearRampToValueAtTime(0.001, now + 1.8)
+      setTimeout(() => {
+        try {
+          ambientNodesRef.current?.bass.stop()
+          ambientNodesRef.current?.mid.stop()
+        } catch {}
+        ambientNodesRef.current = null
+      }, 2000)
+    } catch {}
+  }, [])
+
   const toggleMute = useCallback(() => {
     mutedRef.current = !mutedRef.current
     setMuted(m => !m)
+    if (ambientNodesRef.current) {
+      try {
+        const ctx = getCtx()
+        if (ctx) {
+          const { gain } = ambientNodesRef.current
+          const now = ctx.currentTime
+          if (mutedRef.current) {
+            gain.gain.setValueAtTime(gain.gain.value, now)
+            gain.gain.linearRampToValueAtTime(0, now + 0.3)
+          } else {
+            gain.gain.setValueAtTime(0, now)
+            gain.gain.linearRampToValueAtTime(0.12, now + 0.3)
+          }
+        }
+      } catch {}
+    }
   }, [])
 
-  return { playDoorCreak, playPageTurn, playChoiceClick, playEndingSting, muted, toggleMute }
+  return { playDoorCreak, playPageTurn, playChoiceClick, playEndingSting, startAmbientHum, stopAmbientHum, muted, toggleMute }
 }

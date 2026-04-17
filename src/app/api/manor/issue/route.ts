@@ -16,30 +16,10 @@ export async function POST(req: NextRequest) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
     const accessUrl = `${siteUrl}/the-manor?token=${token}`
 
-    let emailSent = false
-
-    // Email sending: install 'resend' and set RESEND_API_KEY to enable
-    // npm install resend
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const resendPkg = require("resend")
-      if (process.env.RESEND_API_KEY && resendPkg?.Resend) {
-        const resend = new resendPkg.Resend(process.env.RESEND_API_KEY)
-        await resend.emails.send({
-          from: process.env.MANOR_FROM_EMAIL || "noreply@kekewritesthrillers.com",
-          to: email,
-          subject: "Your Access to The Manor — Blackthorn Estate",
-          html: buildEmailHtml(name, accessUrl),
-        })
-        emailSent = true
-      }
-    } catch {
-      // resend not installed — access link available in admin panel
-    }
-
-    if (!emailSent) {
-      console.log(`[Manor] Access link for ${name} <${email}>: ${accessUrl}`)
-    }
+    // TODO: add email delivery — install resend (npm install resend) and set RESEND_API_KEY
+    // Email template available in buildEmailHtml() below
+    const emailSent = false
+    console.log(`[Manor] Access link for ${name} <${email}>: ${accessUrl}`)
 
     return NextResponse.json({ success: true, token, accessUrl, emailSent })
   } catch (err) {
