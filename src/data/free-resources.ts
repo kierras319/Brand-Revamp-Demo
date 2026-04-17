@@ -93,6 +93,19 @@ export const freeResources: FreeResource[] = [
     featured: false,
   },
   {
+    id: "r9",
+    slug: "the-obituary",
+    title: "The Obituary",
+    description:
+      "A woman finally honest with herself — and how terrifying that is. A complete dark psychological short story that stays with you.",
+    type: "short-story",
+    typeLabel: "Short Story",
+    imageUrl:
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=300&fit=crop&q=80",
+    downloadUrl: "#",
+    featured: true,
+  },
+  {
     id: "r8",
     slug: "last-night-short-story",
     title: "Last Night",
