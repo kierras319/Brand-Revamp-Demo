@@ -61,7 +61,7 @@ export function FreeResourceCard({ resource, onDownload, unlocked, className }: 
           onClick={() => onDownload(resource)}
         >
           <Download className="h-4 w-4" />
-          {unlocked ? "Download Free" : "Unlock Free"}
+          {unlocked ? "Download Free" : "Unlock for Free"}
         </Button>
       </div>
     </div>

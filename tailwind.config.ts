@@ -84,8 +84,8 @@ const config: Config = {
       },
       keyframes: {
         "fade-up": {
-          "0%":   { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+          "0%":   { opacity: "0", transform: "translateX(var(--tw-translate-x)) translateY(calc(var(--tw-translate-y) + 20px))" },
+          "100%": { opacity: "1", transform: "translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y))" },
         },
         "fade-in": {
           "0%":   { opacity: "0" },
