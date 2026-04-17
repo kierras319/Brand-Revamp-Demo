@@ -5,7 +5,8 @@ import { notFound } from "next/navigation"
 import { Download } from "lucide-react"
 import { PageWrapper } from "@/components/layout/PageWrapper"
 import { FreeResourceDetail } from "@/components/library/FreeResourceDetail"
-import { freeResources, getResourceBySlug } from "@/data/free-resources"
+import { FreeResourceCard } from "@/components/library/FreeResourceCard"
+import { freeResources, getResourceBySlug, getRelatedResources } from "@/data/free-resources"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -27,6 +28,8 @@ export default async function FreeResourcePage({ params }: PageProps) {
   const resource = getResourceBySlug(slug)
   if (!resource) notFound()
 
+  const related = getRelatedResources(slug, 4)
+
   return (
     <>
       {/* Breadcrumb */}
@@ -47,7 +50,7 @@ export default async function FreeResourcePage({ params }: PageProps) {
         <PageWrapper>
           <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-start">
 
-            {/* LEFT: Cover image */}
+            {/* LEFT: Cover */}
             <div className="flex flex-col items-center lg:items-start">
               <div className="relative w-64 lg:w-72 shrink-0">
                 <div className="absolute top-0 left-0 z-10">
@@ -66,6 +69,12 @@ export default async function FreeResourcePage({ params }: PageProps) {
                   />
                 </div>
               </div>
+
+              <div className="mt-4 flex flex-col items-center lg:items-start gap-3 text-sm">
+                <Link href="/about" className="flex items-center gap-1.5 text-brand-wine hover:text-brand-wine/80 transition-colors">
+                  ✓ Keke Sharice
+                </Link>
+              </div>
             </div>
 
             {/* RIGHT: Resource details */}
@@ -76,11 +85,14 @@ export default async function FreeResourcePage({ params }: PageProps) {
                 {resource.typeLabel}
               </p>
 
-              {/* Title */}
+              {/* Title & meta */}
               <div>
                 <h1 className="font-serif text-3xl md:text-4xl font-semibold text-brand-charcoal leading-tight">
                   {resource.title}
                 </h1>
+                {resource.wordCount && (
+                  <p className="mt-1 text-xs text-brand-charcoal/40">{resource.wordCount.toLocaleString()} words</p>
+                )}
                 <p className="mt-2 text-sm text-brand-charcoal/60">
                   by{" "}
                   <Link href="/about" className="text-brand-wine hover:underline font-medium">
@@ -96,12 +108,14 @@ export default async function FreeResourcePage({ params }: PageProps) {
 
               <div className="h-px bg-brand-greige/60" />
 
-              {/* Description as tagline */}
-              <p className="font-serif text-lg italic text-brand-charcoal/70">
-                &ldquo;{resource.description}&rdquo;
-              </p>
+              {/* Tagline */}
+              {resource.tagline && (
+                <p className="font-serif text-lg italic text-brand-charcoal/70">
+                  &ldquo;{resource.tagline}&rdquo;
+                </p>
+              )}
 
-              {/* Free note */}
+              {/* Free download note */}
               <div className="flex items-start gap-2 text-sm text-brand-charcoal/50">
                 <Download className="h-4 w-4 mt-0.5 shrink-0 text-brand-wine" />
                 <span>Free instant download — no purchase required. Just unlock with your email.</span>
@@ -113,25 +127,55 @@ export default async function FreeResourcePage({ params }: PageProps) {
       </section>
 
       {/* ── OVERVIEW ── */}
-      <section className="bg-brand-parchment py-section">
-        <PageWrapper className="max-w-5xl">
-          <h2 className="font-serif text-2xl italic text-brand-cream mb-6">About This Resource</h2>
-          <div className="border border-white/10 rounded p-5 bg-brand-greige">
-            <p className="text-brand-stone leading-relaxed text-sm">
-              {resource.description}
-            </p>
-          </div>
+      {(resource.synopsis || resource.overview || resource.authorNote) && (
+        <section className="bg-brand-parchment py-section">
+          <PageWrapper className="max-w-5xl">
+            <h2 className="font-serif text-2xl italic text-brand-cream mb-6">Overview</h2>
 
-          <div className="mt-8 text-center">
-            <Link
-              href="/free-library"
-              className="text-sm text-brand-gold hover:text-brand-gold/80 underline underline-offset-4 transition-colors"
-            >
-              ← Browse the full Free Library
-            </Link>
-          </div>
-        </PageWrapper>
-      </section>
+            {resource.authorNote && (
+              <div className="border border-white/10 rounded p-5 mb-8 bg-brand-greige relative">
+                <span className="absolute -top-3 left-4 bg-brand-greige px-2 font-serif text-sm italic text-brand-stone">
+                  Notes From the Author
+                </span>
+                <p className="text-brand-stone leading-relaxed text-sm">
+                  {resource.authorNote}
+                </p>
+              </div>
+            )}
+
+            {(resource.synopsis || resource.overview) && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-brand-stone leading-relaxed text-sm">
+                {resource.synopsis && <p>{resource.synopsis}</p>}
+                {resource.overview && <p>{resource.overview}</p>}
+              </div>
+            )}
+          </PageWrapper>
+        </section>
+      )}
+
+      {/* ── MORE FREE READS ── */}
+      {related.length > 0 && (
+        <section className="bg-white py-section">
+          <PageWrapper>
+            <h2 className="font-serif text-2xl md:text-3xl font-semibold text-brand-charcoal mb-8">
+              More Free Reads
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {related.map((r) => (
+                <FreeResourceCard key={r.id} resource={r} unlocked={false} />
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Link
+                href="/free-library"
+                className="text-sm text-brand-wine hover:text-brand-wine/80 underline underline-offset-4 transition-colors"
+              >
+                Browse the full Free Library →
+              </Link>
+            </div>
+          </PageWrapper>
+        </section>
+      )}
     </>
   )
 }

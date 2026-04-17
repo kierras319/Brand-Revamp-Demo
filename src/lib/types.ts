@@ -81,6 +81,11 @@ export interface FreeResource {
   slug: string;
   title: string;
   description: string;
+  tagline?: string;
+  synopsis?: string;
+  overview?: string;
+  authorNote?: string;
+  wordCount?: number;
   type: ResourceType;
   typeLabel: string;
   imageUrl: string;

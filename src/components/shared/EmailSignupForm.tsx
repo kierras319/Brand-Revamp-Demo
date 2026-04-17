@@ -1,6 +1,25 @@
 "use client"
 
 import { useState } from "react"
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (cb: () => void) => void
+      execute: (siteKey: string, options: { action: string }) => Promise<string>
+    }
+  }
+}
+
+async function getRecaptchaToken(action: string): Promise<string | null> {
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+  if (!siteKey || typeof window === "undefined" || !window.grecaptcha) return null
+  return new Promise((resolve) => {
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute(siteKey, { action }).then(resolve)
+    })
+  })
+}
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ArrowRight, Loader2 } from "lucide-react"
@@ -43,10 +62,11 @@ export function EmailSignupForm({
   async function onSubmit(data: SubscribeFormData) {
     setIsLoading(true)
     try {
+      const recaptchaToken = await getRecaptchaToken("subscribe")
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, recaptchaToken }),
       })
       if (!res.ok) throw new Error()
       toast({

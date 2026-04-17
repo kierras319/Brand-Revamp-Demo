@@ -14,6 +14,23 @@ export async function POST(req: NextRequest) {
     }
 
     const { email } = parsed.data
+    const recaptchaToken = typeof body.recaptchaToken === "string" ? body.recaptchaToken : null
+
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY
+    if (recaptchaSecret) {
+      if (!recaptchaToken) {
+        return NextResponse.json({ error: "Bot verification failed." }, { status: 400 })
+      }
+      const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `secret=${recaptchaSecret}&response=${recaptchaToken}`,
+      })
+      const verifyData = await verifyRes.json()
+      if (!verifyData.success || verifyData.score < 0.5) {
+        return NextResponse.json({ error: "Bot verification failed. Please try again." }, { status: 400 })
+      }
+    }
 
     // MailerLite integration (configure MAILERLITE_API_KEY in .env.local)
     const apiKey = process.env.MAILERLITE_API_KEY
