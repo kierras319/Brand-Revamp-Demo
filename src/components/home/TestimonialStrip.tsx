@@ -31,7 +31,7 @@ const testimonials = [
   },
   {
     id: "5",
-    quote: "I followed Keke on TikTok for months before buying — finally caved and read three of her short stories in the same night. The free library alone is worth signing up for. Hooked.",
+    quote: "I followed Keke on TikTok for months before buying — finally got the free story and stayed up until 3am finishing it. Hooked from the first page.",
     author: "@darkfictionlover",
     source: "Newsletter Subscriber",
     stars: 5,

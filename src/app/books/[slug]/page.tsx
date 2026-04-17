@@ -151,7 +151,7 @@ export default async function BookDetailPage({ params }: PageProps) {
                       </a>
                     </Button>
                     <Button variant="olive-outline" size="lg" className="flex-1 sm:flex-none sm:px-10" asChild>
-                      <Link href="/free-library">Read a Free Chapter</Link>
+                      <Link href="/free-story">Get a Free Story</Link>
                     </Button>
                   </div>
                 </div>

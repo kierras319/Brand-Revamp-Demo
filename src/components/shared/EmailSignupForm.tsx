@@ -36,6 +36,7 @@ interface EmailSignupFormProps {
   placeholder?: string
   buttonText?: string
   className?: string
+  action?: string
   onSuccess?: () => void
 }
 
@@ -45,6 +46,7 @@ export function EmailSignupForm({
   placeholder = "Your email address",
   buttonText = "Subscribe",
   className,
+  action = "/api/subscribe",
   onSuccess,
 }: EmailSignupFormProps) {
   const [isLoading, setIsLoading] = useState(false)
@@ -63,7 +65,7 @@ export function EmailSignupForm({
     setIsLoading(true)
     try {
       const recaptchaToken = await getRecaptchaToken("subscribe")
-      const res = await fetch("/api/subscribe", {
+      const res = await fetch(action, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...data, recaptchaToken }),

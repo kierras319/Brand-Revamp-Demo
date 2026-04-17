@@ -128,9 +128,9 @@ export function HeroSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Button variant="olive" size="lg" asChild>
-                <Link href="/free-library">
+                <Link href="/free-story">
                   <BookOpen className="h-4 w-4" />
-                  Download Free Story
+                  Get Free Story
                 </Link>
               </Button>
               <Button variant="olive-outline" size="lg" asChild>

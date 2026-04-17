@@ -70,28 +70,6 @@ export interface BlogPost {
   readingTime: string;
 }
 
-export type ResourceType =
-  | "short-story"
-  | "first-chapter"
-  | "writing-prompt"
-  | "printable";
-
-export interface FreeResource {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  tagline?: string;
-  synopsis?: string;
-  overview?: string;
-  authorNote?: string;
-  wordCount?: number;
-  type: ResourceType;
-  typeLabel: string;
-  imageUrl: string;
-  downloadUrl?: string;
-  featured?: boolean;
-}
 
 export interface NavLink {
   label: string;

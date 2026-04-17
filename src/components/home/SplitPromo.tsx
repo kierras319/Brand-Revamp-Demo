@@ -23,15 +23,15 @@ export function SplitPromo() {
 
           {/* Right: text */}
           <div className="space-y-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-gold">Free Library</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-gold">Free Short Story</p>
             <h2 className="font-serif text-display-sm md:text-display-md font-semibold text-brand-cream leading-tight text-balance">
-              Your next obsession is waiting — and it&rsquo;s free.
+              A mind can forget — but the truth remembers.
             </h2>
             <p className="text-brand-stone leading-relaxed text-base max-w-md">
-              Short stories, first chapters, writing prompts, and printable reading trackers. Explore the free library — no credit card, no catch.
+              Get <em className="text-brand-cream not-italic font-medium">The Last Witness</em> free. A twisty psychological thriller about memory manipulation, identity, and survival — delivered straight to your inbox.
             </p>
             <Button variant="olive" size="lg" asChild>
-              <Link href="/free-library">Explore the Free Library</Link>
+              <Link href="/free-story">Get the Free Story</Link>
             </Button>
           </div>
 

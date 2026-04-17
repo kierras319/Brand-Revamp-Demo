@@ -127,7 +127,7 @@ export default function AboutPage() {
                     <Link href="/books">Browse Books</Link>
                   </Button>
                   <Button variant="olive-outline" size="sm" className="w-full" asChild>
-                    <Link href="/free-library">Free Library</Link>
+                    <Link href="/free-story">Free Story</Link>
                   </Button>
                   <Button variant="olive-outline" size="sm" className="w-full" asChild>
                     <Link href="/contact">Get in Touch</Link>

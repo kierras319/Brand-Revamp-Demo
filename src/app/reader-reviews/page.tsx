@@ -52,8 +52,8 @@ const reviews = [
   },
   {
     id: "6",
-    book: "Free Library",
-    quote: "I followed Keke on TikTok for months before buying. Finally caved and read three of her short stories in the same night. The free library alone is worth signing up for. Hooked.",
+    book: "The Last Witness",
+    quote: "I followed Keke on TikTok for months before getting the free story. Stayed up until 3am finishing it. Hooked from the first page — immediately bought everything else.",
     author: "@darkfictionlover",
     source: "Newsletter Subscriber",
     stars: 5,

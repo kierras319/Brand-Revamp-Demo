@@ -87,7 +87,7 @@ export function Header() {
             </Link>
 
             <Button variant="olive" size="sm" className="hidden lg:inline-flex text-xs tracking-wider uppercase" asChild>
-              <Link href="/free-chapter">Read Free</Link>
+              <Link href="/free-story">Read Free</Link>
             </Button>
 
             <MobileMenu />

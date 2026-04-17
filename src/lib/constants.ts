@@ -3,7 +3,6 @@ import type { NavLink, ShopCategory } from "./types";
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Books", href: "/books" },
-  { label: "Free Library", href: "/free-library" },
   { label: "Reader Experiences", href: "/shop/reader-experiences" },
   { label: "Writer's Resources", href: "/shop/writer-resources" },
   { label: "About", href: "/about" },
@@ -59,10 +58,3 @@ export const BLOG_CATEGORIES = [
   { id: "book-recommendations", label: "Book Recs" },
 ];
 
-export const RESOURCE_CATEGORIES = [
-  { id: "all", label: "All" },
-  { id: "short-story", label: "Short Stories" },
-  { id: "first-chapter", label: "First Chapters" },
-  { id: "writing-prompt", label: "Writing Prompts" },
-  { id: "printable", label: "Printables" },
-];
