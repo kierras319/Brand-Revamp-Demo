@@ -1,0 +1,682 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+/* All manor styles scoped under .manor-root to avoid polluting the main site */
+
+.manor-root {
+  --bg-void:       #07070f;
+  --bg-surface:    #0c0c18;
+  --bg-card:       #111120;
+  --bg-card-hover: #161628;
+
+  --gold:          #c9a84c;
+  --gold-light:    #e8c97a;
+  --gold-pale:     #f5e8c0;
+  --gold-tint:     rgba(201, 168, 76, 0.10);
+  --gold-border:   rgba(201, 168, 76, 0.22);
+  --gold-border-h: rgba(201, 168, 76, 0.55);
+
+  --crimson:       #7a1515;
+  --crimson-glow:  rgba(122, 21, 21, 0.18);
+
+  --text-warm:     #ecdece;
+  --text-mid:      #a09080;
+  --text-dim:      #5c5040;
+
+  --shadow-deep:   0 8px 40px rgba(0, 0, 0, 0.7);
+  --shadow-card:   0 2px 20px rgba(0, 0, 0, 0.5);
+  --glow-gold:     0 0 30px rgba(201, 168, 76, 0.15);
+
+  --ease-silk:     cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:      cubic-bezier(0, 0, 0.2, 1);
+  --t:             0.35s;
+
+  --font-display:  'Playfair Display', Georgia, serif;
+  --font-body:     'Lora', Georgia, serif;
+  --font-fell:     'IM Fell English', Georgia, serif;
+
+  --radius-sm:     3px;
+  --radius:        6px;
+  --max-w:         740px;
+
+  background: var(--bg-void);
+  color: var(--text-warm);
+  font-family: var(--font-body);
+  line-height: 1.75;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.manor-root *,
+.manor-root *::before,
+.manor-root *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.manor-root button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+.manor-root button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Atmospheric Overlays */
+.manor-root .grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.55;
+}
+
+.manor-root .vignette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 60% at 50% 100%, rgba(7,7,15,0.9) 0%, transparent 65%),
+    radial-gradient(ellipse 120% 50% at 50% 0%,   rgba(7,7,15,0.8) 0%, transparent 60%);
+}
+
+/* Screens */
+.manor-root .manor-screen {
+  display: flex;
+  min-height: 100dvh;
+  position: relative;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+}
+
+.manor-root .manor-screen.fade-out {
+  animation: screenFadeOut 0.5s var(--ease-silk) forwards;
+}
+
+.manor-root .manor-screen.fade-in {
+  animation: screenFadeIn 0.5s var(--ease-silk) both;
+}
+
+@keyframes screenFadeOut {
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+@keyframes screenFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* SPLASH SCREEN */
+.manor-root .manor-splash {
+  flex-direction: column;
+  text-align: center;
+  padding: 60px 24px;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 70%, var(--crimson-glow) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 70% 30%, rgba(201,168,76,0.05) 0%, transparent 55%),
+    linear-gradient(180deg, #070710 0%, #09091a 60%, #07070f 100%);
+}
+
+/* Candles */
+.manor-root .candle {
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.manor-root .candle--left  { left: clamp(30px, 8vw, 120px); }
+.manor-root .candle--right { right: clamp(30px, 8vw, 120px); }
+
+.manor-root .candle__body {
+  width: 3px;
+  height: 80px;
+  background: linear-gradient(to top, #b8860b, #d4a520, #f0d060);
+  border-radius: 2px;
+  opacity: 0.4;
+  margin: 0 auto;
+}
+
+.manor-root .candle__flame {
+  width: 10px;
+  height: 18px;
+  background: radial-gradient(ellipse, #fff8e0 0%, #f5c040 40%, rgba(240,120,20,0) 100%);
+  border-radius: 50% 50% 30% 30%;
+  margin: 0 auto -2px;
+  animation: flicker 1.8s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes flicker {
+  0%   { opacity: 0.85; transform: scaleX(1.0) scaleY(1.0) rotate(-1deg); }
+  33%  { opacity: 1.0;  transform: scaleX(1.15) scaleY(0.95) rotate(1deg); }
+  66%  { opacity: 0.9;  transform: scaleX(0.9) scaleY(1.05) rotate(-0.5deg); }
+  100% { opacity: 0.75; transform: scaleX(1.05) scaleY(1.0) rotate(0.8deg); }
+}
+
+/* Splash content */
+.manor-root .splash-content {
+  max-width: 620px;
+  width: 100%;
+  animation: riseIn 1.4s var(--ease-out) both;
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.manor-root .crest {
+  display: block;
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  animation: pulseGold 3.5s ease-in-out infinite;
+}
+
+@keyframes pulseGold {
+  0%,100% { text-shadow: 0 0 8px rgba(201,168,76,0.3); }
+  50%     { text-shadow: 0 0 22px rgba(201,168,76,0.7), 0 0 45px rgba(201,168,76,0.25); }
+}
+
+.manor-root .manor-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 12vw, 90px);
+  font-weight: 700;
+  color: var(--text-warm);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 14px;
+  text-shadow: 0 0 50px rgba(201,168,76,0.18);
+}
+
+.manor-root .manor-estate {
+  font-family: var(--font-fell);
+  font-size: 15px;
+  color: var(--gold);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.manor-root .ornate-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+  color: rgba(201,168,76,0.35);
+  font-size: 11px;
+}
+
+.manor-root .rule-line {
+  display: inline-block;
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.35), transparent);
+}
+
+.manor-root .manor-tagline {
+  font-family: var(--font-fell);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--text-mid);
+  line-height: 1.85;
+  margin-bottom: 28px;
+}
+
+.manor-root .manor-meta {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 44px;
+}
+
+/* Primary CTA */
+.manor-root .btn-primary {
+  display: inline-block;
+  padding: 15px 52px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color var(--t) var(--ease-silk), background var(--t) var(--ease-silk), box-shadow var(--t) var(--ease-silk);
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.manor-root .btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t) var(--ease-silk);
+  z-index: -1;
+}
+
+.manor-root .btn-primary:hover {
+  color: var(--bg-void);
+  box-shadow: var(--glow-gold);
+}
+
+.manor-root .btn-primary:hover::after {
+  transform: scaleX(1);
+}
+
+.manor-root .btn-primary:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.manor-root .splash-warning {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 22px;
+  font-style: italic;
+}
+
+/* GAME SCREEN */
+.manor-root .manor-game {
+  padding: 40px 20px 60px;
+  align-items: flex-start;
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 85%, var(--crimson-glow) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 85% 15%, rgba(201,168,76,0.04) 0%, transparent 50%),
+    var(--bg-void);
+}
+
+.manor-root .game-wrap {
+  max-width: var(--max-w);
+  width: 100%;
+  margin: 0 auto;
+  animation: riseIn 0.55s var(--ease-out) both;
+}
+
+/* Header */
+.manor-root .game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--gold-border);
+  margin-bottom: 36px;
+}
+
+.manor-root .location-pill {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: var(--gold-tint);
+  border: 1px solid var(--gold-border);
+  padding: 5px 14px;
+  border-radius: var(--radius-sm);
+}
+
+.manor-root .time-stamp {
+  font-family: var(--font-fell);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+/* Scene Body */
+.manor-root .scene-body {
+  margin-bottom: 40px;
+}
+
+.manor-root .scene-text {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 2.5vw, 19px);
+  color: var(--text-warm);
+  line-height: 1.88;
+  margin-bottom: 28px;
+  transition: opacity 0.45s ease;
+}
+
+.manor-root .observation-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(201, 168, 76, 0.06);
+  border-left: 2px solid var(--gold);
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.manor-root .obs-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  filter: drop-shadow(0 0 4px rgba(201,168,76,0.4));
+}
+
+.manor-root .obs-text {
+  font-family: var(--font-fell);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--gold-light);
+  line-height: 1.65;
+}
+
+.manor-root .scene-question {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(18px, 2.8vw, 21px);
+  color: var(--text-warm);
+  line-height: 1.55;
+  padding-top: 4px;
+}
+
+/* Choices */
+.manor-root .choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 44px;
+}
+
+.manor-root .choice-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 22px;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius);
+  color: var(--text-warm);
+  font-family: var(--font-body);
+  font-size: clamp(15px, 2.2vw, 17px);
+  text-align: left;
+  line-height: 1.55;
+  transition:
+    background var(--t) var(--ease-silk),
+    border-color var(--t) var(--ease-silk),
+    transform var(--t) var(--ease-silk),
+    box-shadow var(--t) var(--ease-silk);
+  position: relative;
+  overflow: hidden;
+  animation: choiceRise 0.4s var(--ease-out) both;
+}
+
+.manor-root .choice-btn::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: linear-gradient(90deg, rgba(201,168,76,0.08), transparent);
+  transition: width var(--t) var(--ease-silk);
+  pointer-events: none;
+}
+
+.manor-root .choice-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--gold-border-h);
+  transform: translateX(5px);
+  box-shadow: var(--shadow-card), var(--glow-gold);
+}
+
+.manor-root .choice-btn:hover::before { width: 100%; }
+
+.manor-root .choice-btn.selected {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.12);
+}
+
+.manor-root .choice-btn:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@keyframes choiceRise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.manor-root .choice-letter {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--gold-tint);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  transition: background var(--t), color var(--t), border-color var(--t);
+  margin-top: 1px;
+}
+
+.manor-root .choice-btn:hover .choice-letter {
+  background: var(--gold);
+  color: var(--bg-void);
+  border-color: var(--gold);
+}
+
+.manor-root .choice-text { flex: 1; }
+
+/* Footer / Progress */
+.manor-root .game-footer {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.manor-root .progress-track {
+  flex: 1;
+  height: 2px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.manor-root .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--crimson), var(--gold));
+  border-radius: 1px;
+  width: 5%;
+  transition: width 0.6s var(--ease-out);
+}
+
+.manor-root .chapter-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ENDING SCREEN */
+.manor-root .manor-ending {
+  flex-direction: column;
+  padding: 70px 24px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%, rgba(122,21,21,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 40% at 50% 90%, rgba(201,168,76,0.04) 0%, transparent 55%),
+    var(--bg-void);
+}
+
+.manor-root .ending-wrap {
+  max-width: 620px;
+  width: 100%;
+  animation: riseIn 0.8s var(--ease-out) both;
+}
+
+.manor-root .ending-icon {
+  font-size: 52px;
+  display: block;
+  margin-bottom: 22px;
+  animation: pulseGold 3s ease-in-out infinite;
+}
+
+.manor-root .ending-badge {
+  display: inline-block;
+  padding: 6px 22px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  border-radius: var(--radius-sm);
+}
+
+.manor-root .ending-title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 7vw, 56px);
+  font-weight: 700;
+  color: var(--text-warm);
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.manor-root .ending-text {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 2.4vw, 19px);
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 32px;
+  font-style: italic;
+  text-align: left;
+}
+
+.manor-root .ending-note {
+  background: var(--gold-tint);
+  border: 1px solid var(--gold-border);
+  border-left: 3px solid var(--gold);
+  padding: 18px 22px;
+  margin-bottom: 44px;
+  font-family: var(--font-fell);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--gold-light);
+  line-height: 1.6;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  text-align: left;
+}
+
+.manor-root .ending-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.manor-root .btn-secondary {
+  display: inline-block;
+  padding: 15px 32px;
+  border: 1px solid var(--text-dim);
+  color: var(--text-dim);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: border-color var(--t), color var(--t);
+  border-radius: var(--radius-sm);
+}
+
+.manor-root .btn-secondary:hover {
+  border-color: var(--text-mid);
+  color: var(--text-mid);
+}
+
+.manor-root .ending-cta {
+  font-family: var(--font-fell);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ERROR SCREEN */
+.manor-root .manor-error {
+  flex-direction: column;
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.manor-root .error-icon {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.manor-root .error-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 700;
+  color: var(--text-warm);
+  margin-bottom: 16px;
+}
+
+.manor-root .error-text {
+  font-family: var(--font-fell);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+.manor-root .error-link {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  padding-bottom: 2px;
+  transition: border-color var(--t);
+}
+
+.manor-root .error-link:hover {
+  border-color: var(--gold);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .manor-root .game-header { flex-direction: column; align-items: flex-start; }
+  .manor-root .manor-title { letter-spacing: 0.12em; }
+  .manor-root .choice-btn  { padding: 16px; }
+  .manor-root .candle--left  { left: 16px; }
+  .manor-root .candle--right { right: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .manor-root *,
+  .manor-root *::before,
+  .manor-root *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
