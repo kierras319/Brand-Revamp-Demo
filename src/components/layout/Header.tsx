@@ -72,10 +72,6 @@ export function Header() {
 
           {/* CTA + Cart + Mobile Menu */}
           <div className="flex items-center gap-3">
-            <Button variant="olive" size="sm" className="hidden lg:inline-flex text-xs tracking-wider uppercase" asChild>
-              <Link href="/free-chapter">Read Free</Link>
-            </Button>
-
             {/* Shopping bag — always visible, badge appears when cart has items */}
             <Link
               href="/checkout"
@@ -89,6 +85,10 @@ export function Header() {
                 </span>
               )}
             </Link>
+
+            <Button variant="olive" size="sm" className="hidden lg:inline-flex text-xs tracking-wider uppercase" asChild>
+              <Link href="/free-chapter">Read Free</Link>
+            </Button>
 
             <MobileMenu />
           </div>
