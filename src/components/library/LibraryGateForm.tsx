@@ -102,6 +102,7 @@ export function LibraryGateForm({
               id="library-email"
               type="email"
               placeholder="you@example.com"
+              className="bg-brand-parchment border-white/15 text-brand-cream placeholder:text-brand-stone focus-visible:ring-brand-gold"
               {...register("email")}
             />
             {errors.email && (
