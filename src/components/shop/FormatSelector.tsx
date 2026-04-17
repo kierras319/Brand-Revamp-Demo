@@ -96,7 +96,7 @@ export function FormatSelector({
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3">
         <Button
-          variant={added ? "charcoal" : "olive"}
+          variant={added ? "secondary" : "olive"}
           size="lg"
           className="flex-1 sm:flex-none sm:px-10 transition-all duration-200"
           onClick={addToCart}
