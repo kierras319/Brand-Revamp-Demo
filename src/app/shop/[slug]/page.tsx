@@ -2,14 +2,14 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ShoppingBag, Heart, Download } from "lucide-react"
+import { Heart, Download } from "lucide-react"
 import { PageWrapper } from "@/components/layout/PageWrapper"
 import { FormatSelector } from "@/components/shop/FormatSelector"
+import { AddToCartButton } from "@/components/shop/AddToCartButton"
 import { WriteReviewModal } from "@/components/shop/WriteReviewModal"
 import { ReviewSection } from "@/components/shop/ReviewSection"
 import { StarRating } from "@/components/shop/ReviewSection"
 import { YouMayAlsoLike } from "@/components/shop/YouMayAlsoLike"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { formatPrice } from "@/lib/utils"
 import { getProductBySlug, products, getRelatedProducts } from "@/data/products"
@@ -129,7 +129,14 @@ export default async function ProductPage({
 
               {/* Format selector or simple price */}
               {hasFormats ? (
-                <FormatSelector formats={product.formats!} defaultPrice={product.price} />
+                <FormatSelector
+                  formats={product.formats!}
+                  defaultPrice={product.price}
+                  productId={product.id}
+                  productSlug={product.slug}
+                  productTitle={product.title}
+                  imageUrl={product.imageUrl}
+                />
               ) : (
                 <div className="space-y-4">
                   <div>
@@ -140,15 +147,17 @@ export default async function ProductPage({
                   </div>
                   <div className="h-px bg-brand-greige/60" />
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button variant="olive" size="lg" className="flex-1 sm:flex-none sm:px-10" asChild>
-                      <a href="#">
-                        <ShoppingBag className="h-4 w-4" />
-                        Add to Cart
-                      </a>
-                    </Button>
-                    <Button variant="olive-outline" size="lg" className="flex-1 sm:flex-none sm:px-10" asChild>
-                      <a href="#">Instant Purchase</a>
-                    </Button>
+                    <AddToCartButton
+                      product={product}
+                      size="lg"
+                      className="flex-1 sm:flex-none sm:px-10"
+                    />
+                    <AddToCartButton
+                      product={product}
+                      size="lg"
+                      buyNow
+                      className="flex-1 sm:flex-none sm:px-10"
+                    />
                   </div>
                 </div>
               )}

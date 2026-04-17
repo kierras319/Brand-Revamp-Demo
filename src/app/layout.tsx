@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Toaster } from "@/components/ui/toaster"
 import { NewsletterModal } from "@/components/shared/NewsletterModal"
+import { CartProvider } from "@/contexts/CartContext"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -41,11 +42,13 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-background font-sans antialiased">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <Toaster />
-        <NewsletterModal />
+        <CartProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <Toaster />
+          <NewsletterModal />
+        </CartProvider>
       </body>
     </html>
   )

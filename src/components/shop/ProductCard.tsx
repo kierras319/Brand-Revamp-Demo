@@ -1,8 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ShoppingBag, PenLine } from "lucide-react"
+import { PenLine, ShoppingBag } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { AddToCartButton } from "@/components/shop/AddToCartButton"
 import { formatPrice } from "@/lib/utils"
 import { cn } from "@/lib/utils"
 import type { Product } from "@/lib/types"
@@ -61,11 +61,13 @@ export function ProductCard({ product, size = "default", className }: ProductCar
           <span className="text-brand-cream font-serif font-semibold text-lg">
             {formatPrice(product.price)}
           </span>
-          <Button variant="olive" size="sm" className="w-full" asChild>
-            <Link href={`/shop/${product.slug}`}>
-              View Product
-            </Link>
-          </Button>
+          <AddToCartButton product={product} size="sm" className="w-full" />
+          <Link
+            href={`/shop/${product.slug}`}
+            className="text-xs text-brand-cream/60 hover:text-brand-cream transition-colors underline underline-offset-4"
+          >
+            View details
+          </Link>
         </div>
       </div>
 

@@ -117,3 +117,41 @@ export interface Review {
   verified?: boolean;
   recommended?: boolean;
 }
+
+export interface CartItem {
+  productId: string;
+  slug: string;
+  title: string;
+  price: number;
+  format?: string;
+  imageUrl?: string;
+  quantity: number;
+}
+
+export type OrderStatus = "pending" | "paid" | "fulfilled" | "failed" | "refunded";
+
+export interface OrderItem {
+  slug: string;
+  title: string;
+  price: number;
+  format?: string;
+  quantity: number;
+}
+
+export interface Order {
+  id: string;
+  stripeSessionId: string;
+  stripePaymentIntentId?: string;
+  items: OrderItem[];
+  customerEmail: string;
+  customerName?: string;
+  amountTotal: number;
+  currency: string;
+  status: OrderStatus;
+  createdAt: string;
+  paidAt?: string;
+  fulfilledAt?: string;
+  failedAt?: string;
+  refundedAt?: string;
+  fulfillmentEmailSent: boolean;
+}

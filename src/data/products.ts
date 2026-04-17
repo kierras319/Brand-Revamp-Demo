@@ -142,18 +142,6 @@ export const products: Product[] = [
     featured: true,
   },
   {
-    id: "p12",
-    slug: "digital-escape-room-the-manor",
-    title: "Digital Escape Room: The Manor",
-    description: "An immersive 90-minute mystery you play from your browser.",
-    price: 11.99,
-    category: "reader-experiences",
-    variant: "reader",
-    badge: "New",
-    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&q=80",
-    featured: true,
-  },
-  {
     id: "p13",
     slug: "reading-journal-thriller-edition",
     title: "Reading Journal — Thriller Edition",
