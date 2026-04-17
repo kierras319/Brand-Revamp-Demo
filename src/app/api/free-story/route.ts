@@ -3,7 +3,7 @@ import { readFileSync } from "fs"
 import { join } from "path"
 import { subscribeSchema } from "@/lib/validations"
 
-const EPUB_DOWNLOAD_URL = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://velvetdaggerfiction.store"}/downloads/the-last-witness.epub`
+const EPUB_DOWNLOAD_URL = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://velvetdaggerfiction.store"}/downloads/The-Last-Witness-Generic.epub`
 
 export async function POST(req: NextRequest) {
   try {
