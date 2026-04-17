@@ -64,7 +64,7 @@ export function AddToCartButton({
 
   return (
     <Button
-      variant={added ? "charcoal" : "olive"}
+      variant={added ? "secondary" : "olive"}
       size={size}
       onClick={handleAdd}
       className={cn("transition-all duration-200", className)}
