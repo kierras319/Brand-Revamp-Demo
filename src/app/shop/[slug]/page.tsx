@@ -125,6 +125,11 @@ export default async function ProductPage({
                 </div>
               )}
 
+              {/* Short description in hero */}
+              <p className="text-brand-charcoal/70 leading-relaxed text-sm">
+                {product.description}
+              </p>
+
               <div className="h-px bg-brand-greige/60" />
 
               {/* Format selector or simple price */}
