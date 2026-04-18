@@ -29,7 +29,7 @@ export function ProductCard({ product, size = "default", className }: ProductCar
       )}
     >
       {/* Image */}
-      <div className={cn("relative overflow-hidden bg-brand-greige/20", size === "compact" ? "aspect-square" : "aspect-[4/5]")}>
+      <Link href={`/shop/${product.slug}`} tabIndex={-1} aria-hidden="true" className={cn("relative overflow-hidden bg-brand-greige/20 block", size === "compact" ? "aspect-square" : "aspect-[4/5]")}>
         <Image
           src={product.imageUrl}
           alt={product.title}
@@ -56,7 +56,7 @@ export function ProductCard({ product, size = "default", className }: ProductCar
           )}
         </div>
 
-      </div>
+      </Link>
 
       {/* Content */}
       <div className="p-4 flex flex-col flex-1">
