@@ -86,6 +86,14 @@ async function sendFulfillmentEmail(
           <a href="${accessUrl}" style="display:inline-block;background:#c9a84c;color:#1a1a1a;padding:10px 20px;border-radius:4px;text-decoration:none;font-weight:bold;font-size:14px">Enter The Manor →</a>
           <p style="margin:12px 0 0;color:#666;font-size:12px">This link works once and expires after use.</p>
         </div>`);
+    } else if (item.slug === "voice-tension-audit") {
+      deliveryBlocks.push(`
+        <div style="background:#1a1a1a;border-left:3px solid #c9a84c;padding:16px 20px;margin:12px 0;border-radius:4px">
+          <p style="margin:0 0 6px;font-weight:bold;color:#c9a84c">${item.title}</p>
+          <p style="margin:0 0 8px;color:#aaa;font-size:14px">Your Notion template is ready. Click below to duplicate it into your own workspace:</p>
+          <a href="https://www.notion.so/Voice-Tension-Audit-Worksheet-Template-346240b410e080778b1bff40de51df3b?source=copy_link" style="display:inline-block;background:#c9a84c;color:#1a1a1a;padding:10px 20px;border-radius:4px;text-decoration:none;font-weight:bold;font-size:14px">Open in Notion →</a>
+          <p style="margin:12px 0 0;color:#666;font-size:12px">In Notion, click "Duplicate" in the top right to save a copy to your workspace. Duplicate again for each new chapter.</p>
+        </div>`);
     } else if (
       item.slug.includes("subscription") ||
       item.slug.includes("monthly")

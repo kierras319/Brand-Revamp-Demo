@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "instagram": {
+      "command": "npx",
+      "args": ["-y", "@mcpware/instagram-mcp"],
+      "env": {
+        "INSTAGRAM_ACCESS_TOKEN": "EAAgKmxD1Ni0BRNm5KQ2Ww8vTMsMRGZB1oJxVPxGDdXu9Ey1SROJuatiwEOGZCY51wGoQKPgzq4l9QVEFTl7IzDEpbHLWPxGtQzZAJZA3e9qtOJzD4uvbm6zYDEqJ40ZCcjbCIi5hZB3dfZAKNvC7q0xZAmZAuhWFHGicdq6fZCo7hC7zxrpHe3ERgZA6MO9RAnIjNvkZALIwY0WSsmHDCZBNSuhA5m2GXD3DZCpFnOCWURjDEqPYQ1wVrly1D9NovUQnqQQZC0ZA3NNfY2BA72yWEJ7BZBExIvZAkZD"
+      }
+    }
+  }
+}

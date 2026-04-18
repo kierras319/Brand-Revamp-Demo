@@ -127,6 +127,20 @@ export const products: Product[] = [
     badge: "New",
     imageUrl: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=500&fit=crop&q=80",
   },
+  {
+    id: "p17",
+    slug: "voice-tension-audit",
+    title: "The Voice Audit",
+    description: "An interactive Notion worksheet for diagnosing voice drift and tension in your domestic thriller chapters. 7 audit sections, 5 red flags, and a full revision plan.",
+    overview: "The Voice & Tension Audit is a chapter-by-chapter diagnostic tool for domestic psychological thriller writers. Work through seven sections — Voice Audit, Dual Register, Tension Mapping, Loaded Objects, Revision Plan, Writer Mindset, and Draft Tracker — and leave with a specific, prioritised revision list for every chapter you run it on. Built as a Notion template so your entries save automatically and you can duplicate it for every chapter in your manuscript.",
+    authorNote: "I built this worksheet because I kept losing the dual register mid-chapter — the domestic surface and the dread undercurrent would come apart and I didn't have a way to diagnose where. This is the tool I wish I'd had in my first draft. It takes about twenty minutes per chapter and it will show you exactly where the voice broke.",
+    price: 9.99,
+    category: "writer-resources",
+    variant: "writer",
+    badge: "New",
+    imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=500&fit=crop&q=80",
+    featured: true,
+  },
 
   // Reader Experiences
   {
