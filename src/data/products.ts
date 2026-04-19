@@ -1,5 +1,12 @@
 import type { Product } from "@/lib/types";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// HOW TO ADD PAYHIP URLS
+// 1. Create the product on Payhip (payhip.com/products)
+// 2. Copy the product link — it looks like: https://payhip.com/b/XXXXX
+// 3. Paste it into the payhipUrl field below (or per format for ebook/audiobook)
+// ─────────────────────────────────────────────────────────────────────────────
+
 export const products: Product[] = [
   // Fiction
   {
@@ -16,8 +23,8 @@ export const products: Product[] = [
     imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=500&fit=crop&q=80",
     featured: true,
     formats: [
-      { label: "Ebook", price: 4.99 },
-      { label: "Audiobook", price: 14.99 },
+      { label: "Ebook", price: 4.99, payhipUrl: "" /* TODO: paste Payhip URL */ },
+      { label: "Audiobook", price: 14.99, payhipUrl: "" /* TODO: paste Payhip URL */ },
     ],
   },
   {
@@ -33,8 +40,8 @@ export const products: Product[] = [
     imageUrl: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=500&fit=crop&q=80",
     featured: true,
     formats: [
-      { label: "Ebook", price: 4.99 },
-      { label: "Audiobook", price: 12.99 },
+      { label: "Ebook", price: 4.99, payhipUrl: "" /* TODO: paste Payhip URL */ },
+      { label: "Audiobook", price: 12.99, payhipUrl: "" /* TODO: paste Payhip URL */ },
     ],
   },
   {
@@ -48,6 +55,7 @@ export const products: Product[] = [
     badge: "New",
     imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=500&fit=crop&q=80",
     featured: true,
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p4",
@@ -58,6 +66,7 @@ export const products: Product[] = [
     category: "fiction",
     variant: "reader",
     imageUrl: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=500&fit=crop&q=80",
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p5",
@@ -69,6 +78,7 @@ export const products: Product[] = [
     variant: "reader",
     badge: "Bestseller",
     imageUrl: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=500&fit=crop&q=80",
+    payhipUrl: "", // TODO: paste Payhip URL
   },
 
   // Writer Resources
@@ -83,6 +93,7 @@ export const products: Product[] = [
     badge: "Bestseller",
     imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=500&fit=crop&q=80",
     featured: true,
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p7",
@@ -95,6 +106,7 @@ export const products: Product[] = [
     badge: "New",
     imageUrl: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=500&fit=crop&q=80",
     featured: true,
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p8",
@@ -105,6 +117,7 @@ export const products: Product[] = [
     category: "writer-resources",
     variant: "writer",
     imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&q=80",
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p9",
@@ -115,6 +128,7 @@ export const products: Product[] = [
     category: "writer-resources",
     variant: "writer",
     imageUrl: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=500&fit=crop&q=80",
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p10",
@@ -126,6 +140,7 @@ export const products: Product[] = [
     variant: "writer",
     badge: "New",
     imageUrl: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=500&fit=crop&q=80",
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p17",
@@ -140,6 +155,7 @@ export const products: Product[] = [
     badge: "New",
     imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=500&fit=crop&q=80",
     featured: true,
+    payhipUrl: "", // TODO: paste Payhip URL
   },
 
   // Reader Experiences
@@ -154,6 +170,7 @@ export const products: Product[] = [
     badge: "Bestseller",
     imageUrl: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=500&fit=crop&q=80",
     featured: true,
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p13",
@@ -164,6 +181,7 @@ export const products: Product[] = [
     category: "reader-experiences",
     variant: "reader",
     imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=500&fit=crop&q=80",
+    payhipUrl: "", // TODO: paste Payhip URL
   },
 
   // Digital Planners & Kits
@@ -177,6 +195,7 @@ export const products: Product[] = [
     variant: "reader",
     imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=500&fit=crop&q=80",
     featured: true,
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p15",
@@ -188,6 +207,7 @@ export const products: Product[] = [
     variant: "reader",
     badge: "New",
     imageUrl: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=500&fit=crop&q=80",
+    payhipUrl: "", // TODO: paste Payhip URL
   },
   {
     id: "p16",
@@ -198,6 +218,7 @@ export const products: Product[] = [
     category: "digital-planners",
     variant: "writer",
     imageUrl: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=500&fit=crop&q=80",
+    payhipUrl: "", // TODO: paste Payhip URL
   },
 ];
 

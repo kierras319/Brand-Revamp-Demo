@@ -9,6 +9,7 @@ export type ProductVariant = "reader" | "writer";
 export interface ProductFormat {
   label: string;
   price: number;
+  payhipUrl?: string;
 }
 
 export interface Product {
@@ -25,6 +26,7 @@ export interface Product {
   imageUrl: string;
   featured?: boolean;
   formats?: ProductFormat[];
+  payhipUrl?: string;
 }
 
 export type BookStatus = "available" | "coming-soon";

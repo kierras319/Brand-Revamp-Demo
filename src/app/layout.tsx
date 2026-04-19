@@ -45,6 +45,10 @@ export default function RootLayout({
           <ClientShell>{children}</ClientShell>
           <Toaster />
         </CartProvider>
+        <Script
+          src="https://payhip.com/payhip.js"
+          strategy="afterInteractive"
+        />
         {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
           <Script
             src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}

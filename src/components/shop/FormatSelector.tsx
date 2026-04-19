@@ -31,6 +31,7 @@ export function FormatSelector({
   const { addItem } = useCart()
   const router = useRouter()
   const price = selected?.price ?? defaultPrice
+  const payhipUrl = selected?.payhipUrl
 
   function addToCart() {
     addItem({
@@ -93,29 +94,52 @@ export function FormatSelector({
 
       <div className="h-px bg-brand-greige/60" />
 
-      {/* CTAs */}
+      {/* CTAs — Payhip if URL present, otherwise existing cart */}
       <div className="flex flex-col sm:flex-row gap-3">
-        <Button
-          variant={added ? "secondary" : "olive"}
-          size="lg"
-          className="flex-1 sm:flex-none sm:px-10 transition-all duration-200"
-          onClick={addToCart}
-        >
-          {added ? (
-            <><Check className="h-4 w-4 mr-1.5" />Added</>
-          ) : (
-            <><ShoppingCart className="h-4 w-4 mr-1.5" />Add to Cart</>
-          )}
-        </Button>
-        <Button
-          variant="olive-outline"
-          size="lg"
-          className="flex-1 sm:flex-none sm:px-10"
-          onClick={buyNow}
-        >
-          <Zap className="h-4 w-4 mr-1.5" />
-          Buy Now
-        </Button>
+        {payhipUrl ? (
+          <>
+            <a
+              href={payhipUrl}
+              className="payhip-buy-button flex-1 sm:flex-none sm:px-10 inline-flex items-center justify-center gap-1.5 bg-brand-wine text-brand-cream hover:bg-brand-wine/90 rounded-sm py-3 text-sm font-medium transition-all duration-200"
+              data-theme="none"
+            >
+              <ShoppingCart className="h-4 w-4" />
+              Buy Now
+            </a>
+            <a
+              href={payhipUrl}
+              className="payhip-buy-button flex-1 sm:flex-none sm:px-10 inline-flex items-center justify-center gap-1.5 border border-brand-wine/70 text-brand-wine hover:bg-brand-wine hover:text-brand-cream rounded-sm py-3 text-sm font-medium transition-all duration-200"
+              data-theme="none"
+            >
+              <Zap className="h-4 w-4" />
+              Quick Buy
+            </a>
+          </>
+        ) : (
+          <>
+            <Button
+              variant={added ? "secondary" : "olive"}
+              size="lg"
+              className="flex-1 sm:flex-none sm:px-10 transition-all duration-200"
+              onClick={addToCart}
+            >
+              {added ? (
+                <><Check className="h-4 w-4 mr-1.5" />Added</>
+              ) : (
+                <><ShoppingCart className="h-4 w-4 mr-1.5" />Add to Cart</>
+              )}
+            </Button>
+            <Button
+              variant="olive-outline"
+              size="lg"
+              className="flex-1 sm:flex-none sm:px-10"
+              onClick={buyNow}
+            >
+              <Zap className="h-4 w-4 mr-1.5" />
+              Buy Now
+            </Button>
+          </>
+        )}
       </div>
 
       <p className="text-xs text-brand-charcoal/40">
