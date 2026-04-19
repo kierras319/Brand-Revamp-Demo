@@ -1,0 +1,403 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16424002725adda8ce": {
+      "type": "promotion-banner",
+      "blocks": {
+        "16424002714d6c0c62-0": {
+          "type": "section_padding",
+          "settings": {
+            "section_padding_top": 80,
+            "section_padding_bottom": 80,
+            "section_padding_top_md": 70,
+            "section_padding_bottom_md": 70,
+            "section_padding_top_xs": 50,
+            "section_padding_bottom_xs": 50
+          }
+        },
+        "22fc24ab-501c-4c9a-9b71-d78735a406b6": {
+          "type": "promoton-img",
+          "settings": {
+            "promotion_img_enable": true,
+            "img_product_column_handle": "6",
+            "img1": "shopify://shop_images/home-2-siider-1_b7084a39-db26-4dc2-8dfb-5688d8912c2a.png",
+            "video_btn_enable": true,
+            "video_btn_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+          }
+        },
+        "c086d50e-88d7-4d41-a081-90668f44ab2e": {
+          "type": "promoton-content",
+          "settings": {
+            "content_product_column_handle": "6",
+            "content_custom_color": true,
+            "t1": "",
+            "bottom_title": "open_sans_n6",
+            "bottom_title_font_size": "24",
+            "bottom_title_font_line_height": "28",
+            "bottom_title_font_size_md": "24",
+            "bottom_title_font_line_height_md": "28",
+            "bottom_title_font_size_sm": "24",
+            "bottom_title_font_line_height_sm": "28",
+            "t1_color": "#dcb14a",
+            "bottom_title_margin": 15,
+            "t2": "What We Are.",
+            "top_title": "open_sans_n6",
+            "top_title_font_size": "40",
+            "top_title_font_line_height": "50",
+            "top_title_font_size_md": "35",
+            "top_title_font_line_height_md": "40",
+            "top_title_font_size_sm": "30",
+            "top_title_font_line_height_sm": "35",
+            "t2_color": "#ff6162",
+            "top_title_margin": 40,
+            "heading_bottom_border_line": true,
+            "heading_border_bottom_color": "#ff6162",
+            "border_top_spacing": 20,
+            "des_text": "<strong>Booken provide how all this Lorem Ipsum is simply dummy </strong><br><br> Text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.\n<br>\n<br>\nTypesetting, remaining essentially unchanged. It was popularised with the release of Contrary to popular belief, Lorem Ipsum is  random text. \n<br>\n<br>\nLetraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing.",
+            "des_text_font": "work_sans_n4",
+            "des_text_color": "#1f2226",
+            "des_text_font_size": "18",
+            "des_text_font_line_height": "28",
+            "des_text_font_size_md": "16",
+            "des_text_font_line_height_md": "26",
+            "des_text_font_size_sm": "14",
+            "des_text_font_line_height_sm": "24",
+            "des_text_font_margin": 15,
+            "countdown_date": "",
+            "count_border_disable": false,
+            "border_radius_count": 10,
+            "btn1": "",
+            "btn1_url": "shopify://collections/all",
+            "button_title": "poppins_n3",
+            "button_title_font_size": "14",
+            "button_title_margin": 10,
+            "button_style": "default",
+            "button_border_radius": 0,
+            "button_padding_tb": 15,
+            "button_padding_lr": 30,
+            "btn1_color": "#1f2226",
+            "btn1_hover_color": "#1f2226",
+            "btn1_bg_color": "#ffffff",
+            "btn1_bg_hover_color": "#000000",
+            "btn1_border_color": "#ffffff",
+            "btn1_border_hover_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "16424002714d6c0c62-0",
+        "22fc24ab-501c-4c9a-9b71-d78735a406b6",
+        "c086d50e-88d7-4d41-a081-90668f44ab2e"
+      ],
+      "settings": {
+        "section_width": "default",
+        "section_title_custom_color": false,
+        "section_title": "",
+        "section_title_color": "#1f2226",
+        "section_title_font": "poppins_n6",
+        "section_title_font_size": "30",
+        "section_title_line_height": 40,
+        "section_title_font_size_md": "24",
+        "section_title_line_height_md": 35,
+        "section_title_font_size_sm": "20",
+        "section_title_line_height_sm": 30,
+        "section_title_margin_bottom": 10,
+        "section_sub_title": "",
+        "section_subtitle_color": "#5a5a5a",
+        "section_sub_title_font": "poppins_n6",
+        "section_des_font_size": "14",
+        "section_sub_title_line_height": 24,
+        "section_des_font_size_md": "14",
+        "section_sub_title_line_height_md": 24,
+        "section_des_font_size_sm": "14",
+        "section_sub_title_line_height_sm": 24,
+        "section_sub_title_margin_bottom": 10,
+        "title_align": "text-center",
+        "content_position": "left-def",
+        "content_align": "text-left"
+      }
+    },
+    "main": {
+      "type": "about-template",
+      "disabled": true,
+      "blocks": {
+        "668e5031-1167-45d4-a9a5-6b4f4d84555a": {
+          "type": "section_padding",
+          "settings": {
+            "section_padding_top": 100,
+            "section_padding_bottom": 65,
+            "section_padding_top_md": 80,
+            "section_padding_bottom_md": 45,
+            "section_padding_top_xs": 50,
+            "section_padding_bottom_xs": 30
+          }
+        },
+        "70485c63-c752-45dd-8458-10fe7a0f9726": {
+          "type": "content",
+          "settings": {
+            "title": "WE START AT 2022",
+            "subtitle": "Ghona provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a complete account of the system, and expound the actual teachings of the eat explorer."
+          }
+        },
+        "ca4a92b8-fa15-4b10-a0ca-6b754dab2bc4": {
+          "type": "content",
+          "settings": {
+            "title": "WIN BEST ONLINE SHOP AT 2022",
+            "subtitle": "Ghona provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a complete account of the system, and expound the actual teachings of the eat explorer."
+          }
+        }
+      },
+      "block_order": [
+        "668e5031-1167-45d4-a9a5-6b4f4d84555a",
+        "70485c63-c752-45dd-8458-10fe7a0f9726",
+        "ca4a92b8-fa15-4b10-a0ca-6b754dab2bc4"
+      ],
+      "settings": {
+        "show_about_section": true,
+        "page_content": "section",
+        "show_image": true,
+        "image_position": "left",
+        "show_content": true,
+        "title": "WELCOME TO <span>Caren</span>",
+        "subtitle": "Ghona provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a complete account of the system, and expound the actual teachings of the eat explorer.  provide how all this mistaken idea of denouncing pleasure."
+      }
+    },
+    "163359830970e43663": {
+      "type": "testimonial",
+      "blocks": {
+        "163359830970e43663-0": {
+          "type": "testimonial",
+          "settings": {
+            "commentators_img": "shopify://shop_images/blog-comment1.png",
+            "comments": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit.",
+            "commentators": "Hester Perkins"
+          }
+        },
+        "163359830970e43663-1": {
+          "type": "testimonial",
+          "settings": {
+            "commentators_img": "shopify://shop_images/blog-author.png",
+            "comments": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit.",
+            "commentators": "Hester Perkins"
+          }
+        },
+        "163359830970e43663-2": {
+          "type": "section_padding",
+          "settings": {
+            "section_padding_top": 100,
+            "section_padding_bottom": 100,
+            "section_padding_top_md": 90,
+            "section_padding_bottom_md": 90,
+            "section_padding_top_xs": 80,
+            "section_padding_bottom_xs": 80
+          }
+        },
+        "d8d8187d-c3dc-45e9-bfd1-03fee1579040": {
+          "type": "section_background",
+          "settings": {
+            "section_bg_image": "shopify://shop_images/home-3-slide-2.png",
+            "section_bg_color": "#f0ac3f"
+          }
+        }
+      },
+      "block_order": [
+        "163359830970e43663-0",
+        "163359830970e43663-1",
+        "163359830970e43663-2",
+        "d8d8187d-c3dc-45e9-bfd1-03fee1579040"
+      ],
+      "settings": {
+        "section_width": "default",
+        "testi_col_content": "10",
+        "nav_style": "style_5",
+        "nav_custom_style": false,
+        "nav_border_radius": 30,
+        "controlnav_color": "#1f2226",
+        "controlnav_bg_color": "#ffffff",
+        "controlnav_border_color": "#e1e2e2",
+        "hover_controlnav_color": "#ffffff",
+        "hover_controlnav_bg_color": "#ff3535",
+        "hover_controlnav_border_color": "#ff3535",
+        "dot_style": "dot_hide",
+        "dot_custom_style": true,
+        "dot_color": "#ff6162",
+        "dot_active_color": "#ff6162",
+        "testi_col": "1",
+        "testi_col_md": "1",
+        "testi_col_sm": "1",
+        "section_title": "What Clients Says",
+        "section_title_color": "#333333",
+        "section_title_font": "open_sans_n6",
+        "section_title_font_size": "40",
+        "section_title_line_height": 50,
+        "section_title_margin_bottom": 10,
+        "section_sub_title": "Contrary to popular belief, Lorem Ipsum is not simply random.",
+        "section_subtitle_color": "#5a5a5a",
+        "section_sub_title_font": "work_sans_n4",
+        "section_des_font_size": "18",
+        "section_sub_title_line_height": 30,
+        "section_sub_title_margin_bottom": 10,
+        "title_align": "text-center",
+        "comment_color": "#222222",
+        "commentators_color": "#222222"
+      }
+    },
+    "16335990759a98a4c8": {
+      "type": "about-team",
+      "blocks": {
+        "16335990759a98a4c8-0": {
+          "type": "team_member",
+          "settings": {
+            "member_img": "shopify://shop_images/team-4.png",
+            "member_name": "Mr. Mike Banding",
+            "member_desig": "Manager",
+            "show_fb": true,
+            "fb_url": "#",
+            "show_twitter": true,
+            "twitter_url": "#",
+            "show_instagram": true,
+            "instagram_url": "#"
+          }
+        },
+        "16335990759a98a4c8-1": {
+          "type": "team_member",
+          "settings": {
+            "member_img": "shopify://shop_images/team-3.png",
+            "member_name": "Mr. Peter Pan",
+            "member_desig": "Developer",
+            "show_fb": true,
+            "fb_url": "#",
+            "show_twitter": true,
+            "twitter_url": "#",
+            "show_instagram": true,
+            "instagram_url": "#"
+          }
+        },
+        "16335990759a98a4c8-2": {
+          "type": "team_member",
+          "settings": {
+            "member_img": "shopify://shop_images/team-2.png",
+            "member_name": "Ms. Sophia",
+            "member_desig": "Designer",
+            "show_fb": true,
+            "fb_url": "#",
+            "show_twitter": true,
+            "twitter_url": "#",
+            "show_instagram": true,
+            "instagram_url": "#"
+          }
+        },
+        "16335990759a98a4c8-3": {
+          "type": "team_member",
+          "settings": {
+            "member_img": "shopify://shop_images/team-1.png",
+            "member_name": "Mr. John Lee",
+            "member_desig": "Chairmen",
+            "show_fb": true,
+            "fb_url": "#",
+            "show_twitter": true,
+            "twitter_url": "#",
+            "show_instagram": true,
+            "instagram_url": "#"
+          }
+        },
+        "961586b3-5719-4abb-85a5-71fa6b1c3f23": {
+          "type": "team_member",
+          "settings": {
+            "member_img": "shopify://shop_images/team-4.png",
+            "member_name": "Mr. Mike Banding",
+            "member_desig": "Manager",
+            "show_fb": true,
+            "fb_url": "",
+            "show_twitter": true,
+            "twitter_url": "",
+            "show_instagram": true,
+            "instagram_url": ""
+          }
+        },
+        "6766fe92-38e1-4fd0-9ac2-a603d148b8d8": {
+          "type": "team_member",
+          "settings": {
+            "member_img": "shopify://shop_images/team-3.png",
+            "member_name": "Mr. Mike Banding",
+            "member_desig": "Manager",
+            "show_fb": true,
+            "fb_url": "",
+            "show_twitter": true,
+            "twitter_url": "",
+            "show_instagram": true,
+            "instagram_url": ""
+          }
+        },
+        "20286d19-4a80-4d29-92c3-ce93ca4e5576": {
+          "type": "section_padding",
+          "settings": {
+            "section_padding_top": 90,
+            "section_padding_bottom": 90,
+            "section_padding_top_md": 80,
+            "section_padding_bottom_md": 80,
+            "section_padding_top_xs": 70,
+            "section_padding_bottom_xs": 70
+          }
+        }
+      },
+      "block_order": [
+        "16335990759a98a4c8-0",
+        "16335990759a98a4c8-1",
+        "16335990759a98a4c8-2",
+        "16335990759a98a4c8-3",
+        "961586b3-5719-4abb-85a5-71fa6b1c3f23",
+        "6766fe92-38e1-4fd0-9ac2-a603d148b8d8",
+        "20286d19-4a80-4d29-92c3-ce93ca4e5576"
+      ],
+      "settings": {
+        "show_team_section": true,
+        "section_width": "default",
+        "tab_arsoule_active": true,
+        "tab_arsoule_arrow_enable": true,
+        "product_casoule_row": 1,
+        "product_column_handle": "5",
+        "product_column_handle_md": "3",
+        "product_column_handle_sm": "2",
+        "section_title_custom_color": true,
+        "section_title": "Awesome Team",
+        "section_title_color": "#333333",
+        "section_title_font": "open_sans_n6",
+        "section_title_font_size": "40",
+        "section_title_line_height": 50,
+        "section_title_font_size_md": "30",
+        "section_title_line_height_md": 45,
+        "section_title_font_size_sm": "24",
+        "section_title_line_height_sm": 40,
+        "section_title_margin_bottom": 10,
+        "section_sub_title": "Contrary to popular belief, Lorem Ipsum is not simply random.",
+        "section_subtitle_color": "#5a5a5a",
+        "section_sub_title_font": "work_sans_n4",
+        "section_des_font_size": "16",
+        "section_sub_title_line_height": 30,
+        "section_des_font_size_md": "16",
+        "section_sub_title_line_height_md": 28,
+        "section_des_font_size_sm": "14",
+        "section_sub_title_line_height_sm": 24,
+        "section_sub_title_margin_bottom": 10,
+        "title_align": "text-center",
+        "team_name_color": "#333333",
+        "team_deg_color": "#333333"
+      }
+    }
+  },
+  "order": [
+    "16424002725adda8ce",
+    "main",
+    "163359830970e43663",
+    "16335990759a98a4c8"
+  ]
+}

@@ -1,0 +1,601 @@
+/* ============================================================
+   VELVET DAGGER FICTION — Brand Override for Booken Theme
+   ============================================================ */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
+/* ── Brand Tokens ── */
+:root {
+  --brand-charcoal:   #1C1917;
+  --brand-charcoal-2: #28231F;
+  --brand-cream:      #F2EDE6;
+  --brand-parchment:  #EDE7DC;
+  --brand-gold:       #C9A96E;
+  --brand-gold-dim:   #9B7D50;
+  --brand-gold-pale:  #E8D5B0;
+  --brand-wine:       #6B2D2D;
+  --brand-wine-deep:  #4A1E1E;
+  --brand-stone:      #A39E98;
+  --brand-stone-light:#C8C4BC;
+  --brand-greige:     #D9D2C8;
+}
+
+/* ── Global Body ── */
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  background-color: var(--brand-cream) !important;
+  color: var(--brand-charcoal) !important;
+}
+
+/* ── Headings ── */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  color: var(--brand-charcoal) !important;
+  letter-spacing: -0.01em;
+}
+
+/* ── Links ── */
+a { color: var(--brand-gold) !important; }
+a:hover { color: var(--brand-wine) !important; }
+
+/* ── Primary / Accent Color Replacements ── */
+.ht-btn,
+.btn-primary,
+button[type="submit"],
+.product-action .btn,
+.cart-btn,
+.ht-btn-primary {
+  background-color: var(--brand-wine) !important;
+  border-color: var(--brand-wine) !important;
+  color: var(--brand-cream) !important;
+  font-family: 'Playfair Display', serif !important;
+  letter-spacing: 0.08em;
+  border-radius: 2px !important;
+}
+
+.ht-btn:hover,
+.btn-primary:hover,
+button[type="submit"]:hover,
+.product-action .btn:hover,
+.ht-btn-primary:hover {
+  background-color: var(--brand-gold) !important;
+  border-color: var(--brand-gold) !important;
+  color: var(--brand-charcoal) !important;
+}
+
+/* ── Header ── */
+#shopify-section-header .header-main,
+.header-sticky,
+#header,
+.header-area {
+  background-color: var(--brand-charcoal) !important;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15) !important;
+}
+
+.logo a,
+.site-nav a,
+.header-nav a,
+.nav-link,
+.main-nav > li > a {
+  color: var(--brand-cream) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 13px !important;
+}
+
+.site-nav a:hover,
+.main-nav > li > a:hover,
+.nav-link:hover {
+  color: var(--brand-gold) !important;
+}
+
+/* Dropdown menus */
+.sub-menu,
+.mega-menu,
+.dropdown-menu {
+  background-color: var(--brand-charcoal-2) !important;
+  border: 1px solid rgba(201, 169, 110, 0.2) !important;
+}
+
+.sub-menu a,
+.mega-menu a,
+.dropdown-menu a {
+  color: var(--brand-stone-light) !important;
+}
+
+.sub-menu a:hover,
+.mega-menu a:hover,
+.dropdown-menu a:hover {
+  color: var(--brand-gold) !important;
+  background-color: rgba(201, 169, 110, 0.08) !important;
+}
+
+/* Cart / wishlist icon color */
+.header-cart a,
+.header-wishlist a,
+.header-search a,
+.header-action a {
+  color: var(--brand-cream) !important;
+}
+
+.cart-count,
+.wishlist-count {
+  background-color: var(--brand-gold) !important;
+  color: var(--brand-charcoal) !important;
+}
+
+/* ── Hero / Slider ── */
+.ht-slider-area,
+.slider-area,
+.slider-section {
+  background-color: var(--brand-charcoal) !important;
+}
+
+.slider-content h1,
+.slider-content h2,
+.slider-title,
+.slide-title {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-cream) !important;
+}
+
+.slider-content h1 em,
+.slider-content h2 em,
+.slider-title em {
+  color: var(--brand-gold) !important;
+  font-style: italic;
+}
+
+.slider-desc,
+.slider-description,
+.slide-description {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: var(--brand-stone-light) !important;
+  font-size: 18px !important;
+}
+
+/* ── Section Backgrounds ── */
+.section-bg-light,
+.bg-light,
+.section-light {
+  background-color: var(--brand-parchment) !important;
+}
+
+.section-bg-dark,
+.bg-dark {
+  background-color: var(--brand-charcoal) !important;
+}
+
+/* ── Section Titles ── */
+.section-title h2,
+.section-title h3,
+.sec-title,
+.section-heading {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-charcoal) !important;
+}
+
+.section-title .title-line,
+.section-title-line,
+.title-separator {
+  background-color: var(--brand-gold) !important;
+  border-color: var(--brand-gold) !important;
+}
+
+.section-title p,
+.section-subtitle,
+.sec-desc {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: var(--brand-stone) !important;
+  font-size: 17px !important;
+  font-style: italic;
+}
+
+/* ── Product Cards ── */
+.product-item,
+.product-card,
+.product-grid-item {
+  background-color: #fff !important;
+  border: 1px solid var(--brand-greige) !important;
+  border-radius: 2px !important;
+}
+
+.product-item:hover,
+.product-card:hover {
+  box-shadow: 0 8px 32px rgba(28, 25, 23, 0.12) !important;
+  border-color: rgba(201, 169, 110, 0.4) !important;
+}
+
+.product-title a,
+.product-name a,
+.product-item .title a {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-charcoal) !important;
+  font-size: 16px !important;
+}
+
+.product-title a:hover,
+.product-name a:hover {
+  color: var(--brand-wine) !important;
+}
+
+.product-price,
+.price,
+.product-item .price {
+  color: var(--brand-charcoal) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 18px !important;
+  font-weight: 500;
+}
+
+.price--sale,
+.product-price .sale-price,
+.sale-price {
+  color: var(--brand-wine) !important;
+}
+
+.product-badge,
+.badge-new,
+.badge-sale {
+  background-color: var(--brand-wine) !important;
+  color: var(--brand-cream) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 10px !important;
+  border-radius: 1px !important;
+}
+
+/* Product action buttons (Add to Cart on hover) */
+.product-action,
+.product-hover-action {
+  background-color: var(--brand-charcoal) !important;
+}
+
+.product-action a,
+.product-action button {
+  color: var(--brand-cream) !important;
+}
+
+.product-action a:hover,
+.product-action button:hover {
+  color: var(--brand-gold) !important;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb-area,
+.breadcrumb-section {
+  background-color: var(--brand-charcoal) !important;
+}
+
+.breadcrumb-title,
+.page-title {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-cream) !important;
+}
+
+.breadcrumb a,
+.breadcrumb-link {
+  color: var(--brand-stone-light) !important;
+}
+
+.breadcrumb-separator,
+.breadcrumb li.active {
+  color: var(--brand-gold) !important;
+}
+
+/* ── Collection / Category Pages ── */
+.collection-banner,
+.collection-header {
+  background-color: var(--brand-charcoal) !important;
+}
+
+.collection-title,
+.collection-heading {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-cream) !important;
+}
+
+/* ── Single Product Page ── */
+.product-details-area .product-title,
+.product-details-content h1,
+.product-details-content h2 {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-charcoal) !important;
+}
+
+.product-details-content .product-desc,
+.product-description {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: var(--brand-charcoal) !important;
+  font-size: 17px !important;
+  line-height: 1.8 !important;
+}
+
+.product-details-content .price {
+  color: var(--brand-charcoal) !important;
+  font-size: 28px !important;
+}
+
+/* ── Tabs (product tabs) ── */
+.nav-tabs .nav-link.active,
+.tab-style .active-tab,
+.product-tab .active {
+  border-bottom-color: var(--brand-gold) !important;
+  color: var(--brand-charcoal) !important;
+}
+
+.nav-tabs .nav-link,
+.tab-style a {
+  color: var(--brand-stone) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 13px !important;
+}
+
+/* ── Newsletter / Email Capture ── */
+.newsletter-area,
+.newsletter-section {
+  background-color: var(--brand-charcoal) !important;
+}
+
+.newsletter-title,
+.newsletter-heading {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-cream) !important;
+}
+
+.newsletter-desc,
+.newsletter-text {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: var(--brand-stone-light) !important;
+  font-style: italic;
+}
+
+.newsletter-form input[type="email"],
+.newsletter-form input[type="text"] {
+  background-color: rgba(255,255,255,0.08) !important;
+  border-color: rgba(201, 169, 110, 0.35) !important;
+  color: var(--brand-cream) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  border-radius: 2px !important;
+}
+
+.newsletter-form input::placeholder {
+  color: var(--brand-stone) !important;
+}
+
+.newsletter-form button,
+.newsletter-btn {
+  background-color: var(--brand-gold) !important;
+  border-color: var(--brand-gold) !important;
+  color: var(--brand-charcoal) !important;
+  font-family: 'Playfair Display', serif !important;
+  letter-spacing: 0.1em;
+  border-radius: 2px !important;
+}
+
+/* ── Testimonials ── */
+.testimonial-area,
+.testimonial-section {
+  background-color: var(--brand-parchment) !important;
+}
+
+.testimonial-text,
+.review-text,
+.testimonial-content p {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 18px !important;
+  color: var(--brand-charcoal) !important;
+  font-style: italic;
+  line-height: 1.8 !important;
+}
+
+.testimonial-name,
+.reviewer-name {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-wine) !important;
+}
+
+/* ── Footer ── */
+footer,
+.footer-area,
+.footer-section,
+#shopify-section-footer_1,
+#shopify-section-footer_2,
+#shopify-section-footer_3,
+#shopify-section-footer_4,
+#shopify-section-footer_5 {
+  background-color: var(--brand-charcoal) !important;
+  border-top: 1px solid rgba(201, 169, 110, 0.2) !important;
+}
+
+.footer-title,
+.footer-heading,
+.footer-widget-title {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-gold) !important;
+  letter-spacing: 0.12em;
+}
+
+.footer-area p,
+.footer-content,
+.footer-text {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: var(--brand-stone-light) !important;
+  font-size: 15px !important;
+}
+
+.footer-area a,
+.footer-menu a,
+.footer-link {
+  color: var(--brand-stone-light) !important;
+}
+
+.footer-area a:hover,
+.footer-menu a:hover {
+  color: var(--brand-gold) !important;
+}
+
+.footer-bottom,
+.footer-copyright {
+  background-color: var(--brand-charcoal-2) !important;
+  border-top: 1px solid rgba(201, 169, 110, 0.1) !important;
+}
+
+.footer-bottom p,
+.copyright-text {
+  color: var(--brand-stone) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 13px !important;
+}
+
+/* Footer social icons */
+.footer-social a,
+.social-icon a {
+  color: var(--brand-stone) !important;
+  border-color: rgba(201, 169, 110, 0.25) !important;
+}
+
+.footer-social a:hover,
+.social-icon a:hover {
+  color: var(--brand-gold) !important;
+  border-color: var(--brand-gold) !important;
+  background-color: rgba(201, 169, 110, 0.1) !important;
+}
+
+/* ── Cart / Drawer ── */
+.cart-drawer,
+.cart-popup,
+.side-cart {
+  background-color: var(--brand-cream) !important;
+}
+
+.cart-title,
+.cart-heading {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-charcoal) !important;
+  border-bottom-color: rgba(201, 169, 110, 0.3) !important;
+}
+
+.cart-product-title {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--brand-charcoal) !important;
+}
+
+.cart-total,
+.cart-subtotal {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: var(--brand-charcoal) !important;
+}
+
+/* ── Preloader ── */
+#preloader,
+.preloader {
+  background-color: var(--brand-charcoal) !important;
+}
+
+/* ── Search ── */
+.search-popup,
+.predictive-search {
+  background-color: var(--brand-charcoal) !important;
+  border-color: rgba(201, 169, 110, 0.2) !important;
+}
+
+.search-popup input,
+.predictive-search input {
+  background: transparent !important;
+  border-color: rgba(201, 169, 110, 0.3) !important;
+  color: var(--brand-cream) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+/* ── Pagination ── */
+.pagination a,
+.page-link {
+  color: var(--brand-charcoal) !important;
+  border-color: var(--brand-greige) !important;
+}
+
+.pagination .active a,
+.page-item.active .page-link {
+  background-color: var(--brand-wine) !important;
+  border-color: var(--brand-wine) !important;
+  color: var(--brand-cream) !important;
+}
+
+/* ── Quantity Input ── */
+.qty-btn button,
+.quantity-btn {
+  border-color: var(--brand-greige) !important;
+  color: var(--brand-charcoal) !important;
+}
+
+.quantity-wrapper input {
+  border-color: var(--brand-greige) !important;
+  color: var(--brand-charcoal) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+/* ── Form Elements (general) ── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  border-color: var(--brand-greige) !important;
+  border-radius: 2px !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  color: var(--brand-charcoal) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--brand-gold-dim) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(201, 169, 110, 0.15) !important;
+}
+
+/* ── Decorative Gold Rule ── */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--brand-gold), transparent);
+  border: none;
+  margin: 28px 0;
+}
+
+/* ── Utility overrides ── */
+.text-primary,
+.ht-color-primary { color: var(--brand-gold) !important; }
+.bg-primary,
+.ht-bg-primary { background-color: var(--brand-wine) !important; }
+.border-primary { border-color: var(--brand-gold) !important; }
+
+/* ── Mobile Menu ── */
+.mobile-menu,
+.mobile-nav,
+.offcanvas-menu {
+  background-color: var(--brand-charcoal) !important;
+}
+
+.mobile-menu a,
+.mobile-nav a,
+.offcanvas-menu a {
+  color: var(--brand-cream) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+.mobile-menu a:hover,
+.mobile-nav a:hover {
+  color: var(--brand-gold) !important;
+}
+
+.menu-close-btn,
+.offcanvas-close {
+  color: var(--brand-cream) !important;
+}

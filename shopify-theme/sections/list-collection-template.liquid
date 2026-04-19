@@ -1,0 +1,616 @@
+<div class="list-product-collection {% if settings.breadcrumb_banner_enable -%} pt-100 pt-sm-70 {% endif %} pb-50 pb-sm-20 " id="section-{{ section.id }}" data-section="BannerSection">
+
+  {% if section.settings.collection_handle == 'custom_collection' %}
+
+  {% for block in section.blocks %}
+
+  {% assign featured_product = collections[block.settings.featured_product_handle] %}
+  {% assign featured_product_limit = section.settings.products_limit_handle %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title {% if section.settings.section_text_align == 'section_text_left' %}text-left{% elsif section.settings.section_text_align == 'section_text_center' %}text-center{% elsif section.settings.section_text_align == 'section_text_right' %}text-right{% endif %} mb-65">
+          <h2>{{ featured_product.title }}</h2>
+          <a href="{{ featured_product.url }}">{{ section.settings.more_title }} {{ featured_product.title }} &rsaquo;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row theme-products">
+      <!-- product-item start -->
+      {%- if featured_product == empty -%}
+      {% assign a = 1 %}
+      {% for i in (1..featured_product_limit) %}
+
+      {% assign product_item = "product-" | append: a  %}
+      {% assign a = a | plus: 1 %}
+      <div class="col-lg-{{ section.settings.product_column }} col-md-{{ section.settings.product_column_md }} col-{{ section.settings.product_column_xs }}" style="margin-bottom: 30px;">
+        <div>
+          <div>
+            {{ product_item | placeholder_svg_tag: 'product-svg-image' }}
+          </div>
+          <h6>
+            Product Title
+          </h6>
+          <div class="">
+            <span>$99.99</span>
+          </div>
+        </div>
+      </div>
+      {% if a == 7 %}
+      {% assign a = 1 %}
+      {% endif %}
+      {% endfor %}
+
+
+      {%- else -%}
+      {% for product in featured_product.products limit: featured_product_limit %}
+      <div class="col-lg-{{ section.settings.product_column }} col-md-{{ section.settings.product_md_column }} col-sm-{{ section.settings.product_column_xs }} col-12">
+        {% render 'product-grid-item', product: product -%}
+      </div>
+      {% endfor %}
+      {%- endif -%}
+    </div>
+    {% unless forloop.last %}<hr class="">{% endunless %}
+  </div>
+
+  {% endfor %}
+
+
+
+  {% elsif section.settings.collection_handle == 'all_collection' %}
+
+  {% for collection in collections %}
+  {% unless collection.handle == 'frontpage' %}
+  {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title {% if section.settings.section_text_align == 'section_text_left' %}text-left{% elsif section.settings.section_text_align == 'section_text_center' %}text-center{% elsif section.settings.section_text_align == 'section_text_right' %}text-right{% endif %} mb-65">
+          <h2>{{ collection_title }}</h2>
+          <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">{{ section.settings.more_title }} {{ collection_title }} &rsaquo;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row theme-products">
+      {% assign products_limit = section.settings.products_limit_handle %}
+      {% for product in collection.products limit:products_limit %}
+      {% assign grid_item_width = 'large--one-fifth medium--one-half' %}
+      <div class="col-lg-{{ section.settings.product_column }} col-md-{{ section.settings.product_md_column }} col-sm-{{ section.settings.product_column_xs }} col-12">
+        {% render 'product-grid-item', product: product -%}
+      </div>
+      {% endfor %}
+    </div>
+    {% unless forloop.last %}<hr class="">{% endunless %}
+  </div>
+  {% endunless %}
+  {% endfor %}
+
+  {% elsif section.settings.collection_handle == 'only_custom_collection' %}
+  <div class="container">
+    <div class="row">
+      {% for block in section.blocks %}
+      {%- case block.type -%}
+      {%- when 'custom_collection' -%}
+      {% assign featured_product = collections[block.settings.featured_product_handle] %}
+      {% assign featured_product_limit = section.settings.products_limit_handle %}
+      <div class="col-lg-{{ block.settings.cat_column }} col-md-{{ block.settings.cat_column_md }} col-sm-{{ block.settings.cat_column_xs }} col-12 mb-50">
+        <div class="collection_block text-center">
+          <div class="collection_img">
+            <a href="{{ featured_product.url }}">
+              {% if block.settings.collection_img == 'default' %}
+              <img loading="lazy"  src="{% if featured_product.image.src != blank %} {{ featured_product.image.src | collection_img_url: '385x385', crop: 'center' }} {% else %} https://placehold.co/385x470 {% endif %}" class="img-fluid" alt="{{ featured_product.image.src.alt }}">
+              {% elsif block.settings.collection_img == 'custom' %}
+              <img loading="lazy"  src="{% if block.settings.custom_collection_img != blank %}{{ block.settings.custom_collection_img | img_url: 'master'}} {% else %} https://placehold.co/385x470 {% endif %} " class="img-fluid" alt="{{ block.settings.custom_collection_img.alt }}">
+              {% endif %}
+            </a>
+          </div>
+          <div class="collection_content mt-20">
+            {% if featured_product.title != blank %}
+            <h2> <a href="{{ featured_product.url }}">{{ featured_product.title }}</a></h2>
+            {% else %}
+            {%- if block.settings.custom_collection_title != blank -%}
+            <h2> <a href="{{ block.settings.custom_collection_link }}">{{ block.settings.custom_collection_title }}</a></h2>
+            {%- endif -%}
+            {% endif %}
+            {% if featured_product.all_products_count != blank %}
+            <p class="coll_prod_count mb-0">{{ featured_product.all_products_count }} {{ section.settings.product_label | default: 'products' }}</p>
+            {% endif %}
+            <a class="lezada-button lezada-button--small mt-15" href="{% if featured_product.all_products_count != blank %} {{ featured_product.url }} {% else %} / {% endif %}">{{ section.settings.more_title }} <i class="fa fa-angle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {% endif %}
+</div>
+
+{%- render 'section-style' -%}
+
+
+
+{% schema %}
+  {
+    "name": "All Collection List",
+    "settings": [
+  		{
+          "type": "header",
+          "content": "Collection Type"
+		},
+  		{
+          "type": "select",
+          "id": "collection_handle",
+          "label": "Collection Handle",
+		  "options":[
+				{
+					"label": "Custom Collection",
+					"value": "custom_collection"
+				},
+				{
+					"label": "All Collection",
+					"value": "all_collection"
+				},
+  				{
+					"label": "Custom Collection without Product",
+					"value": "only_custom_collection"
+				}
+			],
+			"default": "all_collection"
+      	},
+  		{
+          "type": "header",
+          "content": "Section Title"
+		},
+		{
+          "type": "select",
+          "id": "section_text_align",
+          "label": "Heading Text Align",
+		  "options":[
+				{
+					"label": "Left",
+					"value": "section_text_left"
+				},
+				{
+					"label": "Center",
+					"value": "section_text_center"
+				},
+				{
+					"label": "Right",
+					"value": "section_text_right"
+				}
+			],
+			"default": "section_text_center"
+      	},
+  		{
+          "type": "header",
+          "content": "Product Column",
+  		  "info": "Collection Product Column"
+		},
+		{
+          "type": "select",
+          "id": "product_column",
+          "label": "Dekstop Product Column",
+		  "options":[
+				{
+					"label": "2 Column",
+					"value": "6"
+				},
+				{
+					"label": "3 Column",
+					"value": "4"
+				},
+				{
+					"label": "4 Column",
+					"value": "3"
+				},
+				{
+					"label": "6 Column",
+					"value": "2"
+				}
+			],
+			"default": "3"
+      	},
+		
+        {
+            "type": "select",
+            "id": "product_md_column",
+            "label": "Tablet Product Column",
+            "options":[
+                  {
+                      "label": "2 Column",
+                      "value": "6"
+                  },
+                  {
+                      "label": "3 Column",
+                      "value": "4"
+                  },
+                  {
+                      "label": "4 Column",
+                      "value": "3"
+                  }
+              ],
+              "default": "4"
+          },
+          {
+            "type": "select",
+            "id": "product_column_xs",
+            "label": "Large Mobile Product Column",
+            "options":[
+                  {
+                      "label": "1 Column",
+                      "value": "12"
+                  },
+                  {
+                      "label": "2 Column",
+                      "value": "6"
+                  }
+              ],
+              "default": "6"
+          },
+
+		{
+            "type": "range",
+            "id": "products_limit_handle",
+            "min": 2,
+            "max": 12,
+            "step": 1,
+            "label": "Product Limit",
+            "default": 4,
+			"info": "How many products show on per collection"
+        },
+		{
+          "type": "text",
+          "id": "more_title",
+          "label": "More Title",
+		  "default": "More"
+      	},
+  		{
+          "type": "header",
+          "content": "Product Count Label"
+		},
+  		{
+          "type": "text",
+          "id": "product_label",
+          "label": "Product Count Title",
+		  "default": "Products"
+      	}
+	],
+  	"blocks":[
+	   {
+          "type": "custom_collection",
+          "name": "Custom Collection",
+          "settings": [
+              {
+                  "type": "collection",
+                  "id": "featured_product_handle",
+                  "label": "Select Collection"
+              },
+			  {
+              "type": "header",
+                "content": "Custom Collection",
+				"info": "If you select Custom Collection without Product"
+              },
+  			  {
+              "type":  "select",
+              "id":    "collection_img",
+              "label": "Collection Image",
+              "options": [
+                { "value": "default", "label": "Default Collection Thumb" },
+                { "value": "custom", "label": "Custom Collection Thumb" }
+              ],
+              "default":   "default"
+            },
+			{
+              "type": "image_picker",
+              "id": "custom_collection_img",
+              "label": "Custom Collection Iamge",
+              "info": "Recommended Size: 385 x 520 px"
+            },
+  			{
+              "type": "textarea",
+              "id": "custom_collection_title",
+              "label": "Custom Collection Title",
+              "default": "Collection Title"
+            },
+  			{
+              "type": "url",
+              "id": "custom_collection_link",
+              "label": "Custom Collection Link",
+  			  "default": "/"
+            },
+  			{
+              "type": "header",
+              "content": "Collection Column",
+			  "info": "--------"
+            },
+            {
+              "type": "select",
+              "id": "cat_column",
+              "label": "Dekstop Collection Column",
+              "options":[
+  					{
+                        "label": "12 Column",
+                        "value": "12"
+                    },
+                    {
+                        "label": "10 Column",
+                        "value": "10"
+                    },
+                    {
+                        "label": "9 Column",
+                        "value": "9"
+                    },
+                    {
+                        "label": "8 Column",
+                        "value": "8"
+                    },
+                    {
+                        "label": "6 Column",
+                        "value": "6"
+                    },
+                    {
+                        "label": "4 Column",
+                        "value": "4"
+                    },
+                    {
+                        "label": "3 Column",
+                        "value": "3"
+                    },
+                    {
+                        "label": "2 Column",
+                        "value": "2"
+                    }
+                ],
+                "default": "3"
+            },
+
+            {
+                "type": "select",
+                "id": "cat_column_md",
+                "label": "Tablet Collection Column",
+                "options":[
+                      {
+                          "label": "12 Column",
+                          "value": "12"
+                      },
+                      {
+                          "label": "10 Column",
+                          "value": "10"
+                      },
+                      {
+                          "label": "9 Column",
+                          "value": "9"
+                      },
+                      {
+                          "label": "8 Column",
+                          "value": "8"
+                      },
+                      {
+                          "label": "6 Column",
+                          "value": "6"
+                      },
+                      {
+                          "label": "4 Column",
+                          "value": "4"
+                      },
+                      {
+                          "label": "3 Column",
+                          "value": "3"
+                      },
+                      {
+                          "label": "2 Column",
+                          "value": "2"
+                      }
+                  ],
+                  "default": "4"
+              },
+              {
+                "type": "select",
+                "id": "cat_column_xs",
+                "label": "Large Mobile Collection Column",
+                "options":[
+                    {
+                        "label": "12 Column",
+                        "value": "12"
+                    },
+                    {
+                        "label": "10 Column",
+                        "value": "10"
+                    },
+                    {
+                        "label": "9 Column",
+                        "value": "9"
+                    },
+                    {
+                        "label": "8 Column",
+                        "value": "8"
+                    },
+                    {
+                        "label": "6 Column",
+                        "value": "6"
+                    },
+                    {
+                        "label": "4 Column",
+                        "value": "4"
+                    },
+                    {
+                        "label": "3 Column",
+                        "value": "3"
+                    },
+                    {
+                        "label": "2 Column",
+                        "value": "2"
+                    }
+                  ],
+                  "default": "6"
+              }
+          ]
+       },
+	   {
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 50
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 70
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 20
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 70
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 20
+			}
+          ]
+       }
+	]
+  }
+{% endschema %}

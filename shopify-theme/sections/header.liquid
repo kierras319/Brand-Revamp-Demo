@@ -1,0 +1,739 @@
+{%- if settings.predictive_search_enabled -%}
+<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+<script>
+  $('body').on('click', function() {
+    $('#predictive-search').attr('style',$('#predictive-search').attr('style')==='display: block;'?'display: none':'display: none;'); 
+    $('#Search').click(function(){return false;});
+    $('.predictive-search__list-item a').click(function(){return false;});
+  });
+</script>
+{%- endif -%}
+
+
+{% if section.settings.header_style == 'style_1' %}
+
+	{% render 'header_1' %}
+
+{% elsif section.settings.header_style == 'style_2' %}
+
+	{% render 'header_2' %}
+
+{% elsif section.settings.header_style == 'style_3' %}
+
+	{% render 'header_3' %}
+
+{% elsif section.settings.header_style == 'style_4' %}
+
+	{% render 'header_4' %}
+
+{% elsif section.settings.header_style == 'style_5' %}
+
+	{% render 'header_5' %}
+
+{% endif %}
+
+
+
+
+
+{%- if section.settings.enable_header_custom_style -%}
+
+<style>
+  .theme-logo img{
+    max-width: {{ section.settings.logo_width }}px;
+  }
+  .header-area,
+  .main-menu>nav>ul>li ul.submenu{
+    background: {{ section.settings.bg_color }};
+  }
+  
+  .header-area.sticky-bar.stick {
+    background: {{ section.settings.bg_color_stick }};
+  }
+  .main-menu > nav > ul > li > a, 
+  .header-right-wrap .header-search > a, 
+  .cart-wrap > button span.icon-cart, 
+  .cart-wrap > button span.cart-price,
+  .header-right-wrap .setting-wrap button,
+  .main-menu>nav>ul>li ul.submenu li a{
+    color: {{ section.settings.menu_color }};
+  }
+    
+  .header-area .cart-wrap:hover button span.icon-cart .count-style {
+    background-color: {{ section.settings.menu_hover__color }};
+  }
+  
+  .main-menu > nav > ul > li:hover > a, 
+  .main-menu > nav > ul > li ul.mega-menu > li > ul > li:hover > a, 
+  .main-menu > nav > ul > li ul.submenu li a:hover, 
+  .header-right-wrap .header-search > a:hover, 
+  .cart-wrap > button:hover span.icon-cart, 
+  .header-right-wrap .setting-wrap button:hover,
+  .mobile-off-canvas-active .header-mobile-aside-wrap .mobile-menu-wrap .mobile-navigation nav .mobile-menu li ul li a:hover,
+  .mobile-off-canvas-active .header-mobile-aside-wrap .mobile-menu-wrap .mobile-navigation nav li a:hover{
+    color: {{ section.settings.menu_hover__color }};
+  }
+  .main-menu > nav > ul > li.angle-shape::before {
+    border-bottom: 16px solid {{ section.settings.menu_hover_angle_color }};
+  }
+  .main-menu > nav > ul > li > a > span {
+    background-color: {{ section.settings.menu_hover__color }};
+  }
+  .header-small-mobile .cart-wrap > button span.icon-cart, 
+  .header-small-mobile .cart-wrap > button span.cart-price, 
+  .header-small-mobile .header-right-wrap .setting-wrap button,
+  .header_contact_info a{
+    color: {{ section.settings.menu_color }};
+  }
+  .header-small-mobile .cart-wrap > button span.icon-cart:hover, 
+  .header-small-mobile .cart-wrap > button span.cart-price:hover, 
+  .header-small-mobile .header-right-wrap .setting-wrap button:hover,
+  .header_contact_info a:hover{
+    color: {{ section.settings.menu_hover__color }};
+  }
+  .header-area .main-menu > nav > ul > li ul.mega-menu {
+    width: {{ section.settings.megamenu_width }}px;
+    left: {{ section.settings.megamenu_left_space }}px;
+    background-color: {{settings.body_bg_color}};
+  }
+  
+  
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    
+    .header-area .main-menu > nav > ul > li ul.mega-menu {
+      width: {{ section.settings.megamenu_width_md }}px;
+      left: {{ section.settings.megamenu_left_space_md }}px;
+    }
+    
+  }
+  
+  
+  .header-right-wrap .setting-wrap button svg,
+  .cart-wrap>button span.icon-cart svg,
+  .header-right-wrap .header-search svg {
+    width: 24px;
+    fill:{{ section.settings.menu_color }};
+    transition:.3s
+  }
+  
+  .header-right-wrap .setting-wrap button svg:hover,
+  .cart-wrap>button span.icon-cart svg:hover,
+  .header-right-wrap .header-search svg:hover,
+  .header-right-wrap .setting-wrap .header_language__icon svg:hover{
+    fill:{{ section.settings.menu_hover__color }};
+  }
+  
+  .header_contact_info a svg{
+    width: 30px;
+    fill:{{ section.settings.menu_color }};
+    transition:.3s;
+    margin-right: 10px;
+  }
+  .header_contact_info a:hover svg{
+    fill:{{ section.settings.menu_hover__color }};
+  }
+  
+  .clickable-menu a:hover {
+    color: {{ section.settings.menu_hover__color }};
+  }
+  .clickable-mainmenu {
+    color: {{ section.settings.menu_hover__color }};
+  }
+  .clickable-mainmenu .clickable-mainmenu-icon button {
+    color: {{ section.settings.menu_color }};
+  }
+  .clickable-mainmenu .clickable-mainmenu-icon button:hover {
+    color: {{ section.settings.menu_hover__color }};
+  }
+  .clickable-mainmenu .clickable-menu-style ul li a {
+    color: {{ section.settings.menu_color }};
+  }
+  .clickable-mainmenu .clickable-menu-style ul li a:hover {
+    color: {{ section.settings.menu_hover__color }};
+  }
+
+  .slinky-menu a span span {
+    color: {{ section.settings.menu_hover__color }};
+  }
+  .header-hm-7.stick .clickable-menu a {
+    color: {{ section.settings.menu_color }}; 
+  }
+  .header-hm-7.stick .clickable-menu a:hover {
+    color: {{ section.settings.menu_hover__color }};
+  }
+
+  .slinky-theme-default .next::after {
+    color: {{ section.settings.menu_color }}; 
+  }
+  .slinky-theme-default .next:hover::after {
+    color: {{ section.settings.menu_hover__color }};
+  }
+  .slinky-theme-default .back::before {
+	background-color: {{ section.settings.menu_hover__color }};
+}
+
+
+  
+  
+  {%- assign main_header_font = section.settings.main_header_font -%}
+  {%- assign header_font_drop_mega = section.settings.header_font_drop_mega -%}
+
+  {{ main_header_font | font_face }}
+  {{ header_font_drop_mega | font_face }}
+
+  .header-area .main-menu > nav > ul > li > a,
+  .header-area .header-right-wrap .setting-wrap .setting-content ul li h4,
+  .header-area .cart-wrap .shopping-cart-content .shopping-cart-top h4,
+  .header-area .header-right-wrap .cart-empty-title p,
+  .header-area .main-search-active .sidebar-search-input .form-search input,
+  .clickable-mainmenu .clickable-menu-style ul li a,
+  .header-area .cart-wrap>button span.cart-price{
+    font-family: {{ main_header_font.family }}, {{ main_header_font.fallback_families }};
+    font-style: {{ main_header_font.style }};
+    font-weight: {{ main_header_font.weight }};
+    font-size:{{ section.settings.main_header_font_size }}px;
+  }
+
+  .header-area .main-menu > nav > ul > li ul.submenu li a,
+  .header-area .main-menu > nav > ul > li ul.mega-menu > li ul li a,
+  .header-area .main-menu > nav > ul > li ul.mega-menu > li a.menu-title,
+  .header-right-wrap .setting-wrap .setting-content ul li ul li {
+    font-family: {{ header_font_drop_mega.family }}, {{ header_font_drop_mega.fallback_families }};
+    font-style: {{ header_font_drop_mega.style }};
+    font-weight: {{ header_font_drop_mega.weight }};
+    font-size:{{ section.settings.drop_header_font_size }}px;
+  }
+
+  .header-area .cart-wrap:hover >button span.cart-price{
+    color:{{ section.settings.menu_hover__color }};
+  }
+  
+  .header_style_5 .main-menu>nav>ul>li:first-child {
+    margin-left: 0;
+  }
+  .header_style_5 .main-menu>nav>ul>li>a {
+    line-height: 80px;
+  }
+  
+  .header_style_5  .header_top_search button,
+  .header_style_5 .header-search-container .header_5_btn{
+    background: {{ section.settings.menu_hover__color }};
+    border: 1px solid {{ section.settings.menu_hover__color }};
+  }
+  .header_style_5 .header_top_search button:hover,
+  .header_style_5 .header-search-container .header_5_btn:hover{
+    color: {{ section.settings.menu_hover__color }};
+    background: transparent;
+  }
+  
+  .header-area.menu-left .main-menu {
+    text-align:left
+  }
+  .header-area.menu-center .main-menu {
+    text-align: center;
+    margin-left: 0;
+  }
+  .header-area.menu-right .main-menu {
+    text-align:right
+  }
+  
+  .header-small-mobile .header-right-wrap .mobile-off-canvas a {
+    color: {{ section.settings.menu_color }};
+  }
+  .header-small-mobile .header-right-wrap .mobile-off-canvas a:hover {
+    color: {{ section.settings.menu_hover__color }};
+  }
+.clickable-menu.clickable-mainmenu-active i {
+  	transition: .3s;
+    color: {{ section.settings.bg_color }};
+    background: {{ section.settings.menu_color }};
+    outline: 1px solid {{ section.settings.menu_color }};
+}
+
+  .clickable-menu.clickable-mainmenu-active i:hover {
+	color: {{ section.settings.menu_hover__color }};
+}
+
+</style>
+
+{%- endif -%}
+
+
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+              {
+                "type": "select",
+                "id": "section_width",
+                "label": "Section Width",
+                "options":[
+                      {
+                          "label": "Full Width",
+                          "value": "full_width"
+                      },
+                      {
+                          "label": "Box Width",
+                          "value": "box_width"
+                      },
+                      {
+                          "label": "Default Width",
+                          "value": "default"
+                      }
+                  ],
+                  "default": "default"
+              },
+     	 {
+        "type": "select",
+        "id": "header_style",
+        "label": "Header Style",
+        "options": [
+          {
+           "label": "Style 1",
+           "value": "style_1"
+          },
+          {
+           "label": "Style 2",
+           "value": "style_2"
+          },
+          {
+            "label": "Style 3",
+             "value": "style_3"
+          },
+          {
+            "label": "Style 4",
+            "value": "style_4"
+          },          
+		  {
+            "label": "Style 5",
+            "value": "style_5"
+          }
+          ],
+           "default": "style_1"
+        },
+
+              {
+                "type": "radio",
+                "id": "enable_hea_transprant",
+                "label": "Enable Transparent Header",
+                "options":[
+                      {
+                          "label": "Transparent Enable",
+                          "value": "transparent_enable"
+                      },
+                      {
+                          "label": "Transparent Disable",
+                          "value": "transparent_disable"
+                      }
+                  ],
+                  "default": "transparent_disable"
+              },
+          {
+        "type": "link_list",
+        "id": "main_user_menu_handle",
+        "label": "Select Main Menu",
+        "default" :"main-menu"
+      },
+      {
+          "type": "header",
+          "content": "Header Sticky"
+      },
+      {
+            "type": "checkbox",
+            "id": "sticky__bar",
+            "label": "Header Sticky Enable",
+            "default": true
+        },
+		{
+          "type": "header",
+          "content": "Header Custom Style"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_header_custom_style",
+            "label": "Enable Custom Header Style",
+            "default": true
+        },
+
+        {
+          "type": "font_picker",
+          "id": "main_header_font",
+          "label": "Font Family: Header Main Menu",
+          "default": "roboto_n4"
+        },
+        {
+          "type": "text",
+          "id": "main_header_font_size",
+          "label": "Font Size: Font Size",
+          "default": "16",
+          "info": "Main Menu Font Size"
+        },
+        {
+          "type": "font_picker",
+          "id": "header_font_drop_mega",
+          "label": "Font Family: Header Font Mega Menu & Dropdown",
+          "default": "poppins_n6"
+        },
+        {
+          "type": "text",
+          "id": "drop_header_font_size",
+          "label": "Font Size: Font Size",
+          "default": "16",
+          "info": "Dropdown & Mega Menu Font Size"
+        },
+
+		{
+          "type": "color",
+          "id": "bg_color",
+          "label": "Header BG Color",
+          "default": "#fff"
+        },
+		{
+          "type": "color",
+          "id": "bg_color_stick",
+          "label": "Header Sticky BG Color",
+          "default": "#fff"
+        },
+		{
+          "type": "color",
+          "id": "menu_color",
+          "label": "Content Color",
+          "default": "#1f2226"
+        },
+		{
+          "type": "color",
+          "id": "menu_hover__color",
+          "label": "Content Hover Color",
+          "default": "#ff3535"
+        },
+		{
+          "type": "color",
+          "id": "menu_hover_angle_color",
+          "label": "Menu Hover Angle Color",
+          "default": "#ff3535"
+        },
+		{
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+		{
+          "type": "range",
+          "id": "logo_width",
+          "label": "Custom logo width",
+          "min": 50,
+          "max": 300,
+          "step": 5,
+          "unit": "px",
+          "default": 115
+        },
+		{
+          "type": "checkbox",
+          "id": "ratina_logo_enable",
+          "label": "Retina Logo Enable",
+		  "default": false
+        },
+     	 {
+        "type": "select",
+        "id": "logo_position",
+        "label": "Logo Position",
+        "options": [
+          {
+           "label": "Left",
+           "value": "text-left"
+          },
+          {
+           "label": "Center",
+           "value": "text-center"
+          },
+          {
+            "label": "Right",
+             "value": "text-right"
+          }
+          ],
+           "default": "text-left"
+        },
+
+     	 {
+        "type": "select",
+        "id": "menu_position",
+        "label": "Menu Position",
+        "options": [
+          {
+           "label": "Left",
+           "value": "menu-left"
+          },
+          {
+           "label": "Center",
+           "value": "menu-center"
+          },
+          {
+            "label": "Right",
+             "value": "menu-right"
+          }
+          ],
+           "default": "menu-left"
+        },
+
+		{
+          "type": "header",
+          "content": "Mega Menu"
+        },
+
+		{
+          "type": "text",
+          "id": "megamenu_width",
+          "label": "Mega menu Width",
+		  "default": "972"
+        },
+		{
+          "type": "text",
+          "id": "megamenu_width_md",
+          "label": "Mega menu Width (Medium Screen)",
+		  "default": "900"
+        },
+		{
+          "type": "text",
+          "id": "megamenu_left_space",
+          "label": "Mega menu Left Space",
+		  "info": "Use ( - ) Value For Reduce Left Space",
+		  "default": "-272"
+        },
+		{
+          "type": "text",
+          "id": "megamenu_left_space_md",
+          "label": "Mega menu Left Space (Medium Screen)",
+		  "info": "Use ( - ) Value For Reduce Left Space",
+		  "default": "-272"
+        },
+		{
+          "type": "header",
+          "content": "Clickable Menu"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_clickable_logo",
+            "label": "Enable Clickable Menu Logo",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_click_social",
+            "label": "Enable Clickable Social Icon",
+            "default": true
+        },
+
+       {
+          "type": "html",
+          "id": "language_icon",
+          "label": "Header Language Icon",
+          "default": "<i class='icofont-globe'></i>"
+        },
+
+		{
+          "type": "header",
+          "content": "Search Option"
+        },
+
+		{
+          "type": "checkbox",
+          "id": "show_search",
+          "label": "Enable Search",
+		  "default": true
+        },
+
+        {
+          "type": "html",
+          "id": "header_search_icon",
+          "label": "Header Search Icon",
+          "default": "<i class='icofont-search-2'></i>"
+        },
+
+
+
+
+
+
+
+      {
+        "type": "header",
+        "content": "Currency"
+      },
+      {
+        "type": "checkbox",
+        "id": "currency_enable",
+        "label": "Currency Enable"
+      },
+      {
+        "type": "select",
+        "id": "currency_handle",
+        "label": "Select Currency",
+        "options": [
+          {
+            "label": "Shopify Default Currency",
+            "value": "shopify_currency"
+          },
+          {
+            "label": "Ajax Currency",
+            "value": "ajax_currency"
+          }
+        ],
+        "default": "shopify_currency"
+      },
+      {
+        "type": "paragraph",
+        "content": "Shopify Default Currency: To add a country\/region, go to your [payment settings.](\/admin\/settings\/payments)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Ajax Currency: To offer multiple currencies on your online store, you must first [edit your store's currency formatting](https:\/\/help.shopify.com\/en\/manual\/using-themes\/change-the-layout\/help-script-find-money-formats)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Use the Country's ISO [Currency Code](http:\/\/www.xe.com\/iso4217.php)"
+      },
+      {
+          "type": "text",
+          "id": "curr_t",
+          "label": "Title",
+		  "default": "Currency"
+      
+      },
+      {
+        "type": "textarea",
+        "id": "supported_currencies",
+        "label": "Supported currencies",
+        "default": "USD, USD - US Dollar | EUR, EUR - Euro | GBP, GBP - British Pound",
+        "info": "Ex: USD, USD - US Dollar | EUR, EUR - Euro | GBP, GBP - British Pound | INR, INR - Indian Rupee"
+      },
+
+
+
+  
+
+
+        {
+          "type": "header",
+          "content": "User Menu"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_user_menu",
+          "label": "Show User Menu",
+          "default": true
+        },
+        {
+          "type": "html",
+          "id": "user_menu_icon",
+          "label": "User Menu Icon",
+          "default": "<i class='icofont-gear-alt'></i>"
+        },
+		{
+          "type": "text",
+          "id": "account_menu_t",
+          "label": "Title",
+		  "default": "Account"
+        },
+		{
+          "type": "link_list",
+          "id": "user_menu_handle",
+          "label": "Select Custom Menu"
+        },
+		{
+          "type": "text",
+          "id": "login_title",
+          "label": "Login Title",
+		  "default": "Login"
+        },
+      	{
+          "type": "text",
+          "id": "account_title",
+          "label": "Account Title",
+		  "default": "My Account"
+        },      
+		{
+          "type": "text",
+          "id": "logout_title",
+          "label": "Log out Title",
+		  "default": "Log out"
+        },
+		{
+          "type": "text",
+          "id": "register_title",
+          "label": "Register Title",
+		  "default": "Create Account"
+        },
+        {
+          "type": "header",
+          "content": "Mini Cart"
+        },
+        {
+          "type": "html",
+          "id": "header_cart_icon",
+          "label": "Header Cart Icon",
+          "default": "<i class='icofont-cart'></i>"
+        },
+		{
+          "type": "text",
+          "id": "cart_t",
+          "label": "Cart Title",
+		  "default": "Shoping Cart"
+        },
+		{
+          "type": "text",
+          "id": "total_t",
+          "label": "Total Title",
+		  "default": "Total:"
+        },
+		{
+          "type": "text",
+          "id": "view_cart_title",
+          "label": "View Cart Title",
+		  "default": "View Cart"
+        },
+		{
+          "type": "text",
+          "id": "checkout_title",
+          "label": "Checkout Title",
+		  "default": "Checkout"
+        },
+		{
+          "type": "text",
+          "id": "empty_cart_title",
+          "label": "Empty Title",
+		  "default": "Your cart is empty now."
+        },
+        {
+          "type": "header",
+          "content": "Header Contact"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_header_contact",
+          "label": "Show Header Contact",
+          "default": true
+        },
+        {
+          "type": "html",
+          "id": "header_contact_icon",
+          "label": "Header Contact Icon",
+          "default": "<i class='icofont-headphone-alt'></i>"
+        },
+		{
+          "type": "text",
+          "id": "header_contact_title",
+          "label": "Header Contact",
+		  "default": "(+01)-800-3456"
+        }
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+
+{% endjavascript %}

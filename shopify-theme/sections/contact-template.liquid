@@ -1,0 +1,177 @@
+<div class="contact-area pt-100 pb-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4 col-lg-6 col-md-6">
+        <div class="contact-info-area">
+          {%- if section.settings.page_title_enable -%}
+            <h2>{{ page.title }}</h2>
+          {%- endif -%}
+
+          {%- if section.settings.page_content_enable -%}
+            {{ page.content }}
+          {%- endif -%}
+
+          <div class="contact-info-wrap">
+            {% for block in section.blocks %}
+              <div class="single-contact-info">
+                {% if block.settings.info_icon != '' %}
+                  <div class="contact-info-icon">
+                    <i
+                      class="sli sli-{{ block.settings.info_icon }}"
+                      style="color: {{ block.settings.info_icon_color }};"
+                    ></i>
+                  </div>
+                {% endif %}
+
+                {% if block.settings.info_text != '' and block.settings.info_title != '' %}
+                  <div class="contact-info-content">
+                    <h4>{{ block.settings.info_title }}</h4>
+                    <p>{{ block.settings.info_text }}</p>
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-8 col-lg-6 col-md-6">
+        <div class="contact-from contact-shadow">
+          {% form 'contact', id: 'contact-form' %}
+            {% if form.posted_successfully? %}
+              <p class="note form-success form-messege">{{ 'contact.form.post_success' | t }}</p>
+            {% endif %}
+
+            {{ form.errors | default_errors }}
+            <input
+              type="text"
+              placeholder="{{ section.settings.name_placeholder }}"
+              class="{% if form.errors contains 'name' %}error{% endif %}"
+              name="contact[name]"
+              id="ContactFormName"
+              value="{% if form.name %}{{ form.name }}{% elsif customer.name %}{{ customer.name }}{% endif %}"
+            >
+
+            <input
+              type="email"
+              placeholder="{{ section.settings.email_placeholder }}"
+              class="{% if form.errors contains 'email' %}error{% endif %}"
+              name="contact[email]"
+              id="ContactFormEmail"
+              value="{% if form.email %}{{ form.email }}{% elsif customer.email %}{{ customer.email }}{% endif %}"
+            >
+
+            <input
+              type="text"
+              id="ContactFormSubject"
+              name="contact[subject]"
+              placeholder="{{ section.settings.subject_placeholder }}"
+              value="{{ form.subject }}"
+            >
+
+            <textarea
+              placeholder="{{ section.settings.message_placeholder }}"
+              name="contact[body]"
+              id="ContactFormMessage"
+            >
+        {% if form.body %}{{ form.body }}{% endif %}
+      </textarea>
+            <button class="submit" type="submit">{{ section.settings.form_button_name }}</button>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+ {
+   "name": "Contact Template",
+   "settings": [
+	{
+	  "type": "header",
+         "content": "Page Content"
+       },
+	{
+         "type": "checkbox",
+         "id": "page_title_enable",
+         "label": "Show Page Title",
+         "default": true
+     	},
+	{
+         "type": "checkbox",
+         "id": "page_content_enable",
+         "label": "Show Page Content",
+         "default": true
+     	},
+       {
+         "type": "header",
+         "content": "Contact Form"
+       },
+       {
+         "type": "text",
+         "id": "name_placeholder",
+         "label": "Name Placeholder",
+         "default": "Name"
+       },
+       {
+         "type": "text",
+         "id": "email_placeholder",
+         "label": "Email Placeholder",
+         "default": "Email"
+       },
+       {
+         "type": "text",
+         "id": "subject_placeholder",
+         "label": "Subject Placeholder",
+         "default": "Subject"
+       },
+       {
+         "type": "text",
+         "id": "message_placeholder",
+         "label": "Email Placeholder",
+         "default": "Your Message"
+       },
+       {
+         "type": "text",
+         "id": "form_button_name",
+         "label": "Form Button Name",
+         "default": "Send Message"
+       }
+],
+"blocks":[
+     {
+         "type": "info",
+         "name": "Contact Info",
+         "settings": [
+             {
+                 "type": "text",
+                 "id": "info_icon",
+                 "label": "Icon",
+			  "info": "[More Icon](https://simplelineicons.github.io/)",
+			  "default": "location-pin"
+             },
+             {
+                 "type": "color",
+                 "id": "info_icon_color",
+                 "label": "Icon Color",
+			  "default": "#1f2226"
+             },
+           	 {
+              "type": "text",
+              "id": "info_title",
+              "label": "Title",
+ 			   "default": "Our Location"
+             },
+		  {
+              "type": "textarea",
+              "id": "info_text",
+              "label": "Text",
+ 			   "default": "Address goes here, street, Crossroad 123."
+             }
+
+ 		]
+ 	  }
+   ]
+ }
+{% endschema %}

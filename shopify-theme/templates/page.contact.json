@@ -1,0 +1,70 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "contact-template",
+      "blocks": {
+        "518a477a-2da5-4f90-b1a3-1d41ae16c1cd": {
+          "type": "info",
+          "settings": {
+            "info_icon": "location-pin",
+            "info_icon_color": "#1f2226",
+            "info_text": "Address goes here, street, Crossroad 123."
+          }
+        },
+        "73bcf828-ddbc-4160-8902-683aa96f69eb": {
+          "type": "info",
+          "settings": {
+            "info_icon": "sli sli-envelope",
+            "info_icon_color": "#1f2226",
+            "info_text": "info@example.com / info@example.com"
+          }
+        },
+        "412f1173-cf52-4798-a9f2-b52ca5eb31f6": {
+          "type": "info",
+          "settings": {
+            "info_icon": "sli sli-screen-smartphone",
+            "info_icon_color": "#1f2226",
+            "info_text": "+1 35 776 859 000 / +1 35 776 859 011"
+          }
+        }
+      },
+      "block_order": [
+        "518a477a-2da5-4f90-b1a3-1d41ae16c1cd",
+        "73bcf828-ddbc-4160-8902-683aa96f69eb",
+        "412f1173-cf52-4798-a9f2-b52ca5eb31f6"
+      ],
+      "settings": {
+        "page_title_enable": true,
+        "page_content_enable": true,
+        "name_placeholder": "Name",
+        "email_placeholder": "Email",
+        "subject_placeholder": "Subject",
+        "message_placeholder": "Your Message",
+        "form_button_name": "Send Message"
+      }
+    },
+    "1633605873cf309896": {
+      "type": "contact-map",
+      "settings": {
+        "google_map_enable": true,
+        "google_map_api_key": "AIzaSyCBEypW1XtGLWpikFPcityAok8rhJzzWRw",
+        "latitude": "47.606205",
+        "languid": "-122.332046",
+        "map_icon_image": "shopify://shop_images/with-the-help.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1633605873cf309896"
+  ]
+}
