@@ -14,14 +14,8 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground",
         outline: "text-foreground",
-        olive:
-          "border-transparent bg-brand-gold text-brand-cream",
-        mauve:
-          "border-transparent bg-brand-wine text-brand-cream",
-        taupe:
-          "border-transparent bg-brand-greige text-brand-charcoal",
-        charcoal:
-          "border-transparent bg-brand-charcoal text-brand-cream",
+        accent: "border-transparent bg-accent text-accent-foreground",
+        success: "border-transparent bg-success text-success-foreground",
       },
     },
     defaultVariants: {

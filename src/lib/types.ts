@@ -1,142 +1,106 @@
-export type ProductCategory =
-  | "fiction"
-  | "writer-resources"
-  | "reader-experiences"
-  | "digital-planners";
+// Core data model for the Life OS app. Everything is stored locally
+// (see lib/storage.ts) — no fields here should assume a server exists.
 
-export type ProductVariant = "reader" | "writer";
-
-export interface ProductFormat {
-  label: string;
-  price: number;
-  payhipUrl?: string;
-}
-
-export interface Product {
+export interface MoodEntry {
   id: string;
-  slug: string;
-  title: string;
-  description: string;
-  overview?: string;
-  authorNote?: string;
-  price: number;
-  category: ProductCategory;
-  variant: ProductVariant;
-  badge?: "New" | "Bestseller" | "Coming Soon" | "Free";
-  imageUrl: string;
-  featured?: boolean;
-  formats?: ProductFormat[];
-  payhipUrl?: string;
+  date: string; // YYYY-MM-DD
+  mood: number; // 1-10
+  energy: number; // 1-10
+  anxiety: number; // 1-10
+  irritability: number; // 1-10
+  sleepHours: number;
+  symptoms: string[];
+  notes: string;
+  createdAt: string; // ISO timestamp
 }
 
-export type BookStatus = "available" | "coming-soon";
-
-export interface Book {
+export interface Medication {
   id: string;
-  slug: string;
-  title: string;
-  tagline: string;
-  synopsis: string;
-  overview?: string;
-  authorNote?: string;
-  coverUrl: string;
-  genre: string;
-  pages?: number;
-  formats: string[];
-  formatPricing?: ProductFormat[];
-  purchaseUrl?: string;
-  status: BookStatus;
-  publishDate?: string;
-  featured?: boolean;
-}
-
-export type BlogCategory =
-  | "writing-craft"
-  | "book-news"
-  | "reader-life"
-  | "behind-the-story"
-  | "book-recommendations";
-
-export interface BlogPost {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  category: BlogCategory;
-  categoryLabel: string;
-  author: string;
-  publishedAt: string;
-  imageUrl: string;
-  featured?: boolean;
-  readingTime: string;
-}
-
-
-export interface NavLink {
-  label: string;
-  href: string;
-}
-
-export interface ShopCategory {
-  id: ProductCategory;
-  label: string;
-  description: string;
-  tagline: string;
-  href: string;
-}
-
-export interface Testimonial {
-  id: string;
-  quote: string;
-  author: string;
-  source?: string;
-}
-
-export interface Review {
-  id: string;
-  author: string;
-  rating: number;
-  text: string;
-  date: string;
-  verified?: boolean;
-  recommended?: boolean;
-}
-
-export interface CartItem {
-  productId: string;
-  slug: string;
-  title: string;
-  price: number;
-  format?: string;
-  imageUrl?: string;
-  quantity: number;
-}
-
-export type OrderStatus = "pending" | "paid" | "fulfilled" | "failed" | "refunded";
-
-export interface OrderItem {
-  slug: string;
-  title: string;
-  price: number;
-  format?: string;
-  quantity: number;
-}
-
-export interface Order {
-  id: string;
-  stripeSessionId: string;
-  stripePaymentIntentId?: string;
-  items: OrderItem[];
-  customerEmail: string;
-  customerName?: string;
-  amountTotal: number;
-  currency: string;
-  status: OrderStatus;
+  name: string;
+  dose: string;
+  schedule: string; // free text, e.g. "Morning", "Morning & Night"
+  active: boolean;
   createdAt: string;
-  paidAt?: string;
-  fulfilledAt?: string;
-  failedAt?: string;
-  refundedAt?: string;
-  fulfillmentEmailSent: boolean;
+}
+
+export interface MedicationLog {
+  id: string;
+  medicationId: string;
+  date: string; // YYYY-MM-DD
+  taken: boolean;
+}
+
+export interface JournalEntry {
+  id: string;
+  date: string;
+  prompt: string;
+  content: string;
+  tags: string[];
+  createdAt: string;
+}
+
+export type DiscoveryCategory = "liked" | "disliked" | "curious" | "value" | "memory";
+
+export interface Discovery {
+  id: string;
+  date: string;
+  title: string;
+  category: DiscoveryCategory;
+  rating: number; // 0-5, 0 = unrated
+  notes: string;
+  createdAt: string;
+}
+
+export interface Habit {
+  id: string;
+  name: string;
+  color: string;
+  targetDaysPerWeek: number;
+  archived: boolean;
+  createdAt: string;
+}
+
+export interface HabitCompletion {
+  id: string;
+  habitId: string;
+  date: string;
+}
+
+export type TaskPriority = "low" | "medium" | "high";
+
+export interface Task {
+  id: string;
+  title: string;
+  done: boolean;
+  dueDate: string | null;
+  priority: TaskPriority;
+  createdAt: string;
+}
+
+export interface ExerciseSet {
+  reps: number;
+  weight: number;
+}
+
+export interface WorkoutExercise {
+  name: string;
+  sets: ExerciseSet[];
+}
+
+export interface Workout {
+  id: string;
+  date: string;
+  name: string;
+  exercises: WorkoutExercise[];
+  notes: string;
+  createdAt: string;
+}
+
+export interface BodyMetric {
+  id: string;
+  date: string;
+  weightLbs: number | null;
+  bodyFatPct: number | null;
+  notes: string;
+  createdAt: string;
 }

@@ -1,30 +1,17 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { PageWrapper } from "@/components/layout/PageWrapper"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <section className="bg-brand-charcoal min-h-[70vh] flex items-center">
-      <PageWrapper className="text-center py-24">
-        <p className="font-serif text-8xl font-bold text-brand-gold/20 select-none">
-          404
-        </p>
-        <h1 className="font-serif text-display-md font-semibold text-brand-cream mt-4 -mt-4">
-          Page Not Found
-        </h1>
-        <div className="w-16 h-px bg-brand-gold/50 mx-auto my-6" />
-        <p className="text-brand-stone text-lg max-w-md mx-auto leading-relaxed">
-          The page you&apos;re looking for has vanished — like a thriller protagonist who knows too much.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-          <Button variant="olive" size="lg" asChild>
-            <Link href="/">Return Home</Link>
-          </Button>
-          <Button variant="cream-outline" size="lg" asChild>
-            <Link href="/books">Browse Books</Link>
-          </Button>
-        </div>
-      </PageWrapper>
-    </section>
-  )
+    <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
+      <p className="select-none text-7xl font-bold text-muted-foreground/20">404</p>
+      <h1 className="mt-4 text-2xl font-semibold">Page not found</h1>
+      <p className="mt-2 max-w-sm text-muted-foreground">
+        That page doesn&apos;t exist. Let&apos;s get you back to today.
+      </p>
+      <Button asChild className="mt-8">
+        <Link href="/">Back to Today</Link>
+      </Button>
+    </div>
+  );
 }

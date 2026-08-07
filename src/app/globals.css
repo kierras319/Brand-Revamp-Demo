@@ -4,38 +4,72 @@
 
 @layer base {
   :root {
-    /* ── Keke Sharice — Dark Thriller Palette ───────────────────────── */
-    /* HSL channel values only (used with hsl(var(...)))                */
-    --brand-charcoal:  0 0% 5%;    /* #0D0D0D — near-black base        */
-    --brand-gold:      43 65% 52%; /* #D4AF37 — pale gold accent        */
-    --brand-parchment: 0 0% 7%;    /* #111111 — dark section bg         */
-    --brand-greige:    0 0% 11%;   /* #1C1C1C — card / raised surface   */
-    --brand-wine:      0 100% 27%; /* #8B0000 — deep crimson CTA        */
-    --brand-stone:     0 0% 63%;   /* #A0A0A0 — muted grey body text    */
-    --brand-ink:       0 0% 3%;    /* #080808 — richest black           */
-    --brand-cream:     0 0% 94%;   /* #F0F0F0 — off-white primary text  */
+    /* ── Life OS — warm, calm palette ─────────────────────────────── */
+    --background: 40 30% 98%; /* warm off-white */
+    --foreground: 20 15% 15%; /* warm near-black */
 
-    /* ── shadcn semantic tokens → brand ────────────────────────────── */
-    --background:            0 0% 5%;    /* near-black page bg */
-    --foreground:            0 0% 94%;   /* off-white text */
-    --card:                  0 0% 11%;   /* dark card */
-    --card-foreground:       0 0% 94%;
-    --popover:               0 0% 11%;
-    --popover-foreground:    0 0% 94%;
-    --primary:               0 100% 27%; /* crimson */
-    --primary-foreground:    0 0% 94%;
-    --secondary:             0 0% 11%;   /* dark card */
-    --secondary-foreground:  0 0% 94%;
-    --muted:                 0 0% 15%;
-    --muted-foreground:      0 0% 63%;   /* stone */
-    --accent:                43 65% 52%; /* gold */
-    --accent-foreground:     0 0% 5%;
-    --destructive:           0 72% 51%;
-    --destructive-foreground:0 0% 100%;
-    --border:                0 0% 18%;
-    --input:                 0 0% 15%;
-    --ring:                  43 65% 52%; /* gold focus ring */
-    --radius:                0.75rem;
+    --card: 0 0% 100%;
+    --card-foreground: 20 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 15% 15%;
+
+    --primary: 150 20% 32%; /* sage green */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 20 35% 93%; /* soft terracotta tint */
+    --secondary-foreground: 20 25% 25%;
+
+    --muted: 30 15% 94%;
+    --muted-foreground: 25 10% 45%;
+
+    --accent: 38 55% 55%; /* warm gold */
+    --accent-foreground: 20 20% 15%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 150 40% 35%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 30 15% 88%;
+    --input: 30 15% 90%;
+    --ring: 150 20% 40%;
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 20 12% 8%;
+    --foreground: 40 20% 92%;
+
+    --card: 20 12% 12%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 20 12% 12%;
+    --popover-foreground: 40 20% 92%;
+
+    --primary: 150 28% 50%;
+    --primary-foreground: 20 15% 10%;
+
+    --secondary: 20 10% 16%;
+    --secondary-foreground: 40 20% 92%;
+
+    --muted: 20 10% 16%;
+    --muted-foreground: 30 10% 65%;
+
+    --accent: 38 50% 58%;
+    --accent-foreground: 20 15% 10%;
+
+    --destructive: 0 60% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 150 35% 48%;
+    --success-foreground: 20 15% 10%;
+
+    --border: 20 10% 20%;
+    --input: 20 10% 18%;
+    --ring: 150 28% 50%;
   }
 }
 
@@ -45,11 +79,7 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    line-height: 1.7;
-  }
-  h1, h2, h3, h4, h5 {
-    @apply font-serif;
-    line-height: 1.1;
+    line-height: 1.6;
   }
 }
 
@@ -57,37 +87,11 @@
   .text-balance {
     text-wrap: balance;
   }
-
-  .section-padding {
-    @apply py-section px-4 sm:px-6 lg:px-8;
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
-
-  .section-padding-sm {
-    @apply py-section-sm px-4 sm:px-6 lg:px-8;
-  }
-
-  .container-brand {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  /* Film-grain texture overlay for hero sections */
-  .grain-overlay::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 2;
-    mix-blend-mode: overlay;
-  }
-}
-
-@layer utilities {
-  .scrollbar-hide {
+  .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
   }
 }
